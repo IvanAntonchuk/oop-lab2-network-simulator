@@ -1,0 +1,144 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+package "Core Simulation (Singleton & Facade)" {
+    class SimulationManager <<Singleton>> {
+        - static instance: SimulationManager
+        - state: SimulationMemento
+        - observers: List<SimulationObserver>
+        - SimulationManager()
+        + static getInstance(): SimulationManager
+        + startSimulation(): void
+        + pauseSimulation(): void
+        + saveState(): SimulationMemento
+        + restoreState(m: SimulationMemento): void
+        + attach(o: SimulationObserver): void
+        + notifyObservers(): void
+    }
+
+    class ReportFacade <<Facade>> {
+        + generateNetworkReport(): void
+        + exportMetricsToCSV(): void
+    }
+}
+
+package "Network Entities (Composite & Decorator)" {
+    abstract class NetworkNode <<Composite Component>> {
+        + {abstract} processTraffic(): void
+        + {abstract} getName(): String
+    }
+
+    class ServerNode {
+        - state: NodeState
+        - strategy: RoutingStrategy
+        + processTraffic(): void
+        + getName(): String
+        + changeState(s: NodeState): void
+    }
+
+    class Subnet <<Composite>> {
+        - nodes: List<NetworkNode>
+        + addNode(n: NetworkNode): void
+        + processTraffic(): void
+        + createIterator(): NodeIterator
+    }
+
+    abstract class NodeDecorator <<Decorator>> {
+        # wrappee: NetworkNode
+        + NodeDecorator(n: NetworkNode)
+        + processTraffic(): void
+    }
+
+    class FirewallDecorator {
+        + processTraffic(): void
+        - blockMaliciousPackets(): void
+    }
+}
+
+package "Behavior & State (Strategy & State)" {
+    interface RoutingStrategy <<Strategy>> {
+        + routePacket(): void
+    }
+    class ShortestPathStrategy {
+        + routePacket(): void
+    }
+
+    interface NodeState <<State>> {
+        + handle(node: ServerNode): void
+    }
+    class OnlineState {
+        + handle(node: ServerNode): void
+    }
+    class OfflineState {
+        + handle(node: ServerNode): void
+    }
+}
+
+package "Creation & Topologies (Builder & Prototype)" {
+    class NetworkBuilder <<Builder>> {
+        + reset(): void
+        + buildServer(name: String): void
+        + buildRouter(): void
+        + getResult(): Subnet
+    }
+
+    interface TopologyPrototype <<Prototype>> {
+        + cloneTopology(): TopologyPrototype
+    }
+    class StarTopology {
+        + cloneTopology(): TopologyPrototype
+    }
+}
+
+package "Interaction (Command, Observer, Iterator, Memento)" {
+    interface SimulationCommand <<Command>> {
+        + execute(): void
+    }
+    class StartCommand {
+        + execute(): void
+    }
+
+    interface SimulationObserver <<Observer>> {
+        + update(): void
+    }
+    class MetricsCollector {
+        + update(): void
+    }
+
+    interface NodeIterator <<Iterator>> {
+        + hasNext(): boolean
+        + next(): NetworkNode
+    }
+
+    class SimulationMemento <<Memento>> {
+        - savedTime: double
+        - savedTopologyState: String
+        + getState(): String
+    }
+}
+
+' Зв'язки між класами
+NetworkNode <|-- ServerNode
+NetworkNode <|-- Subnet
+Subnet o-- NetworkNode
+NetworkNode <|-- NodeDecorator
+NodeDecorator o-- NetworkNode
+NodeDecorator <|-- FirewallDecorator
+
+ServerNode *-- RoutingStrategy
+ServerNode *-- NodeState
+RoutingStrategy <|.. ShortestPathStrategy
+NodeState <|.. OnlineState
+NodeState <|.. OfflineState
+
+SimulationManager --> SimulationMemento
+SimulationManager o-- SimulationObserver
+SimulationObserver <|.. MetricsCollector
+
+SimulationCommand <|.. StartCommand
+TopologyPrototype <|.. StarTopology
+Subnet ..> NodeIterator : creates >
+SimulationManager --> NetworkBuilder : uses >
+SimulationManager --> ReportFacade : uses >
+
+@enduml
