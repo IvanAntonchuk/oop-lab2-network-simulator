@@ -11,7 +11,7 @@ public:
     explicit NetworkNode(const std::string& nodeName) : name(nodeName) {}
     virtual ~NetworkNode() = default;
 
-    virtual void processTraffic() = 0;
+    virtual std::string processTraffic() = 0;
 
     virtual std::string getName() const { return name; }
 };

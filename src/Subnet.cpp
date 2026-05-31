@@ -1,5 +1,4 @@
 #include "Subnet.h"
-#include <iostream>
 #include <algorithm>
 
 Subnet::Subnet(const std::string& subnetName) : NetworkNode(subnetName) {}
@@ -20,11 +19,12 @@ void Subnet::removeNode(const std::string& nodeName) {
         );
 }
 
-void Subnet::processTraffic() {
-    std::cout << "[Subnet] Routing traffic in subnet: " << name << std::endl;
+std::string Subnet::processTraffic() {
+    std::string log = "[Subnet] Routing traffic in subnet: " + name + "\n";
     for (const auto& node : nodes) {
-        node->processTraffic();
+        log += "    " + node->processTraffic();
     }
+    return log;
 }
 
 const std::vector<std::shared_ptr<NetworkNode>>& Subnet::getNodes() const {

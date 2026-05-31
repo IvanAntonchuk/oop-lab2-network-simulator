@@ -6,7 +6,7 @@
 class ServerNode : public NetworkNode {
 public:
     explicit ServerNode(const std::string& nodeName);
-    void processTraffic() override;
+    std::string processTraffic() override;
 };
 
 #endif
