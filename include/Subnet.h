@@ -1,0 +1,23 @@
+#ifndef SUBNET_H
+#define SUBNET_H
+
+#include "NetworkNode.h"
+#include <vector>
+#include <memory>
+
+class Subnet : public NetworkNode {
+private:
+    std::vector<std::shared_ptr<NetworkNode>> nodes;
+
+public:
+    explicit Subnet(const std::string& subnetName);
+
+    void addNode(std::shared_ptr<NetworkNode> node);
+    void removeNode(const std::string& nodeName);
+
+    void processTraffic() override;
+
+    const std::vector<std::shared_ptr<NetworkNode>>& getNodes() const;
+};
+
+#endif
