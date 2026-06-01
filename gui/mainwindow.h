@@ -17,9 +17,11 @@ public:
 private slots:
     void on_btnTestComposite_clicked();
     void on_btnTestStrategy_clicked();
+    void on_btnStartSimulation_clicked();
+    void on_btnPauseSimulation_clicked();
 
 private:
     Ui::MainWindow *ui;
 };
 
-#endif
+#endif // MAINWINDOW_H

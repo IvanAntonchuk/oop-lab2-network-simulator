@@ -4,6 +4,8 @@
 #include "ServerNode.h"
 #include "ShortestPathStrategy.h"
 #include "RandomPathStrategy.h"
+#include "StartCommand.h"
+#include "PauseCommand.h"
 #include <memory>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -53,4 +55,18 @@ void MainWindow::on_btnTestStrategy_clicked()
     ui->textEditLog->append(QString::fromStdString(myServer->processTraffic()));
 
     ui->textEditLog->append("--------------------------------------------------\n");
+}
+
+void MainWindow::on_btnStartSimulation_clicked()
+{
+    std::unique_ptr<SimulationCommand> startCmd = std::make_unique<StartCommand>();
+    std::string result = startCmd->execute();
+    ui->textEditLog->append(QString::fromStdString(result));
+}
+
+void MainWindow::on_btnPauseSimulation_clicked()
+{
+    std::unique_ptr<SimulationCommand> pauseCmd = std::make_unique<PauseCommand>();
+    std::string result = pauseCmd->execute();
+    ui->textEditLog->append(QString::fromStdString(result));
 }

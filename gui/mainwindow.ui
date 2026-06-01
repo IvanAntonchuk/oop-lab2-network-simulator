@@ -36,6 +36,20 @@
       </property>
      </widget>
     </item>
+    <item>
+     <widget class="QPushButton" name="btnStartSimulation">
+      <property name="text">
+       <string>Старт симуляції (Command)</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btnPauseSimulation">
+      <property name="text">
+       <string>Пауза симуляції (Command)</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
