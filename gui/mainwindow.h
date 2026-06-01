@@ -16,6 +16,7 @@ public:
 
 private slots:
     void on_btnTestComposite_clicked();
+    void on_btnTestStrategy_clicked();
 
 private:
     Ui::MainWindow *ui;

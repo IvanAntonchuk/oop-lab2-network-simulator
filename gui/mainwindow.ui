@@ -29,6 +29,13 @@
       </property>
      </widget>
     </item>
+    <item>
+     <widget class="QPushButton" name="btnTestStrategy">
+      <property name="text">
+       <string>Тест стратегій (Strategy)</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
