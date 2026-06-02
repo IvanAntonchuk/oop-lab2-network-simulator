@@ -6,6 +6,8 @@
 #include "RandomPathStrategy.h"
 #include "StartCommand.h"
 #include "PauseCommand.h"
+#include "OnlineState.h"
+#include "OfflineState.h"
 #include <memory>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -24,13 +26,13 @@ void MainWindow::on_btnTestComposite_clicked()
 {
     std::shared_ptr<Subnet> globalNetwork = std::make_shared<Subnet>("Global Internet");
 
-    std::shared_ptr<Subnet> kievSubnet = std::make_shared<Subnet>("Kyiv Datacenter");
-    kievSubnet->addNode(std::make_shared<ServerNode>("Server-K1"));
-    kievSubnet->addNode(std::make_shared<ServerNode>("Server-K2"));
+    std::shared_ptr<Subnet> kyivSubnet = std::make_shared<Subnet>("Kyiv Datacenter");
+    kyivSubnet->addNode(std::make_shared<ServerNode>("Server-K1"));
+    kyivSubnet->addNode(std::make_shared<ServerNode>("Server-K2"));
 
     std::shared_ptr<ServerNode> standaloneServer = std::make_shared<ServerNode>("Standalone-S1");
 
-    globalNetwork->addNode(kievSubnet);
+    globalNetwork->addNode(kyivSubnet);
     globalNetwork->addNode(standaloneServer);
 
     std::string result = globalNetwork->processTraffic();
@@ -69,4 +71,20 @@ void MainWindow::on_btnPauseSimulation_clicked()
     std::unique_ptr<SimulationCommand> pauseCmd = std::make_unique<PauseCommand>();
     std::string result = pauseCmd->execute();
     ui->textEditLog->append(QString::fromStdString(result));
+}
+
+void MainWindow::on_btnTestState_clicked()
+{
+    ui->textEditLog->append("--- Тестування патерну State ---");
+
+    std::shared_ptr<ServerNode> dbServer = std::make_shared<ServerNode>("DB-Server");
+    ui->textEditLog->append(QString::fromStdString(dbServer->processTraffic()));
+
+    dbServer->changeState(std::make_shared<OfflineState>());
+    ui->textEditLog->append(QString::fromStdString(dbServer->processTraffic()));
+
+    dbServer->changeState(std::make_shared<OnlineState>());
+    ui->textEditLog->append(QString::fromStdString(dbServer->processTraffic()));
+
+    ui->textEditLog->append("--------------------------------------------------\n");
 }
