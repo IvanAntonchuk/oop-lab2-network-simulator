@@ -18,6 +18,8 @@ public:
     void changeState(std::shared_ptr<NodeState> newState);
 
     std::string processTraffic() override;
+
+    std::shared_ptr<NetworkNode> clone() const override;
 };
 
 #endif

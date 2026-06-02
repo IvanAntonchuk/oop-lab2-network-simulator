@@ -16,8 +16,9 @@ public:
     void removeNode(const std::string& nodeName);
 
     std::string processTraffic() override;
-
     const std::vector<std::shared_ptr<NetworkNode>>& getNodes() const;
+
+    std::shared_ptr<NetworkNode> clone() const override;
 };
 
 #endif

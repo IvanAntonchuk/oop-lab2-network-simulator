@@ -9,6 +9,7 @@
 #include "OnlineState.h"
 #include "OfflineState.h"
 #include "NetworkBuilder.h"
+#include "StarTopology.h"
 #include <memory>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -105,5 +106,30 @@ void MainWindow::on_btnTestBuilder_clicked()
     std::shared_ptr<Subnet> globalNetwork = builder.getResult();
 
     ui->textEditLog->append(QString::fromStdString(globalNetwork->processTraffic()));
+    ui->textEditLog->append("--------------------------------------------------\n");
+}
+
+void MainWindow::on_btnTestPrototype_clicked()
+{
+    ui->textEditLog->append("--- Тестування патерну Prototype ---");
+
+    std::shared_ptr<Subnet> basePattern = std::make_shared<Subnet>("Star-Core-Router");
+    basePattern->addNode(std::make_shared<ServerNode>("Node-A"));
+    basePattern->addNode(std::make_shared<ServerNode>("Node-B"));
+
+    StarTopology prototype(basePattern);
+
+    std::shared_ptr<TopologyPrototype> clone1 = prototype.cloneTopology();
+    std::shared_ptr<TopologyPrototype> clone2 = prototype.cloneTopology();
+
+    ui->textEditLog->append("[ОРИГІНАЛ]:");
+    ui->textEditLog->append(QString::fromStdString(prototype.getNetwork()->processTraffic()));
+
+    ui->textEditLog->append("[КЛОН 1]:");
+    ui->textEditLog->append(QString::fromStdString(clone1->getNetwork()->processTraffic()));
+
+    ui->textEditLog->append("[КЛОН 2]:");
+    ui->textEditLog->append(QString::fromStdString(clone2->getNetwork()->processTraffic()));
+
     ui->textEditLog->append("--------------------------------------------------\n");
 }

@@ -2,6 +2,7 @@
 #define NETWORKNODE_H
 
 #include <string>
+#include <memory>
 
 class NetworkNode {
 protected:
@@ -12,8 +13,9 @@ public:
     virtual ~NetworkNode() = default;
 
     virtual std::string processTraffic() = 0;
-
     virtual std::string getName() const { return name; }
+
+    virtual std::shared_ptr<NetworkNode> clone() const = 0;
 };
 
 #endif

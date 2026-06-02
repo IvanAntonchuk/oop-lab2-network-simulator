@@ -21,6 +21,7 @@ private slots:
     void on_btnPauseSimulation_clicked();
     void on_btnTestState_clicked();
     void on_btnTestBuilder_clicked();
+    void on_btnTestPrototype_clicked();
 
 private:
     Ui::MainWindow *ui;

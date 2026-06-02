@@ -16,17 +16,16 @@ void ServerNode::changeState(std::shared_ptr<NodeState> newState) {
 
 std::string ServerNode::processTraffic() {
     std::string log = "[Server: " + name + "] ";
-
-    if (state) {
-        log += state->handle(this) + " ";
-    }
-
-    if (strategy) {
-        log += " | " + strategy->route();
-    } else {
-        log += " | No routing strategy set.";
-    }
-
+    if (state) log += state->handle(this) + " ";
+    if (strategy) log += " | " + strategy->route();
+    else log += " | No routing strategy set.";
     log += "\n";
     return log;
+}
+
+std::shared_ptr<NetworkNode> ServerNode::clone() const {
+    auto cloned = std::make_shared<ServerNode>(name + "_clone");
+    cloned->setStrategy(strategy);
+    cloned->changeState(state);
+    return cloned;
 }

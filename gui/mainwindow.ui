@@ -64,6 +64,13 @@
       </property>
      </widget>
     </item>
+    <item>
+     <widget class="QPushButton" name="btnTestPrototype">
+      <property name="text">
+       <string>Тест прототипу (Prototype)</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
