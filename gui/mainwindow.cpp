@@ -8,6 +8,7 @@
 #include "PauseCommand.h"
 #include "OnlineState.h"
 #include "OfflineState.h"
+#include "NetworkBuilder.h"
 #include <memory>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -86,5 +87,23 @@ void MainWindow::on_btnTestState_clicked()
     dbServer->changeState(std::make_shared<OnlineState>());
     ui->textEditLog->append(QString::fromStdString(dbServer->processTraffic()));
 
+    ui->textEditLog->append("--------------------------------------------------\n");
+}
+
+void MainWindow::on_btnTestBuilder_clicked()
+{
+    ui->textEditLog->append("--- Тестування патерну Builder ---");
+
+    NetworkBuilder builder;
+
+    builder.reset("Kyiv Datacenter");
+    builder.addServer("Server-K1").addServer("Server-K2").addServer("Server-K3");
+    std::shared_ptr<Subnet> kyivSubnet = builder.getResult();
+
+    builder.reset("Global Internet");
+    builder.addServer("Standalone-S1").addSubnet(kyivSubnet);
+    std::shared_ptr<Subnet> globalNetwork = builder.getResult();
+
+    ui->textEditLog->append(QString::fromStdString(globalNetwork->processTraffic()));
     ui->textEditLog->append("--------------------------------------------------\n");
 }
