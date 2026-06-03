@@ -71,6 +71,13 @@
       </property>
      </widget>
     </item>
+    <item>
+     <widget class="QPushButton" name="btnTestDecorator">
+      <property name="text">
+       <string>Тест декоратора (Decorator)</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">

@@ -10,6 +10,7 @@
 #include "OfflineState.h"
 #include "NetworkBuilder.h"
 #include "StarTopology.h"
+#include "FirewallDecorator.h"
 #include <memory>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -130,6 +131,21 @@ void MainWindow::on_btnTestPrototype_clicked()
 
     ui->textEditLog->append("[КЛОН 2]:");
     ui->textEditLog->append(QString::fromStdString(clone2->getNetwork()->processTraffic()));
+
+    ui->textEditLog->append("--------------------------------------------------\n");
+}
+
+void MainWindow::on_btnTestDecorator_clicked()
+{
+    ui->textEditLog->append("--- Testing Decorator pattern ---");
+
+    std::shared_ptr<ServerNode> regularServer = std::make_shared<ServerNode>("Web-Server");
+    ui->textEditLog->append("[Unprotected]:");
+    ui->textEditLog->append(QString::fromStdString(regularServer->processTraffic()));
+
+    std::shared_ptr<NetworkNode> secureServer = std::make_shared<FirewallDecorator>(regularServer);
+    ui->textEditLog->append("[Protected by Firewall]:");
+    ui->textEditLog->append(QString::fromStdString(secureServer->processTraffic()));
 
     ui->textEditLog->append("--------------------------------------------------\n");
 }

@@ -22,6 +22,7 @@ private slots:
     void on_btnTestState_clicked();
     void on_btnTestBuilder_clicked();
     void on_btnTestPrototype_clicked();
+    void on_btnTestDecorator_clicked();
 
 private:
     Ui::MainWindow *ui;
