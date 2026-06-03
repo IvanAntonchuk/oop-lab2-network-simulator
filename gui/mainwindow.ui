@@ -78,6 +78,13 @@
       </property>
      </widget>
     </item>
+    <item>
+     <widget class="QPushButton" name="btnTestFacade">
+      <property name="text">
+       <string>Тест фасаду (Facade)</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">

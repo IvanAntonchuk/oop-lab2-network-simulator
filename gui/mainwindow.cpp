@@ -11,6 +11,7 @@
 #include "NetworkBuilder.h"
 #include "StarTopology.h"
 #include "FirewallDecorator.h"
+#include "ReportFacade.h"
 #include <memory>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -147,5 +148,21 @@ void MainWindow::on_btnTestDecorator_clicked()
     ui->textEditLog->append("[Protected by Firewall]:");
     ui->textEditLog->append(QString::fromStdString(secureServer->processTraffic()));
 
+    ui->textEditLog->append("--------------------------------------------------\n");
+}
+
+void MainWindow::on_btnTestFacade_clicked()
+{
+    ui->textEditLog->append("--- Testing Facade pattern ---");
+
+    NetworkBuilder builder;
+    builder.reset("Kyiv Main Network");
+    builder.addServer("Web-Server").addServer("DB-Server");
+    std::shared_ptr<Subnet> myNetwork = builder.getResult();
+
+    ReportFacade facade(myNetwork);
+    std::string report = facade.generateNetworkReport();
+
+    ui->textEditLog->append(QString::fromStdString(report));
     ui->textEditLog->append("--------------------------------------------------\n");
 }
