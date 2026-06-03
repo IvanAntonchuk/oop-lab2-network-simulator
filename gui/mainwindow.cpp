@@ -12,6 +12,8 @@
 #include "StarTopology.h"
 #include "FirewallDecorator.h"
 #include "ReportFacade.h"
+#include "SimulationManager.h"
+#include "MetricsCollector.h"
 #include <memory>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -19,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    SimulationManager::getInstance().attach(std::make_shared<MetricsCollector>());
 }
 
 MainWindow::~MainWindow()
