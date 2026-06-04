@@ -14,6 +14,7 @@
 #include "ReportFacade.h"
 #include "SimulationManager.h"
 #include "MetricsCollector.h"
+#include "NodeIterator.h"
 #include <memory>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -167,5 +168,25 @@ void MainWindow::on_btnTestFacade_clicked()
     std::string report = facade.generateNetworkReport();
 
     ui->textEditLog->append(QString::fromStdString(report));
+    ui->textEditLog->append("--------------------------------------------------\n");
+}
+
+void MainWindow::on_btnTestIterator_clicked()
+{
+    ui->textEditLog->append("--- Testing Iterator pattern ---");
+
+    std::shared_ptr<Subnet> kyivSubnet = std::make_shared<Subnet>("Kyiv Datacenter");
+    kyivSubnet->addNode(std::make_shared<ServerNode>("Server-K1"));
+    kyivSubnet->addNode(std::make_shared<ServerNode>("Server-K2"));
+    kyivSubnet->addNode(std::make_shared<ServerNode>("Server-K3"));
+
+    ui->textEditLog->append("Iterating through nodes:");
+
+    std::unique_ptr<NodeIterator> iterator = kyivSubnet->createIterator();
+    while (iterator->hasNext()) {
+        std::shared_ptr<NetworkNode> node = iterator->next();
+        ui->textEditLog->append("Found node: " + QString::fromStdString(node->getName()));
+    }
+
     ui->textEditLog->append("--------------------------------------------------\n");
 }

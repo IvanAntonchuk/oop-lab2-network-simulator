@@ -85,6 +85,13 @@
       </property>
      </widget>
     </item>
+    <item>
+     <widget class="QPushButton" name="btnTestIterator">
+      <property name="text">
+       <string>Тест ітератора (Iterator)</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">

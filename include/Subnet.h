@@ -2,6 +2,7 @@
 #define SUBNET_H
 
 #include "NetworkNode.h"
+#include "NodeIterator.h"
 #include <vector>
 #include <memory>
 
@@ -19,6 +20,8 @@ public:
     const std::vector<std::shared_ptr<NetworkNode>>& getNodes() const;
 
     std::shared_ptr<NetworkNode> clone() const override;
+
+    std::unique_ptr<NodeIterator> createIterator() const;
 };
 
 #endif

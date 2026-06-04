@@ -1,4 +1,5 @@
 #include "Subnet.h"
+#include "SubnetIterator.h"
 #include <algorithm>
 
 Subnet::Subnet(const std::string& subnetName) : NetworkNode(subnetName) {}
@@ -32,4 +33,8 @@ std::shared_ptr<NetworkNode> Subnet::clone() const {
         cloned->addNode(node->clone());
     }
     return cloned;
+}
+
+std::unique_ptr<NodeIterator> Subnet::createIterator() const {
+    return std::make_unique<SubnetIterator>(nodes);
 }
