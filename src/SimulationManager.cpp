@@ -1,6 +1,7 @@
 #include "SimulationManager.h"
 
-SimulationManager::SimulationManager() : isRunning(false) {}
+SimulationManager::SimulationManager()
+    : isRunning(false), currentTopologyState("Initial"), currentTime(0.0) {}
 
 SimulationManager& SimulationManager::getInstance() {
     static SimulationManager instance;
@@ -43,4 +44,27 @@ std::string SimulationManager::pauseSimulation() {
 
 bool SimulationManager::getIsRunning() const {
     return isRunning;
+}
+
+void SimulationManager::setTopologyState(const std::string& state) {
+    currentTopologyState = state;
+}
+
+void SimulationManager::setTime(double time) {
+    currentTime = time;
+}
+
+std::unique_ptr<SimulationMemento> SimulationManager::saveState() const {
+    return std::make_unique<SimulationMemento>(currentTopologyState, currentTime);
+}
+
+void SimulationManager::restoreState(std::unique_ptr<SimulationMemento> memento) {
+    if (memento) {
+        currentTopologyState = memento->getState();
+        currentTime = memento->getTime();
+    }
+}
+
+std::string SimulationManager::getCurrentStateInfo() const {
+    return "Topology: " + currentTopologyState + " | Time: " + std::to_string(currentTime);
 }

@@ -15,6 +15,7 @@
 #include "SimulationManager.h"
 #include "MetricsCollector.h"
 #include "NodeIterator.h"
+#include "SimulationMemento.h"
 #include <memory>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -187,6 +188,30 @@ void MainWindow::on_btnTestIterator_clicked()
         std::shared_ptr<NetworkNode> node = iterator->next();
         ui->textEditLog->append("Found node: " + QString::fromStdString(node->getName()));
     }
+
+    ui->textEditLog->append("--------------------------------------------------\n");
+}
+
+void MainWindow::on_btnTestMemento_clicked()
+{
+    ui->textEditLog->append("--- Testing Memento pattern ---");
+
+    SimulationManager& manager = SimulationManager::getInstance();
+
+    manager.setTopologyState("Star Topology");
+    manager.setTime(15.5);
+    ui->textEditLog->append("Current state: " + QString::fromStdString(manager.getCurrentStateInfo()));
+
+    std::unique_ptr<SimulationMemento> savedState = manager.saveState();
+    ui->textEditLog->append("[State Saved]");
+
+    manager.setTopologyState("Mesh Topology");
+    manager.setTime(100.0);
+    ui->textEditLog->append("Changed state: " + QString::fromStdString(manager.getCurrentStateInfo()));
+
+    manager.restoreState(std::move(savedState));
+    ui->textEditLog->append("[State Restored]");
+    ui->textEditLog->append("Restored state: " + QString::fromStdString(manager.getCurrentStateInfo()));
 
     ui->textEditLog->append("--------------------------------------------------\n");
 }
