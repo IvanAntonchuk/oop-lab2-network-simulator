@@ -23,6 +23,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
+    int serverCounter;
 };
 
-#endif // MAINWINDOW_H
+#endif
