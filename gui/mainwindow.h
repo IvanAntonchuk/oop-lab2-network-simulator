@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QGraphicsScene>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,20 +16,13 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_btnTestComposite_clicked();
-    void on_btnTestStrategy_clicked();
-    void on_btnStartSimulation_clicked();
-    void on_btnPauseSimulation_clicked();
-    void on_btnTestState_clicked();
-    void on_btnTestBuilder_clicked();
-    void on_btnTestPrototype_clicked();
-    void on_btnTestDecorator_clicked();
-    void on_btnTestFacade_clicked();
-    void on_btnTestIterator_clicked();
-    void on_btnTestMemento_clicked();
+    void on_btnAddServer_clicked();
+    void on_btnSaveNetwork_clicked();
+    void on_btnLoadNetwork_clicked();
 
 private:
     Ui::MainWindow *ui;
+    QGraphicsScene *scene;
 };
 
 #endif // MAINWINDOW_H

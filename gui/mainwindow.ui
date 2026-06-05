@@ -6,96 +6,66 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1024</width>
+    <height>768</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Network Simulator - Visual Editor</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="btnAddServer">
+        <property name="text">
+         <string>+ Add Server</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnSaveNetwork">
+        <property name="text">
+         <string>Save Network (JSON)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnLoadNetwork">
+        <property name="text">
+         <string>Load Network (JSON)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QGraphicsView" name="graphicsView"/>
+    </item>
+    <item>
      <widget class="QTextEdit" name="textEditLog">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>120</height>
+       </size>
+      </property>
       <property name="readOnly">
        <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnTestComposite">
-      <property name="text">
-       <string>Тест мережі (Composite)</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnTestStrategy">
-      <property name="text">
-       <string>Тест стратегій (Strategy)</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnStartSimulation">
-      <property name="text">
-       <string>Старт симуляції (Command)</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnPauseSimulation">
-      <property name="text">
-       <string>Пауза симуляції (Command)</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnTestState">
-      <property name="text">
-       <string>Тест станів (State)</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnTestBuilder">
-      <property name="text">
-       <string>Тест білдера (Builder)</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnTestPrototype">
-      <property name="text">
-       <string>Тест прототипу (Prototype)</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnTestDecorator">
-      <property name="text">
-       <string>Тест декоратора (Decorator)</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnTestFacade">
-      <property name="text">
-       <string>Тест фасаду (Facade)</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnTestIterator">
-      <property name="text">
-       <string>Тест ітератора (Iterator)</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnTestMemento">
-      <property name="text">
-       <string>Тест зберігача (Memento)</string>
       </property>
      </widget>
     </item>
@@ -106,7 +76,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1024</width>
      <height>25</height>
     </rect>
    </property>
