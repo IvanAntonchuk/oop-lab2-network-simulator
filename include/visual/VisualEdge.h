@@ -13,6 +13,9 @@ public:
     ~VisualEdge();
     void updatePosition();
 
+    VisualNode* getSourceNode() const { return sourceNode; }
+    VisualNode* getTargetNode() const { return targetNode; }
+
 signals:
     void edgeDeleted(VisualEdge* edge);
 

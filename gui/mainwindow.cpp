@@ -84,6 +84,7 @@ void MainWindow::on_btnSaveNetwork_clicked()
     if (fileName.isEmpty()) return;
 
     QJsonArray nodesArray;
+    QJsonArray edgesArray;
 
     for (QGraphicsItem* item : scene->items()) {
         VisualNode* vNode = dynamic_cast<VisualNode*>(item);
@@ -94,10 +95,18 @@ void MainWindow::on_btnSaveNetwork_clicked()
             nodeObj["name"] = vNode->getName();
             nodesArray.append(nodeObj);
         }
+        VisualEdge* vEdge = dynamic_cast<VisualEdge*>(item);
+        if (vEdge) {
+            QJsonObject edgeObj;
+            edgeObj["source"] = vEdge->getSourceNode()->getName();
+            edgeObj["target"] = vEdge->getTargetNode()->getName();
+            edgesArray.append(edgeObj);
+        }
     }
 
     QJsonObject networkObj;
     networkObj["nodes"] = nodesArray;
+    networkObj["edges"] = edgesArray;
 
     QJsonDocument doc(networkObj);
     QFile file(fileName);
@@ -139,6 +148,9 @@ void MainWindow::on_btnLoadNetwork_clicked()
 
     QJsonObject networkObj = doc.object();
     QJsonArray nodesArray = networkObj["nodes"].toArray();
+    QJsonArray edgesArray = networkObj["edges"].toArray();
+
+    std::map<QString, VisualNode*> createdNodes;
 
     for (const QJsonValue& val : nodesArray) {
         QJsonObject nodeObj = val.toObject();
@@ -155,12 +167,23 @@ void MainWindow::on_btnLoadNetwork_clicked()
         std::shared_ptr<ServerNode> logicalServer = std::make_shared<ServerNode>(name.toStdString());
         activeNetwork->addNode(logicalServer);
         nodeMapping[node] = logicalServer;
+        createdNodes[name] = node;
 
         QString numStr = name;
         numStr.replace("Server-", "");
         int num = numStr.toInt();
         if (num > serverCounter) {
             serverCounter = num;
+        }
+    }
+
+    for (const QJsonValue& val : edgesArray) {
+        QJsonObject edgeObj = val.toObject();
+        QString sourceName = edgeObj["source"].toString();
+        QString targetName = edgeObj["target"].toString();
+
+        if (createdNodes.count(sourceName) && createdNodes.count(targetName)) {
+            handleNodeConnection(createdNodes[sourceName], createdNodes[targetName]);
         }
     }
 
