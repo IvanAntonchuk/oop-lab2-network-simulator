@@ -2,5 +2,6 @@
 #include "ServerNode.h"
 
 std::string OnlineState::handle(ServerNode* node) {
-    return "[ONLINE] Сервер приймає трафік";
+    std::string type = (node->getName().find("Router") != std::string::npos) ? "Router" : "Server";
+    return "[ONLINE] " + type + " is accepting traffic";
 }

@@ -2,5 +2,6 @@
 #include "ServerNode.h"
 
 std::string OfflineState::handle(ServerNode* node) {
-    return "[OFFLINE] Сервер вимкнено. Пакети відхиляються";
+    std::string type = (node->getName().find("Router") != std::string::npos) ? "Router" : "Server";
+    return "[OFFLINE] " + type + " is down. Packets rejected";
 }

@@ -22,6 +22,7 @@ public:
 
 private slots:
     void on_btnAddServer_clicked();
+    void on_btnAddRouter_clicked();
     void on_btnSaveNetwork_clicked();
     void on_btnLoadNetwork_clicked();
     void on_btnPingNetwork_clicked();
@@ -33,6 +34,7 @@ private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     int serverCounter;
+    int routerCounter;
 
     NetworkBuilder builder;
     std::shared_ptr<Subnet> activeNetwork;

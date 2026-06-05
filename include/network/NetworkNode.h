@@ -3,6 +3,7 @@
 
 #include <string>
 #include <memory>
+#include <vector>
 
 class NetworkNode {
 protected:
@@ -16,6 +17,10 @@ public:
     virtual std::string getName() const { return name; }
 
     virtual std::shared_ptr<NetworkNode> clone() const = 0;
+
+    virtual void connectTo(std::shared_ptr<NetworkNode> node) {}
+    virtual void removeConnection(std::shared_ptr<NetworkNode> node) {}
+    virtual std::vector<std::shared_ptr<NetworkNode>> getConnections() const { return {}; }
 };
 
 #endif

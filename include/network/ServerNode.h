@@ -5,11 +5,13 @@
 #include "RoutingStrategy.h"
 #include "NodeState.h"
 #include <memory>
+#include <vector>
 
 class ServerNode : public NetworkNode {
 private:
     std::shared_ptr<RoutingStrategy> strategy;
     std::shared_ptr<NodeState> state;
+    std::vector<std::shared_ptr<NetworkNode>> connections;
 
 public:
     explicit ServerNode(const std::string& nodeName);
@@ -18,8 +20,11 @@ public:
     void changeState(std::shared_ptr<NodeState> newState);
 
     std::string processTraffic() override;
-
     std::shared_ptr<NetworkNode> clone() const override;
+
+    void connectTo(std::shared_ptr<NetworkNode> node) override;
+    void removeConnection(std::shared_ptr<NetworkNode> node) override;
+    std::vector<std::shared_ptr<NetworkNode>> getConnections() const override;
 };
 
 #endif
