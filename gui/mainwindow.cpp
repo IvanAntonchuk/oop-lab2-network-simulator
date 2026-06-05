@@ -24,6 +24,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     SimulationManager::getInstance().attach(std::make_shared<MetricsCollector>());
 
+    builder.reset("Kyiv Core Network");
+    activeNetwork = builder.getResult();
+
     ui->textEditLog->append("Visual UI Engine initialized.");
 }
 
@@ -51,7 +54,11 @@ void MainWindow::on_btnAddServer_clicked()
 
     scene->addItem(node);
 
-    ui->textEditLog->append("Added " + serverName + " at X:" + QString::number(x) + " Y:" + QString::number(y));
+    std::shared_ptr<ServerNode> logicalServer = std::make_shared<ServerNode>(serverName.toStdString());
+    activeNetwork->addNode(logicalServer);
+    nodeMapping[node] = logicalServer;
+
+    ui->textEditLog->append("Added logical and visual " + serverName + " at X:" + QString::number(x) + " Y:" + QString::number(y));
 }
 
 void MainWindow::on_btnSaveNetwork_clicked()
@@ -116,7 +123,11 @@ void MainWindow::on_btnLoadNetwork_clicked()
     }
 
     scene->clear();
+    nodeMapping.clear();
     serverCounter = 0;
+
+    builder.reset("Kyiv Loaded Network");
+    activeNetwork = builder.getResult();
 
     QJsonObject networkObj = doc.object();
     QJsonArray nodesArray = networkObj["nodes"].toArray();
@@ -138,6 +149,10 @@ void MainWindow::on_btnLoadNetwork_clicked()
 
         scene->addItem(node);
 
+        std::shared_ptr<ServerNode> logicalServer = std::make_shared<ServerNode>(name.toStdString());
+        activeNetwork->addNode(logicalServer);
+        nodeMapping[node] = logicalServer;
+
         QString numStr = name;
         numStr.replace("Server-", "");
         int num = numStr.toInt();
@@ -147,4 +162,14 @@ void MainWindow::on_btnLoadNetwork_clicked()
     }
 
     ui->textEditLog->append("Network successfully loaded from " + fileName);
+}
+
+void MainWindow::on_btnPingNetwork_clicked()
+{
+    ui->textEditLog->append("--- Pinging Logical Network ---");
+    if (activeNetwork) {
+        std::string log = activeNetwork->processTraffic();
+        ui->textEditLog->append(QString::fromStdString(log));
+    }
+    ui->textEditLog->append("-------------------------------");
 }
