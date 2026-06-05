@@ -6,6 +6,8 @@
 #include <map>
 #include "NetworkBuilder.h"
 #include "NetworkNode.h"
+#include "VisualNode.h"
+#include "VisualEdge.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -24,6 +26,9 @@ private slots:
     void on_btnLoadNetwork_clicked();
     void on_btnPingNetwork_clicked();
 
+    void handleNodeConnection(VisualNode* source, VisualNode* target);
+    void handleEdgeDeletion(VisualEdge* edge);
+
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
@@ -31,7 +36,7 @@ private:
 
     NetworkBuilder builder;
     std::shared_ptr<Subnet> activeNetwork;
-    std::map<QGraphicsItem*, std::shared_ptr<NetworkNode>> nodeMapping;
+    std::map<VisualNode*, std::shared_ptr<NetworkNode>> nodeMapping;
 };
 
 #endif

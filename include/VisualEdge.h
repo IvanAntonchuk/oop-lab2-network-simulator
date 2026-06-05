@@ -1,0 +1,29 @@
+#ifndef VISUALEDGE_H
+#define VISUALEDGE_H
+
+#include <QObject>
+#include <QGraphicsLineItem>
+
+class VisualNode;
+
+class VisualEdge : public QObject, public QGraphicsLineItem {
+    Q_OBJECT
+public:
+    VisualEdge(VisualNode* source, VisualNode* target);
+    ~VisualEdge();
+    void updatePosition();
+
+signals:
+    void edgeDeleted(VisualEdge* edge);
+
+protected:
+    void contextMenuEvent(QGraphicsSceneContextMenuEvent *event) override;
+    QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
+
+private:
+    VisualNode* sourceNode;
+    VisualNode* targetNode;
+};
+
+#endif

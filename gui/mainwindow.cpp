@@ -2,8 +2,6 @@
 #include "ui_mainwindow.h"
 #include "SimulationManager.h"
 #include "MetricsCollector.h"
-#include <QGraphicsEllipseItem>
-#include <QGraphicsTextItem>
 #include <QRandomGenerator>
 #include <QFileDialog>
 #include <QFile>
@@ -42,23 +40,42 @@ void MainWindow::on_btnAddServer_clicked()
     int x = QRandomGenerator::global()->bounded(100, 800);
     int y = QRandomGenerator::global()->bounded(50, 500);
 
-    QGraphicsEllipseItem* node = new QGraphicsEllipseItem(0, 0, 70, 70);
-    node->setPos(x, y);
-    node->setBrush(Qt::green);
-    node->setFlag(QGraphicsItem::ItemIsMovable);
-
     QString serverName = "Server-" + QString::number(serverCounter);
-    QGraphicsTextItem* text = new QGraphicsTextItem(serverName, node);
-    text->setDefaultTextColor(Qt::black);
-    text->setPos(10, 23);
 
+    VisualNode* node = new VisualNode(serverName);
+    node->setPos(x, y);
     scene->addItem(node);
+
+    connect(node, &VisualNode::connectionRequested, this, &MainWindow::handleNodeConnection);
 
     std::shared_ptr<ServerNode> logicalServer = std::make_shared<ServerNode>(serverName.toStdString());
     activeNetwork->addNode(logicalServer);
     nodeMapping[node] = logicalServer;
 
     ui->textEditLog->append("Added logical and visual " + serverName + " at X:" + QString::number(x) + " Y:" + QString::number(y));
+}
+
+void MainWindow::handleNodeConnection(VisualNode* source, VisualNode* target) {
+    VisualEdge* edge = new VisualEdge(source, target);
+    scene->addItem(edge);
+    connect(edge, &VisualEdge::edgeDeleted, this, &MainWindow::handleEdgeDeletion);
+    ui->textEditLog->append("Connected " + source->getName() + " to " + target->getName());
+}
+
+void MainWindow::handleEdgeDeletion(VisualEdge* edge) {
+    ui->textEditLog->append("Connection removed.");
+    scene->removeItem(edge);
+    delete edge;
+}
+
+void MainWindow::on_btnPingNetwork_clicked()
+{
+    ui->textEditLog->append("--- Pinging Logical Network ---");
+    if (activeNetwork) {
+        std::string log = activeNetwork->processTraffic();
+        ui->textEditLog->append(QString::fromStdString(log));
+    }
+    ui->textEditLog->append("-------------------------------");
 }
 
 void MainWindow::on_btnSaveNetwork_clicked()
@@ -69,22 +86,13 @@ void MainWindow::on_btnSaveNetwork_clicked()
     QJsonArray nodesArray;
 
     for (QGraphicsItem* item : scene->items()) {
-        if (item->parentItem() == nullptr) {
-            QGraphicsEllipseItem* ellipse = dynamic_cast<QGraphicsEllipseItem*>(item);
-            if (ellipse) {
-                QJsonObject nodeObj;
-                nodeObj["x"] = ellipse->pos().x();
-                nodeObj["y"] = ellipse->pos().y();
-
-                for (QGraphicsItem* child : ellipse->childItems()) {
-                    QGraphicsTextItem* textItem = dynamic_cast<QGraphicsTextItem*>(child);
-                    if (textItem) {
-                        nodeObj["name"] = textItem->toPlainText();
-                        break;
-                    }
-                }
-                nodesArray.append(nodeObj);
-            }
+        VisualNode* vNode = dynamic_cast<VisualNode*>(item);
+        if (vNode) {
+            QJsonObject nodeObj;
+            nodeObj["x"] = vNode->pos().x();
+            nodeObj["y"] = vNode->pos().y();
+            nodeObj["name"] = vNode->getName();
+            nodesArray.append(nodeObj);
         }
     }
 
@@ -138,16 +146,11 @@ void MainWindow::on_btnLoadNetwork_clicked()
         double y = nodeObj["y"].toDouble();
         QString name = nodeObj["name"].toString();
 
-        QGraphicsEllipseItem* node = new QGraphicsEllipseItem(0, 0, 70, 70);
+        VisualNode* node = new VisualNode(name);
         node->setPos(x, y);
-        node->setBrush(Qt::green);
-        node->setFlag(QGraphicsItem::ItemIsMovable);
-
-        QGraphicsTextItem* text = new QGraphicsTextItem(name, node);
-        text->setDefaultTextColor(Qt::black);
-        text->setPos(10, 23);
-
         scene->addItem(node);
+
+        connect(node, &VisualNode::connectionRequested, this, &MainWindow::handleNodeConnection);
 
         std::shared_ptr<ServerNode> logicalServer = std::make_shared<ServerNode>(name.toStdString());
         activeNetwork->addNode(logicalServer);
@@ -162,14 +165,4 @@ void MainWindow::on_btnLoadNetwork_clicked()
     }
 
     ui->textEditLog->append("Network successfully loaded from " + fileName);
-}
-
-void MainWindow::on_btnPingNetwork_clicked()
-{
-    ui->textEditLog->append("--- Pinging Logical Network ---");
-    if (activeNetwork) {
-        std::string log = activeNetwork->processTraffic();
-        ui->textEditLog->append(QString::fromStdString(log));
-    }
-    ui->textEditLog->append("-------------------------------");
 }
