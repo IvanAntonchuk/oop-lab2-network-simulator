@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include <QGraphicsScene>
+#include <QVBoxLayout>
+#include <QDockWidget>
+#include <QScrollArea>
 #include <map>
 #include "NetworkBuilder.h"
 #include "NetworkNode.h"
@@ -13,6 +16,13 @@
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
+struct ActivePath {
+    int id;
+    QString targetName;
+    QString strategyName;
+    std::vector<std::shared_ptr<NetworkNode>> pathNodes;
+};
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -36,11 +46,14 @@ private slots:
     void handleNodeStateToggle(VisualNode* node);
     void handleNodeFirewallToggle(VisualNode* node);
     void handleNodeStrategyChange(VisualNode* node, int type);
-    void highlightPath(const std::vector<std::shared_ptr<NetworkNode>>& path);
+    void handlePathDeletion(int pathId, QWidget* widget);
 
 private:
     void buildLogicalNetwork();
     void updateNetworkColors();
+    void setupActivePathsPanel();
+    void recalculateHighlights();
+    void highlightPath(const std::vector<std::shared_ptr<NetworkNode>>& path);
 
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
@@ -50,6 +63,10 @@ private:
     NetworkBuilder builder;
     std::shared_ptr<Subnet> activeNetwork;
     std::map<VisualNode*, std::shared_ptr<ServerNode>> coreNodes;
+
+    QVBoxLayout* pathsLayout;
+    int pathCounter;
+    std::map<int, ActivePath> activePaths;
 };
 
 #endif
