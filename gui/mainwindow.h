@@ -27,6 +27,7 @@ private slots:
     void on_btnSaveNetwork_clicked();
     void on_btnLoadNetwork_clicked();
     void on_btnPingNetwork_clicked();
+    void handleGuideClick();
 
     void handleNodeConnection(VisualNode* source, VisualNode* target);
     void handleEdgeDeletion(VisualEdge* edge);

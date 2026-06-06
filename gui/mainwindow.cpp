@@ -13,6 +13,7 @@
 #include <QJsonDocument>
 #include <QInputDialog>
 #include <QSet>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -26,6 +27,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setScene(scene);
     scene->setSceneRect(0, 0, 1000, 600);
 
+    QPushButton* btnGuide = new QPushButton("Guide", this);
+    ui->horizontalLayout->addWidget(btnGuide);
+    connect(btnGuide, &QPushButton::clicked, this, &MainWindow::handleGuideClick);
+
     SimulationManager::getInstance().attach(std::make_shared<MetricsCollector>());
     ui->textEditLog->append("Visual UI Engine initialized.");
 }
@@ -33,6 +38,21 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::handleGuideClick() {
+    QString guideText =
+        "<h3>Network Simulator Guide</h3>"
+        "<ul>"
+        "<li><b>Router (Square):</b> Entry point for traffic.</li>"
+        "<li><b>Server (Circle):</b> Processing node.</li>"
+        "<li><b>Green:</b> Operational and connected.</li>"
+        "<li><b>Yellow:</b> Operational but isolated (no connection).</li>"
+        "<li><b>Red:</b> Offline (power down).</li>"
+        "<li><b>Blue Border:</b> Firewall active.</li>"
+        "</ul>";
+
+    QMessageBox::information(this, "Network Guide", guideText);
 }
 
 void MainWindow::updateNetworkColors() {
