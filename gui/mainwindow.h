@@ -14,6 +14,9 @@
 #include "VisualNode.h"
 #include "VisualEdge.h"
 
+class QLabel;
+class DashboardObserver;
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -73,6 +76,9 @@ private:
     int pathCounter;
     std::map<int, ActivePath> activePaths;
     QString generateCloneName(const QString& originalName);
+
+    QLabel* lblDashboard;
+    std::shared_ptr<DashboardObserver> dashboard;
 };
 
 #endif

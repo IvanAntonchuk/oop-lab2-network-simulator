@@ -13,6 +13,7 @@
 #include "ConnectCommand.h"
 #include "DisconnectCommand.h"
 #include "ToggleStateCommand.h"
+#include "DashboardObserver.h"
 #include <QRandomGenerator>
 #include <QFileDialog>
 #include <QFile>
@@ -69,6 +70,13 @@ MainWindow::MainWindow(QWidget *parent)
     connect(btnRedo, &QPushButton::clicked, this, []() {
         SimulationManager::getInstance().getHistory()->redo();
     });
+
+    lblDashboard = new QLabel("Kyiv Network Stats | Total: 0 | Online: 0 | Offline: 0", this);
+    lblDashboard->setStyleSheet("font-weight: bold; color: darkblue; padding: 5px;");
+    ui->horizontalLayout->addWidget(lblDashboard);
+
+    dashboard = std::make_shared<DashboardObserver>(&activeNetwork);
+    SimulationManager::getInstance().attach(dashboard);
 }
 
 MainWindow::~MainWindow()
@@ -144,6 +152,11 @@ void MainWindow::updateNetworkColors() {
                 queue.append(neighbor);
             }
         }
+    }
+    buildLogicalNetwork();
+    std::string stats = SimulationManager::getInstance().notifyObservers("NETWORK_CHANGED");
+    if (!stats.empty()) {
+        lblDashboard->setText(QString::fromStdString(stats));
     }
 }
 
