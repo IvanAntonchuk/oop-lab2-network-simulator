@@ -6,6 +6,7 @@
 #include <QVBoxLayout>
 #include <QDockWidget>
 #include <QScrollArea>
+#include <QKeyEvent>
 #include <map>
 #include "NetworkBuilder.h"
 #include "NetworkNode.h"
@@ -30,6 +31,9 @@ class MainWindow : public QMainWindow {
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+protected:
+    void keyPressEvent(QKeyEvent *event) override;
 
 private slots:
     void on_btnAddServer_clicked();

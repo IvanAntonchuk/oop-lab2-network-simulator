@@ -3,10 +3,11 @@
 
 #include <string>
 
-class SimulationCommand {
+class ICommand {
 public:
-    virtual ~SimulationCommand() = default;
-    virtual std::string execute() = 0;
+    virtual ~ICommand() = default;
+    virtual void execute() = 0;
+    virtual void undo() = 0;
 };
 
-#endif // SIMULATIONCOMMAND_H
+#endif

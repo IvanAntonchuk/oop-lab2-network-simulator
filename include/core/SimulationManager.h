@@ -5,18 +5,17 @@
 #include <vector>
 #include <memory>
 #include "SimulationObserver.h"
-#include "SimulationMemento.h"
+
+class HistoryManager;
 
 class SimulationManager {
 private:
     bool isRunning;
     std::vector<std::shared_ptr<SimulationObserver>> observers;
-
-    std::string currentTopologyState;
-    double currentTime;
+    std::unique_ptr<HistoryManager> history;
 
     SimulationManager();
-    ~SimulationManager() = default;
+    ~SimulationManager();
 
 public:
     SimulationManager(const SimulationManager&) = delete;
@@ -27,18 +26,10 @@ public:
     void attach(std::shared_ptr<SimulationObserver> observer);
     std::string notifyObservers(const std::string& event);
 
-    std::string startSimulation();
-    std::string pauseSimulation();
-
     bool getIsRunning() const;
+    void setRunning(bool state);
 
-    void setTopologyState(const std::string& state);
-    void setTime(double time);
-
-    std::unique_ptr<SimulationMemento> saveState() const;
-    void restoreState(std::unique_ptr<SimulationMemento> memento);
-
-    std::string getCurrentStateInfo() const;
+    HistoryManager* getHistory();
 };
 
 #endif

@@ -1,18 +1,18 @@
 #ifndef SIMULATIONMEMENTO_H
 #define SIMULATIONMEMENTO_H
 
-#include <string>
+#include <map>
+#include <memory>
+
+class VisualNode;
+class ServerNode;
 
 class SimulationMemento {
-private:
-    std::string savedTopologyState;
-    double savedTime;
-
 public:
-    SimulationMemento(const std::string& state, double time);
-
-    std::string getState() const;
-    double getTime() const;
+    SimulationMemento(const std::map<VisualNode*, std::shared_ptr<ServerNode>>& nodesState);
+    std::map<VisualNode*, std::shared_ptr<ServerNode>> getState() const;
+private:
+    std::map<VisualNode*, std::shared_ptr<ServerNode>> state;
 };
 
 #endif

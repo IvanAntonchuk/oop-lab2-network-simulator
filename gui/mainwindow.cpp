@@ -1,13 +1,18 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "SimulationManager.h"
-#include "MetricsCollector.h"
 #include "OnlineState.h"
 #include "OfflineState.h"
 #include "FirewallDecorator.h"
 #include "ShortestPathStrategy.h"
 #include "RandomPathStrategy.h"
 #include "ReportFacade.h"
+#include "HistoryManager.h"
+#include "AddNodeCommand.h"
+#include "DeleteNodeCommand.h"
+#include "ConnectCommand.h"
+#include "DisconnectCommand.h"
+#include "ToggleStateCommand.h"
 #include <QRandomGenerator>
 #include <QFileDialog>
 #include <QFile>
@@ -44,9 +49,26 @@ MainWindow::MainWindow(QWidget *parent)
     ui->horizontalLayout->addWidget(btnGuide);
     connect(btnGuide, &QPushButton::clicked, this, &MainWindow::handleGuideClick);
 
-    SimulationManager::getInstance().attach(std::make_shared<MetricsCollector>());
     ui->textEditLog->append("Visual UI Engine initialized.");
     setupActivePathsPanel();
+
+    QPushButton* btnUndo = new QPushButton("<- Undo", ui->graphicsView);
+    btnUndo->setGeometry(10, 10, 80, 30);
+    btnUndo->setStyleSheet("background-color: white; color: black; border: 1px solid gray; border-radius: 4px; font-weight: bold;");
+    btnUndo->setCursor(Qt::PointingHandCursor);
+
+    QPushButton* btnRedo = new QPushButton("Redo ->", ui->graphicsView);
+    btnRedo->setGeometry(100, 10, 80, 30);
+    btnRedo->setStyleSheet("background-color: white; color: black; border: 1px solid gray; border-radius: 4px; font-weight: bold;");
+    btnRedo->setCursor(Qt::PointingHandCursor);
+
+    connect(btnUndo, &QPushButton::clicked, this, []() {
+        SimulationManager::getInstance().getHistory()->undo();
+    });
+
+    connect(btnRedo, &QPushButton::clicked, this, []() {
+        SimulationManager::getInstance().getHistory()->redo();
+    });
 }
 
 MainWindow::~MainWindow()
@@ -113,6 +135,8 @@ void MainWindow::updateNetworkColors() {
     while (!queue.isEmpty()) {
         VisualNode* current = queue.takeFirst();
         for (VisualEdge* edge : current->getEdges()) {
+            if (edge->scene() == nullptr) continue;
+
             VisualNode* neighbor = (edge->getSourceNode() == current) ? edge->getTargetNode() : edge->getSourceNode();
             if (!neighbor->getIsOffline() && !visited.contains(neighbor)) {
                 visited.insert(neighbor);
@@ -125,6 +149,7 @@ void MainWindow::updateNetworkColors() {
 
 void MainWindow::on_btnAddServer_clicked()
 {
+    int oldServerCounter = serverCounter;
     serverCounter++;
     int x = QRandomGenerator::global()->bounded(100, 800);
     int y = QRandomGenerator::global()->bounded(50, 500);
@@ -132,7 +157,6 @@ void MainWindow::on_btnAddServer_clicked()
 
     VisualNode* node = new VisualNode(serverName);
     node->setPos(x, y);
-    scene->addItem(node);
 
     connect(node, &VisualNode::connectionRequested, this, &MainWindow::handleNodeConnection);
     connect(node, &VisualNode::nodeDeleted, this, &MainWindow::handleNodeDeletion);
@@ -141,13 +165,22 @@ void MainWindow::on_btnAddServer_clicked()
     connect(node, &VisualNode::toggleFirewallRequested, this, &MainWindow::handleNodeFirewallToggle);
     connect(node, &VisualNode::strategyChangedRequested, this, &MainWindow::handleNodeStrategyChange);
 
-    coreNodes[node] = std::make_shared<ServerNode>(serverName.toStdString());
+    auto sNode = std::make_shared<ServerNode>(serverName.toStdString());
+
+    auto command = std::make_unique<AddNodeCommand>(
+        coreNodes, scene, node, sNode,
+        &serverCounter, oldServerCounter,
+        &routerCounter, routerCounter,
+        [this]() { updateNetworkColors(); }
+        );
+    SimulationManager::getInstance().getHistory()->executeCommand(std::move(command));
+
     ui->textEditLog->append("Added visual " + serverName + " at X:" + QString::number(x) + " Y:" + QString::number(y));
-    updateNetworkColors();
 }
 
 void MainWindow::on_btnAddRouter_clicked()
 {
+    int oldRouterCounter = routerCounter;
     routerCounter++;
     int x = QRandomGenerator::global()->bounded(100, 800);
     int y = QRandomGenerator::global()->bounded(50, 500);
@@ -156,7 +189,6 @@ void MainWindow::on_btnAddRouter_clicked()
     VisualNode* node = new VisualNode(routerName);
     node->setPos(x, y);
     node->setBrush(Qt::cyan);
-    scene->addItem(node);
 
     connect(node, &VisualNode::connectionRequested, this, &MainWindow::handleNodeConnection);
     connect(node, &VisualNode::nodeDeleted, this, &MainWindow::handleNodeDeletion);
@@ -165,24 +197,37 @@ void MainWindow::on_btnAddRouter_clicked()
     connect(node, &VisualNode::toggleFirewallRequested, this, &MainWindow::handleNodeFirewallToggle);
     connect(node, &VisualNode::strategyChangedRequested, this, &MainWindow::handleNodeStrategyChange);
 
-    coreNodes[node] = std::make_shared<ServerNode>(routerName.toStdString());
+    auto sNode = std::make_shared<ServerNode>(routerName.toStdString());
+
+    auto command = std::make_unique<AddNodeCommand>(
+        coreNodes, scene, node, sNode,
+        &serverCounter, serverCounter,
+        &routerCounter, oldRouterCounter,
+        [this]() { updateNetworkColors(); }
+        );
+    SimulationManager::getInstance().getHistory()->executeCommand(std::move(command));
+
     ui->textEditLog->append("Added visual " + routerName + " at X:" + QString::number(x) + " Y:" + QString::number(y));
-    updateNetworkColors();
 }
 
 void MainWindow::handleNodeConnection(VisualNode* source, VisualNode* target) {
     VisualEdge* edge = new VisualEdge(source, target);
-    scene->addItem(edge);
+
+    auto command = std::make_unique<ConnectCommand>(scene, edge, [this]() {
+        updateNetworkColors();
+    });
+    SimulationManager::getInstance().getHistory()->executeCommand(std::move(command));
+
     connect(edge, &VisualEdge::edgeDeleted, this, &MainWindow::handleEdgeDeletion);
     ui->textEditLog->append("Connected " + source->getName() + " to " + target->getName());
-    updateNetworkColors();
 }
 
 void MainWindow::handleEdgeDeletion(VisualEdge* edge) {
-    ui->textEditLog->append("Connection removed.");
-    scene->removeItem(edge);
-    delete edge;
-    updateNetworkColors();
+    auto command = std::make_unique<DisconnectCommand>(scene, edge, [this]() {
+        updateNetworkColors();
+    });
+    SimulationManager::getInstance().getHistory()->executeCommand(std::move(command));
+    ui->textEditLog->append("Connection removed from Kyiv core network.");
 }
 
 void MainWindow::buildLogicalNetwork() {
@@ -410,17 +455,18 @@ void MainWindow::on_btnLoadNetwork_clicked()
 
 void MainWindow::handleNodeDeletion(VisualNode* node) {
     QList<VisualEdge*> connectedEdges = node->getEdges();
-    for (VisualEdge* edge : connectedEdges) {
-        handleEdgeDeletion(edge);
-    }
+
     auto it = coreNodes.find(node);
     if (it != coreNodes.end()) {
-        coreNodes.erase(it);
+        auto sNode = it->second;
+        auto command = std::make_unique<DeleteNodeCommand>(
+            coreNodes, scene, node, sNode, connectedEdges,
+            [this]() { updateNetworkColors(); }
+            );
+        SimulationManager::getInstance().getHistory()->executeCommand(std::move(command));
     }
-    scene->removeItem(node);
-    node->deleteLater();
-    ui->textEditLog->append("Node safely deleted.");
-    updateNetworkColors();
+
+    ui->textEditLog->append("Node safely deleted from Kyiv core network.");
 }
 
 void MainWindow::handleNodeRename(VisualNode* node) {
@@ -437,15 +483,18 @@ void MainWindow::handleNodeRename(VisualNode* node) {
 void MainWindow::handleNodeStateToggle(VisualNode* node) {
     auto sNode = coreNodes[node];
     if (sNode) {
-        node->setOffline(!node->getIsOffline());
+        bool wasOffline = node->getIsOffline();
+
+        auto command = std::make_unique<ToggleStateCommand>(node, sNode, wasOffline, [this]() {
+            updateNetworkColors();
+        });
+        SimulationManager::getInstance().getHistory()->executeCommand(std::move(command));
+
         if (node->getIsOffline()) {
-            sNode->changeState(std::make_shared<OfflineState>());
             ui->textEditLog->append(node->getName() + " turned OFFLINE");
         } else {
-            sNode->changeState(std::make_shared<OnlineState>());
             ui->textEditLog->append(node->getName() + " turned ONLINE");
         }
-        updateNetworkColors();
     }
 }
 
@@ -614,4 +663,14 @@ void MainWindow::on_btnCloneNetwork_clicked() {
 
     ui->textEditLog->append("Selected topology successfully cloned.");
     updateNetworkColors();
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event) {
+    if (event->modifiers() & Qt::ControlModifier && event->key() == Qt::Key_Z) {
+        SimulationManager::getInstance().getHistory()->undo();
+    } else if (event->modifiers() & Qt::ControlModifier && event->key() == Qt::Key_Y) {
+        SimulationManager::getInstance().getHistory()->redo();
+    } else {
+        QMainWindow::keyPressEvent(event);
+    }
 }
