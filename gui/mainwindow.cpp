@@ -48,6 +48,7 @@ void MainWindow::on_btnAddServer_clicked()
     scene->addItem(node);
 
     connect(node, &VisualNode::connectionRequested, this, &MainWindow::handleNodeConnection);
+    connect(node, &VisualNode::nodeDeleted, this, &MainWindow::handleNodeDeletion);
 
     std::shared_ptr<ServerNode> logicalServer = std::make_shared<ServerNode>(serverName.toStdString());
     activeNetwork->addNode(logicalServer);
@@ -71,6 +72,7 @@ void MainWindow::on_btnAddRouter_clicked()
     scene->addItem(node);
 
     connect(node, &VisualNode::connectionRequested, this, &MainWindow::handleNodeConnection);
+    connect(node, &VisualNode::nodeDeleted, this, &MainWindow::handleNodeDeletion);
 
     std::shared_ptr<ServerNode> logicalRouter = std::make_shared<ServerNode>(routerName.toStdString());
     activeNetwork->addNode(logicalRouter);
@@ -221,6 +223,7 @@ void MainWindow::on_btnLoadNetwork_clicked()
         scene->addItem(node);
 
         connect(node, &VisualNode::connectionRequested, this, &MainWindow::handleNodeConnection);
+        connect(node, &VisualNode::nodeDeleted, this, &MainWindow::handleNodeDeletion);
 
         std::shared_ptr<ServerNode> logicalServer = std::make_shared<ServerNode>(name.toStdString());
         activeNetwork->addNode(logicalServer);
@@ -239,4 +242,21 @@ void MainWindow::on_btnLoadNetwork_clicked()
     }
 
     ui->textEditLog->append("Network successfully loaded from " + fileName);
+}
+
+void MainWindow::handleNodeDeletion(VisualNode* node) {
+    QList<VisualEdge*> connectedEdges = node->getEdges();
+    for (VisualEdge* edge : connectedEdges) {
+        handleEdgeDeletion(edge);
+    }
+
+    auto logicalNode = nodeMapping[node];
+    if (logicalNode) {
+        activeNetwork->removeNode(logicalNode->getName());
+        ui->textEditLog->append("Removed logical and visual " + QString::fromStdString(logicalNode->getName()));
+    }
+
+    nodeMapping.erase(node);
+    scene->removeItem(node);
+    delete node;
 }

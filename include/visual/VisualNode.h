@@ -15,9 +15,11 @@ public:
     void addEdge(VisualEdge* edge);
     void removeEdge(VisualEdge* edge);
     QString getName() const;
+    QList<VisualEdge*> getEdges() const { return edges; }
 
 signals:
     void connectionRequested(VisualNode* source, VisualNode* target);
+    void nodeDeleted(VisualNode* node);
 
 protected:
     QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;

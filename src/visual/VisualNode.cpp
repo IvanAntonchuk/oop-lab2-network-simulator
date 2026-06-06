@@ -44,6 +44,7 @@ QVariant VisualNode::itemChange(GraphicsItemChange change, const QVariant &value
 
 void VisualNode::contextMenuEvent(QGraphicsSceneContextMenuEvent *event) {
     QList<QGraphicsItem*> selected = scene()->selectedItems();
+
     if (selected.size() == 1 && selected.first() != this) {
         VisualNode* sourceNode = dynamic_cast<VisualNode*>(selected.first());
         if (sourceNode) {
@@ -53,6 +54,15 @@ void VisualNode::contextMenuEvent(QGraphicsSceneContextMenuEvent *event) {
             if (selectedAction == connectAction) {
                 emit connectionRequested(sourceNode, this);
             }
+        }
+    }
+    else {
+        QMenu menu;
+        QAction* deleteAction = menu.addAction("Видалити вузол");
+
+        QAction* selectedAction = menu.exec(event->screenPos());
+        if (selectedAction == deleteAction) {
+            emit nodeDeleted(this);
         }
     }
 }
