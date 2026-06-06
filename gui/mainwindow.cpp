@@ -23,6 +23,7 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QRegularExpression>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -36,6 +37,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->graphicsView->setScene(scene);
     scene->setSceneRect(0, 0, 1000, 600);
+
+    ui->graphicsView->setDragMode(QGraphicsView::RubberBandDrag);
 
     QPushButton* btnGuide = new QPushButton("Guide", this);
     ui->horizontalLayout->addWidget(btnGuide);
@@ -513,4 +516,102 @@ void MainWindow::handlePathDeletion(int pathId, QWidget* widget) {
         widget->deleteLater();
         recalculateHighlights();
     }
+}
+
+QString MainWindow::generateCloneName(const QString& originalName) {
+    QRegularExpression re("^(.*)\\.(\\d+)$");
+    QRegularExpressionMatch match = re.match(originalName);
+
+    QString baseName;
+    int nextNumber = 2;
+
+    if (match.hasMatch()) {
+        baseName = match.captured(1);
+        nextNumber = match.captured(2).toInt() + 1;
+    } else {
+        baseName = originalName;
+    }
+
+    QString newName;
+    bool nameExists = true;
+    while (nameExists) {
+        newName = baseName + "." + QString::number(nextNumber);
+        nameExists = false;
+
+        for (QGraphicsItem* item : scene->items()) {
+            if (VisualNode* vNode = dynamic_cast<VisualNode*>(item)) {
+                if (vNode->getName() == newName) {
+                    nameExists = true;
+                    nextNumber++;
+                    break;
+                }
+            }
+        }
+    }
+    return newName;
+}
+
+void MainWindow::on_btnCloneNetwork_clicked() {
+    std::map<VisualNode*, VisualNode*> cloneMap;
+    QList<QGraphicsItem*> itemsToClone = scene->selectedItems();
+
+    if (itemsToClone.isEmpty()) {
+        ui->textEditLog->append("<span style='color:orange;'>[Warning] Please select nodes with your mouse to clone them.</span>");
+        return;
+    }
+
+    for (QGraphicsItem* item : itemsToClone) {
+        if (VisualNode* oldVNode = dynamic_cast<VisualNode*>(item)) {
+
+            QString newName = generateCloneName(oldVNode->getName());
+            VisualNode* newVNode = new VisualNode(newName);
+
+            newVNode->setPos(oldVNode->pos().x() + 80, oldVNode->pos().y() + 80);
+            newVNode->setOffline(oldVNode->getIsOffline());
+            newVNode->setFirewall(oldVNode->getHasFirewall());
+
+            if (newName.startsWith("Router")) {
+                newVNode->setBrush(Qt::cyan);
+            }
+
+            scene->addItem(newVNode);
+
+            connect(newVNode, &VisualNode::connectionRequested, this, &MainWindow::handleNodeConnection);
+            connect(newVNode, &VisualNode::nodeDeleted, this, &MainWindow::handleNodeDeletion);
+            connect(newVNode, &VisualNode::renameRequested, this, &MainWindow::handleNodeRename);
+            connect(newVNode, &VisualNode::toggleStateRequested, this, &MainWindow::handleNodeStateToggle);
+            connect(newVNode, &VisualNode::toggleFirewallRequested, this, &MainWindow::handleNodeFirewallToggle);
+            connect(newVNode, &VisualNode::strategyChangedRequested, this, &MainWindow::handleNodeStrategyChange);
+
+            std::shared_ptr<ServerNode> oldLogicNode = coreNodes[oldVNode];
+            if (oldLogicNode) {
+                auto clonedLogicNode = std::dynamic_pointer_cast<ServerNode>(oldLogicNode->clone());
+                clonedLogicNode->setName(newName.toStdString());
+                coreNodes[newVNode] = clonedLogicNode;
+            }
+
+            cloneMap[oldVNode] = newVNode;
+
+            oldVNode->setSelected(false);
+            newVNode->setSelected(true);
+        }
+    }
+    for (QGraphicsItem* item : scene->items()) {
+        if (VisualEdge* oldEdge = dynamic_cast<VisualEdge*>(item)) {
+            VisualNode* oldSource = oldEdge->getSourceNode();
+            VisualNode* oldTarget = oldEdge->getTargetNode();
+
+            if (cloneMap.count(oldSource) && cloneMap.count(oldTarget)) {
+                VisualNode* newSource = cloneMap[oldSource];
+                VisualNode* newTarget = cloneMap[oldTarget];
+
+                VisualEdge* newEdge = new VisualEdge(newSource, newTarget);
+                scene->addItem(newEdge);
+                connect(newEdge, &VisualEdge::edgeDeleted, this, &MainWindow::handleEdgeDeletion);
+            }
+        }
+    }
+
+    ui->textEditLog->append("Selected topology successfully cloned.");
+    updateNetworkColors();
 }

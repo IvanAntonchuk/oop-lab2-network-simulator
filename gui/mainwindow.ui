@@ -32,6 +32,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="btnCloneNetwork">
+        <property name="text">
+         <string>Clone Graph</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="btnSaveNetwork">
         <property name="text">
          <string>Save Network (JSON)</string>
@@ -55,7 +62,7 @@
       <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>

@@ -38,6 +38,7 @@ private slots:
     void on_btnLoadNetwork_clicked();
     void on_btnPingNetwork_clicked();
     void handleGuideClick();
+    void on_btnCloneNetwork_clicked();
 
     void handleNodeConnection(VisualNode* source, VisualNode* target);
     void handleEdgeDeletion(VisualEdge* edge);
@@ -67,6 +68,7 @@ private:
     QVBoxLayout* pathsLayout;
     int pathCounter;
     std::map<int, ActivePath> activePaths;
+    QString generateCloneName(const QString& originalName);
 };
 
 #endif
