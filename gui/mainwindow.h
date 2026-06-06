@@ -30,6 +30,7 @@ private slots:
     void handleNodeConnection(VisualNode* source, VisualNode* target);
     void handleEdgeDeletion(VisualEdge* edge);
     void handleNodeDeletion(VisualNode* node);
+    void handleNodeRename(VisualNode* node);
 
 private:
     Ui::MainWindow *ui;

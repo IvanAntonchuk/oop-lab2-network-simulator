@@ -15,6 +15,7 @@ public:
 
     virtual std::string processTraffic() = 0;
     virtual std::string getName() const { return name; }
+    virtual void setName(const std::string& newName) { name = newName; }
 
     virtual std::shared_ptr<NetworkNode> clone() const = 0;
 

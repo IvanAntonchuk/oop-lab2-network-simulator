@@ -8,6 +8,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QJsonDocument>
+#include <QInputDialog>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -49,6 +50,7 @@ void MainWindow::on_btnAddServer_clicked()
 
     connect(node, &VisualNode::connectionRequested, this, &MainWindow::handleNodeConnection);
     connect(node, &VisualNode::nodeDeleted, this, &MainWindow::handleNodeDeletion);
+    connect(node, &VisualNode::renameRequested, this, &MainWindow::handleNodeRename);
 
     std::shared_ptr<ServerNode> logicalServer = std::make_shared<ServerNode>(serverName.toStdString());
     activeNetwork->addNode(logicalServer);
@@ -73,6 +75,7 @@ void MainWindow::on_btnAddRouter_clicked()
 
     connect(node, &VisualNode::connectionRequested, this, &MainWindow::handleNodeConnection);
     connect(node, &VisualNode::nodeDeleted, this, &MainWindow::handleNodeDeletion);
+    connect(node, &VisualNode::renameRequested, this, &MainWindow::handleNodeRename);
 
     std::shared_ptr<ServerNode> logicalRouter = std::make_shared<ServerNode>(routerName.toStdString());
     activeNetwork->addNode(logicalRouter);
@@ -224,6 +227,7 @@ void MainWindow::on_btnLoadNetwork_clicked()
 
         connect(node, &VisualNode::connectionRequested, this, &MainWindow::handleNodeConnection);
         connect(node, &VisualNode::nodeDeleted, this, &MainWindow::handleNodeDeletion);
+        connect(node, &VisualNode::renameRequested, this, &MainWindow::handleNodeRename);
 
         std::shared_ptr<ServerNode> logicalServer = std::make_shared<ServerNode>(name.toStdString());
         activeNetwork->addNode(logicalServer);
@@ -259,4 +263,21 @@ void MainWindow::handleNodeDeletion(VisualNode* node) {
     nodeMapping.erase(node);
     scene->removeItem(node);
     delete node;
+}
+
+void MainWindow::handleNodeRename(VisualNode* node) {
+    bool ok;
+    QString newName = QInputDialog::getText(this, "Rename Node", "New name:", QLineEdit::Normal, node->getName(), &ok);
+
+    if (ok && !newName.isEmpty() && newName != node->getName()) {
+        QString oldName = node->getName();
+        node->setName(newName);
+
+        auto logicalNode = nodeMapping[node];
+        if (logicalNode) {
+            logicalNode->setName(newName.toStdString());
+        }
+
+        ui->textEditLog->append("Renamed " + oldName + " to " + newName);
+    }
 }
