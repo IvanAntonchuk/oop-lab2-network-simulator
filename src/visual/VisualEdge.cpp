@@ -5,12 +5,12 @@
 #include <QAction>
 #include <QGraphicsSceneContextMenuEvent>
 #include <QStyleOptionGraphicsItem>
+#include <QPainter>
 
 VisualEdge::VisualEdge(VisualNode* source, VisualNode* target)
     : sourceNode(source), targetNode(target) {
     setFlag(QGraphicsItem::ItemIsSelectable, true);
-    QPen pen(Qt::black, 3);
-    setPen(pen);
+    setPen(QPen(Qt::black, 3));
     setZValue(-1);
     sourceNode->addEdge(this);
     targetNode->addEdge(this);
@@ -26,6 +26,11 @@ void VisualEdge::updatePosition() {
     QPointF p1 = sourceNode->pos() + QPointF(35, 35);
     QPointF p2 = targetNode->pos() + QPointF(35, 35);
     setLine(QLineF(p1, p2));
+}
+
+void VisualEdge::setHighlighted(bool active) {
+    QPen p = active ? QPen(Qt::green, 5) : QPen(Qt::black, 3);
+    setPen(p);
 }
 
 void VisualEdge::contextMenuEvent(QGraphicsSceneContextMenuEvent *event) {

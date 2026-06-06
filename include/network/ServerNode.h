@@ -11,7 +11,7 @@ class ServerNode : public NetworkNode {
 private:
     std::shared_ptr<RoutingStrategy> strategy;
     std::shared_ptr<NodeState> state;
-    std::vector<std::shared_ptr<NetworkNode>> connections;
+    std::vector<std::weak_ptr<NetworkNode>> connections;
 
 public:
     explicit ServerNode(const std::string& nodeName);
@@ -27,6 +27,7 @@ public:
     void removeConnection(std::shared_ptr<NetworkNode> node) override;
     void clearConnections() override;
     std::vector<std::shared_ptr<NetworkNode>> getConnections() const override;
+    std::shared_ptr<RoutingStrategy> getStrategy() const { return strategy; }
 };
 
 #endif

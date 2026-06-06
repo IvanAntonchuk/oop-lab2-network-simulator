@@ -35,6 +35,8 @@ private slots:
     void handleNodeRename(VisualNode* node);
     void handleNodeStateToggle(VisualNode* node);
     void handleNodeFirewallToggle(VisualNode* node);
+    void handleNodeStrategyChange(VisualNode* node, int type);
+    void highlightPath(const std::vector<std::shared_ptr<NetworkNode>>& path);
 
 private:
     void buildLogicalNetwork();

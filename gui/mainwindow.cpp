@@ -5,6 +5,9 @@
 #include "OnlineState.h"
 #include "OfflineState.h"
 #include "FirewallDecorator.h"
+#include "ShortestPathStrategy.h"
+#include "RandomPathStrategy.h"
+#include "ReportFacade.h"
 #include <QRandomGenerator>
 #include <QFileDialog>
 #include <QFile>
@@ -53,6 +56,26 @@ void MainWindow::handleGuideClick() {
         "</ul>";
 
     QMessageBox::information(this, "Network Guide", guideText);
+}
+
+void MainWindow::highlightPath(const std::vector<std::shared_ptr<NetworkNode>>& path) {
+    if (path.size() < 2) return;
+
+    for (size_t i = 0; i < path.size() - 1; ++i) {
+        QString u = QString::fromStdString(path[i]->getName());
+        QString v = QString::fromStdString(path[i+1]->getName());
+
+        for (QGraphicsItem* item : scene->items()) {
+            if (auto edge = dynamic_cast<VisualEdge*>(item)) {
+                QString src = edge->getSourceNode()->getName();
+                QString tgt = edge->getTargetNode()->getName();
+
+                if ((src == u && tgt == v) || (src == v && tgt == u)) {
+                    edge->setHighlighted(true);
+                }
+            }
+        }
+    }
 }
 
 void MainWindow::updateNetworkColors() {
@@ -105,6 +128,7 @@ void MainWindow::on_btnAddServer_clicked()
     connect(node, &VisualNode::renameRequested, this, &MainWindow::handleNodeRename);
     connect(node, &VisualNode::toggleStateRequested, this, &MainWindow::handleNodeStateToggle);
     connect(node, &VisualNode::toggleFirewallRequested, this, &MainWindow::handleNodeFirewallToggle);
+    connect(node, &VisualNode::strategyChangedRequested, this, &MainWindow::handleNodeStrategyChange);
 
     coreNodes[node] = std::make_shared<ServerNode>(serverName.toStdString());
     ui->textEditLog->append("Added visual " + serverName + " at X:" + QString::number(x) + " Y:" + QString::number(y));
@@ -128,6 +152,7 @@ void MainWindow::on_btnAddRouter_clicked()
     connect(node, &VisualNode::renameRequested, this, &MainWindow::handleNodeRename);
     connect(node, &VisualNode::toggleStateRequested, this, &MainWindow::handleNodeStateToggle);
     connect(node, &VisualNode::toggleFirewallRequested, this, &MainWindow::handleNodeFirewallToggle);
+    connect(node, &VisualNode::strategyChangedRequested, this, &MainWindow::handleNodeStrategyChange);
 
     coreNodes[node] = std::make_shared<ServerNode>(routerName.toStdString());
     ui->textEditLog->append("Added visual " + routerName + " at X:" + QString::number(x) + " Y:" + QString::number(y));
@@ -181,12 +206,31 @@ void MainWindow::buildLogicalNetwork() {
 void MainWindow::on_btnPingNetwork_clicked()
 {
     buildLogicalNetwork();
-    ui->textEditLog->append("--- Pinging Logical Network ---");
-    if (activeNetwork) {
-        std::string log = activeNetwork->processTraffic();
-        ui->textEditLog->append(QString::fromStdString(log));
+
+    for (QGraphicsItem* item : scene->items()) {
+        if (auto edge = dynamic_cast<VisualEdge*>(item)) {
+            edge->setHighlighted(false);
+        }
     }
-    ui->textEditLog->append("-------------------------------");
+
+    ui->textEditLog->append("<b>--- Executing Network Diagnostics via Facade ---</b>");
+
+    if (activeNetwork) {
+        ReportFacade diagnosticsFacade(std::dynamic_pointer_cast<NetworkNode>(activeNetwork));
+
+        std::string fullReport = diagnosticsFacade.generateNetworkReport();
+
+        ui->textEditLog->append(QString::fromStdString(fullReport));
+
+        auto successfulPaths = diagnosticsFacade.getCalculatedPaths();
+        for (const auto& singlePath : successfulPaths) {
+            highlightPath(singlePath);
+        }
+    } else {
+        ui->textEditLog->append("<span style='color:red;'>[UI Error] Failed to generate active logical network model.</span>");
+    }
+
+    ui->textEditLog->append("--------------------------------------------------");
 }
 
 void MainWindow::on_btnSaveNetwork_clicked()
@@ -246,8 +290,8 @@ void MainWindow::on_btnLoadNetwork_clicked()
     QJsonDocument doc = QJsonDocument::fromJson(fileData);
     if (doc.isNull() || !doc.isObject()) return;
 
-    scene->clear();
     coreNodes.clear();
+    scene->clear();
     serverCounter = 0;
     routerCounter = 0;
 
@@ -283,6 +327,7 @@ void MainWindow::on_btnLoadNetwork_clicked()
         connect(node, &VisualNode::renameRequested, this, &MainWindow::handleNodeRename);
         connect(node, &VisualNode::toggleStateRequested, this, &MainWindow::handleNodeStateToggle);
         connect(node, &VisualNode::toggleFirewallRequested, this, &MainWindow::handleNodeFirewallToggle);
+        connect(node, &VisualNode::strategyChangedRequested, this, &MainWindow::handleNodeStrategyChange);
 
         coreNodes[node] = std::make_shared<ServerNode>(name.toStdString());
         createdNodes[name] = node;
@@ -308,10 +353,13 @@ void MainWindow::handleNodeDeletion(VisualNode* node) {
     for (VisualEdge* edge : connectedEdges) {
         handleEdgeDeletion(edge);
     }
-    coreNodes.erase(node);
+    auto it = coreNodes.find(node);
+    if (it != coreNodes.end()) {
+        coreNodes.erase(it);
+    }
     scene->removeItem(node);
-    delete node;
-    ui->textEditLog->append("Node deleted.");
+    node->deleteLater();
+    ui->textEditLog->append("Node safely deleted.");
     updateNetworkColors();
 }
 
@@ -345,4 +393,17 @@ void MainWindow::handleNodeFirewallToggle(VisualNode* node) {
     node->setFirewall(!node->getHasFirewall());
     QString status = node->getHasFirewall() ? "added" : "removed";
     ui->textEditLog->append("Firewall " + status + " on " + node->getName());
+}
+
+void MainWindow::handleNodeStrategyChange(VisualNode* node, int type) {
+    auto sNode = coreNodes[node];
+    if (sNode) {
+        if (type == 0) {
+            sNode->setStrategy(std::make_shared<ShortestPathStrategy>());
+            ui->textEditLog->append("Strategy: Shortest Path set for " + node->getName());
+        } else {
+            sNode->setStrategy(std::make_shared<RandomPathStrategy>());
+            ui->textEditLog->append("Strategy: Random Balancing set for " + node->getName());
+        }
+    }
 }

@@ -17,8 +17,9 @@ public:
 
     NetworkBuilder& addServer(const std::string& serverName);
     NetworkBuilder& addSubnet(std::shared_ptr<Subnet> subnet);
+    NetworkBuilder& buildStarTopology(const std::string& routerName, int serverCount);
 
     std::shared_ptr<Subnet> getResult();
 };
 
-#endif // NETWORKBUILDER_H
+#endif

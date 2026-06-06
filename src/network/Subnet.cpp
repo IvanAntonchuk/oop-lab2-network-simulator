@@ -1,5 +1,6 @@
 #include "Subnet.h"
 #include "SubnetIterator.h"
+#include "ServerNode.h"
 #include <algorithm>
 #include <set>
 #include <queue>
@@ -39,7 +40,8 @@ std::string Subnet::processTraffic() {
         log += "    " + curr->processTraffic();
 
         if (curr->isOperational()) {
-            for (const auto& neighbor : curr->getConnections()) {
+            auto neighbors = curr->getConnections();
+            for (const auto& neighbor : neighbors) {
                 if (visited.find(neighbor->getName()) == visited.end()) {
                     visited.insert(neighbor->getName());
                     queue.push(neighbor);

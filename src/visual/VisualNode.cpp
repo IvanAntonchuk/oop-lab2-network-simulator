@@ -110,12 +110,19 @@ void VisualNode::contextMenuEvent(QGraphicsSceneContextMenuEvent *event) {
         QAction* renameAction = menu.addAction("Rename Node");
         QAction* stateAction = menu.addAction(isOffline ? "Turn Online" : "Turn Offline");
         QAction* fwAction = menu.addAction(hasFirewall ? "Remove Firewall" : "Add Firewall");
+
+        QMenu* strategyMenu = menu.addMenu("Set Strategy");
+        QAction* shortestAction = strategyMenu->addAction("Shortest Path (OSPF)");
+        QAction* randomAction = strategyMenu->addAction("Random Balancing");
+
         QAction* deleteAction = menu.addAction("Delete Node");
 
         QAction* selectedAction = menu.exec(event->screenPos());
         if (selectedAction == renameAction) emit renameRequested(this);
         else if (selectedAction == stateAction) emit toggleStateRequested(this);
         else if (selectedAction == fwAction) emit toggleFirewallRequested(this);
+        else if (selectedAction == shortestAction) emit strategyChangedRequested(this, 0);
+        else if (selectedAction == randomAction) emit strategyChangedRequested(this, 1);
         else if (selectedAction == deleteAction) emit nodeDeleted(this);
     }
 }
@@ -124,13 +131,8 @@ void VisualNode::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
     QStyleOptionGraphicsItem opt = *option;
     opt.state &= ~QStyle::State_Selected;
 
-    QPen currentPen = pen();
-    if (hasFirewall) {
-        currentPen = QPen(Qt::blue, 4);
-    }
-    painter->setPen(currentPen);
-
     painter->setBrush(brush());
+    painter->setPen(pen());
 
     if (nodeName.startsWith("Router")) {
         painter->drawRect(0, 0, 70, 70);

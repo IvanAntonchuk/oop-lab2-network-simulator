@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QGraphicsLineItem>
+#include <QPen>
 
 class VisualNode;
 
@@ -12,6 +13,7 @@ public:
     VisualEdge(VisualNode* source, VisualNode* target);
     ~VisualEdge();
     void updatePosition();
+    void setHighlighted(bool active);
 
     VisualNode* getSourceNode() const { return sourceNode; }
     VisualNode* getTargetNode() const { return targetNode; }

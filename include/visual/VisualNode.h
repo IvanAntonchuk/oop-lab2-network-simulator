@@ -32,6 +32,7 @@ signals:
     void renameRequested(VisualNode* node);
     void toggleStateRequested(VisualNode* node);
     void toggleFirewallRequested(VisualNode* node);
+    void strategyChangedRequested(VisualNode* node, int type);
 
 protected:
     QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;

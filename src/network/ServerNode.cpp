@@ -18,8 +18,10 @@ void ServerNode::changeState(std::shared_ptr<NodeState> newState) {
 std::string ServerNode::processTraffic() {
     std::string log = "[Node: " + name + "] ";
     if (state) log += state->handle(this) + " ";
-    if (strategy) log += " | " + strategy->route();
+
+    if (strategy) log += " | Strategy: " + strategy->getName();
     else log += " | No routing strategy set.";
+
     log += "\n";
     return log;
 }
@@ -36,16 +38,22 @@ std::shared_ptr<NetworkNode> ServerNode::clone() const {
 }
 
 void ServerNode::connectTo(std::shared_ptr<NetworkNode> node) {
-    for (auto& conn : connections) {
-        if (conn->getName() == node->getName()) return;
+    for (const auto& conn : connections) {
+        if (auto sp = conn.lock()) {
+            if (sp->getName() == node->getName()) return;
+        }
     }
     connections.push_back(node);
 }
 
 void ServerNode::removeConnection(std::shared_ptr<NetworkNode> node) {
     connections.erase(std::remove_if(connections.begin(), connections.end(),
-                                     [&node](const std::shared_ptr<NetworkNode>& n) { return n->getName() == node->getName(); }),
-                      connections.end());
+                                     [&node](const std::weak_ptr<NetworkNode>& wp) {
+                                         if (auto sp = wp.lock()) {
+                                             return sp->getName() == node->getName();
+                                         }
+                                         return true;
+                                     }), connections.end());
 }
 
 void ServerNode::clearConnections() {
@@ -53,5 +61,11 @@ void ServerNode::clearConnections() {
 }
 
 std::vector<std::shared_ptr<NetworkNode>> ServerNode::getConnections() const {
-    return connections;
+    std::vector<std::shared_ptr<NetworkNode>> validConnections;
+    for (const auto& wp : connections) {
+        if (auto sp = wp.lock()) {
+            validConnections.push_back(sp);
+        }
+    }
+    return validConnections;
 }
