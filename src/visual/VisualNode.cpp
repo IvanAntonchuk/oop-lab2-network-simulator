@@ -9,8 +9,6 @@
 
 VisualNode::VisualNode(const QString& name) : QGraphicsEllipseItem(0, 0, 70, 70), nodeName(name), isOffline(false), hasFirewall(false), isReachable(false) {
     setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemSendsGeometryChanges);
-    QPen pen(Qt::black, 2);
-    setPen(pen);
 
     textItem = new QGraphicsTextItem(name, this);
     textItem->setDefaultTextColor(Qt::black);
@@ -18,8 +16,9 @@ VisualNode::VisualNode(const QString& name) : QGraphicsEllipseItem(0, 0, 70, 70)
 
     if (nodeName.startsWith("Router")) {
         isReachable = true;
+        setRect(0, 0, 70, 70);
     }
-    updateColor();
+    updateStyle();
 }
 
 void VisualNode::addEdge(VisualEdge* edge) {
@@ -36,25 +35,25 @@ QString VisualNode::getName() const {
 
 void VisualNode::setName(const QString& newName) {
     nodeName = newName;
-    textItem->setPlainText(newName);
+    updateStyle();
 }
 
 void VisualNode::setOffline(bool offline) {
     isOffline = offline;
-    updateColor();
+    updateStyle();
 }
 
 void VisualNode::setReachable(bool reachable) {
     isReachable = reachable;
-    updateColor();
+    updateStyle();
 }
 
 void VisualNode::setFirewall(bool firewall) {
     hasFirewall = firewall;
-    update();
+    updateStyle();
 }
 
-void VisualNode::updateColor() {
+void VisualNode::updateStyle() {
     if (isOffline) {
         setBrush(Qt::red);
     } else {
@@ -64,6 +63,21 @@ void VisualNode::updateColor() {
             setBrush(isReachable ? Qt::green : Qt::yellow);
         }
     }
+
+    if (isSelected()) {
+        setPen(QPen(Qt::white, 4));
+    } else if (hasFirewall) {
+        setPen(QPen(Qt::blue, 4));
+    } else {
+        setPen(QPen(Qt::black, 2));
+    }
+
+    if (hasFirewall) {
+        textItem->setPlainText("[FW] " + nodeName);
+    } else {
+        textItem->setPlainText(nodeName);
+    }
+
     update();
 }
 
@@ -74,8 +88,7 @@ QVariant VisualNode::itemChange(GraphicsItemChange change, const QVariant &value
         }
     }
     if (change == ItemSelectedHasChanged) {
-        QPen currentPen = isSelected() ? QPen(Qt::white, 4) : QPen(Qt::black, 2);
-        setPen(currentPen);
+        updateStyle();
     }
     return QGraphicsEllipseItem::itemChange(change, value);
 }
@@ -117,5 +130,11 @@ void VisualNode::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
     }
     painter->setPen(currentPen);
 
-    QGraphicsEllipseItem::paint(painter, &opt, widget);
+    painter->setBrush(brush());
+
+    if (nodeName.startsWith("Router")) {
+        painter->drawRect(0, 0, 70, 70);
+    } else {
+        painter->drawEllipse(0, 0, 70, 70);
+    }
 }

@@ -39,7 +39,7 @@ protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
 
 private:
-    void updateColor();
+    void updateStyle();
 
     QString nodeName;
     QList<VisualEdge*> edges;
