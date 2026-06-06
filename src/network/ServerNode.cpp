@@ -24,6 +24,10 @@ std::string ServerNode::processTraffic() {
     return log;
 }
 
+bool ServerNode::isOperational() const {
+    return state ? state->isOperational() : false;
+}
+
 std::shared_ptr<NetworkNode> ServerNode::clone() const {
     auto cloned = std::make_shared<ServerNode>(name + "_clone");
     cloned->setStrategy(strategy);
@@ -42,6 +46,10 @@ void ServerNode::removeConnection(std::shared_ptr<NetworkNode> node) {
     connections.erase(std::remove_if(connections.begin(), connections.end(),
                                      [&node](const std::shared_ptr<NetworkNode>& n) { return n->getName() == node->getName(); }),
                       connections.end());
+}
+
+void ServerNode::clearConnections() {
+    connections.clear();
 }
 
 std::vector<std::shared_ptr<NetworkNode>> ServerNode::getConnections() const {

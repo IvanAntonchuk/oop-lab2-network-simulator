@@ -38,11 +38,15 @@ std::string Subnet::processTraffic() {
         queue.pop();
         log += "    " + curr->processTraffic();
 
-        for (const auto& neighbor : curr->getConnections()) {
-            if (visited.find(neighbor->getName()) == visited.end()) {
-                visited.insert(neighbor->getName());
-                queue.push(neighbor);
+        if (curr->isOperational()) {
+            for (const auto& neighbor : curr->getConnections()) {
+                if (visited.find(neighbor->getName()) == visited.end()) {
+                    visited.insert(neighbor->getName());
+                    queue.push(neighbor);
+                }
             }
+        } else {
+            log += "      -> [Traffic dropped at " + curr->getName() + ", network branch isolated]\n";
         }
     }
 

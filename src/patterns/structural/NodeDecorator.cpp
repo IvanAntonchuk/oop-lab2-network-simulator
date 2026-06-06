@@ -16,3 +16,10 @@ std::string NodeDecorator::getName() const {
     }
     return name;
 }
+
+bool NodeDecorator::isOperational() const {
+    if (wrappee) {
+        return wrappee->isOperational();
+    }
+    return false;
+}

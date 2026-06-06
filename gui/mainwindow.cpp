@@ -2,6 +2,9 @@
 #include "ui_mainwindow.h"
 #include "SimulationManager.h"
 #include "MetricsCollector.h"
+#include "OnlineState.h"
+#include "OfflineState.h"
+#include "FirewallDecorator.h"
 #include <QRandomGenerator>
 #include <QFileDialog>
 #include <QFile>
@@ -9,6 +12,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QInputDialog>
+#include <QSet>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -23,10 +27,6 @@ MainWindow::MainWindow(QWidget *parent)
     scene->setSceneRect(0, 0, 1000, 600);
 
     SimulationManager::getInstance().attach(std::make_shared<MetricsCollector>());
-
-    builder.reset("Kyiv Core Network");
-    activeNetwork = builder.getResult();
-
     ui->textEditLog->append("Visual UI Engine initialized.");
 }
 
@@ -35,13 +35,45 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::updateNetworkColors() {
+    QList<VisualNode*> allNodes;
+    for (QGraphicsItem* item : scene->items()) {
+        VisualNode* vNode = dynamic_cast<VisualNode*>(item);
+        if (vNode) {
+            vNode->setReachable(false);
+            allNodes.append(vNode);
+        }
+    }
+
+    QList<VisualNode*> queue;
+    QSet<VisualNode*> visited;
+
+    for (VisualNode* vNode : allNodes) {
+        if (vNode->getName().startsWith("Router") && !vNode->getIsOffline()) {
+            queue.append(vNode);
+            visited.insert(vNode);
+            vNode->setReachable(true);
+        }
+    }
+
+    while (!queue.isEmpty()) {
+        VisualNode* current = queue.takeFirst();
+        for (VisualEdge* edge : current->getEdges()) {
+            VisualNode* neighbor = (edge->getSourceNode() == current) ? edge->getTargetNode() : edge->getSourceNode();
+            if (!neighbor->getIsOffline() && !visited.contains(neighbor)) {
+                visited.insert(neighbor);
+                neighbor->setReachable(true);
+                queue.append(neighbor);
+            }
+        }
+    }
+}
+
 void MainWindow::on_btnAddServer_clicked()
 {
     serverCounter++;
-
     int x = QRandomGenerator::global()->bounded(100, 800);
     int y = QRandomGenerator::global()->bounded(50, 500);
-
     QString serverName = "Server-" + QString::number(serverCounter);
 
     VisualNode* node = new VisualNode(serverName);
@@ -51,21 +83,19 @@ void MainWindow::on_btnAddServer_clicked()
     connect(node, &VisualNode::connectionRequested, this, &MainWindow::handleNodeConnection);
     connect(node, &VisualNode::nodeDeleted, this, &MainWindow::handleNodeDeletion);
     connect(node, &VisualNode::renameRequested, this, &MainWindow::handleNodeRename);
+    connect(node, &VisualNode::toggleStateRequested, this, &MainWindow::handleNodeStateToggle);
+    connect(node, &VisualNode::toggleFirewallRequested, this, &MainWindow::handleNodeFirewallToggle);
 
-    std::shared_ptr<ServerNode> logicalServer = std::make_shared<ServerNode>(serverName.toStdString());
-    activeNetwork->addNode(logicalServer);
-    nodeMapping[node] = logicalServer;
-
-    ui->textEditLog->append("Added logical and visual " + serverName + " at X:" + QString::number(x) + " Y:" + QString::number(y));
+    coreNodes[node] = std::make_shared<ServerNode>(serverName.toStdString());
+    ui->textEditLog->append("Added visual " + serverName + " at X:" + QString::number(x) + " Y:" + QString::number(y));
+    updateNetworkColors();
 }
 
 void MainWindow::on_btnAddRouter_clicked()
 {
     routerCounter++;
-
     int x = QRandomGenerator::global()->bounded(100, 800);
     int y = QRandomGenerator::global()->bounded(50, 500);
-
     QString routerName = "Router-" + QString::number(routerCounter);
 
     VisualNode* node = new VisualNode(routerName);
@@ -76,44 +106,61 @@ void MainWindow::on_btnAddRouter_clicked()
     connect(node, &VisualNode::connectionRequested, this, &MainWindow::handleNodeConnection);
     connect(node, &VisualNode::nodeDeleted, this, &MainWindow::handleNodeDeletion);
     connect(node, &VisualNode::renameRequested, this, &MainWindow::handleNodeRename);
+    connect(node, &VisualNode::toggleStateRequested, this, &MainWindow::handleNodeStateToggle);
+    connect(node, &VisualNode::toggleFirewallRequested, this, &MainWindow::handleNodeFirewallToggle);
 
-    std::shared_ptr<ServerNode> logicalRouter = std::make_shared<ServerNode>(routerName.toStdString());
-    activeNetwork->addNode(logicalRouter);
-    nodeMapping[node] = logicalRouter;
-
-    ui->textEditLog->append("Added logical and visual " + routerName + " at X:" + QString::number(x) + " Y:" + QString::number(y));
+    coreNodes[node] = std::make_shared<ServerNode>(routerName.toStdString());
+    ui->textEditLog->append("Added visual " + routerName + " at X:" + QString::number(x) + " Y:" + QString::number(y));
+    updateNetworkColors();
 }
 
 void MainWindow::handleNodeConnection(VisualNode* source, VisualNode* target) {
     VisualEdge* edge = new VisualEdge(source, target);
     scene->addItem(edge);
     connect(edge, &VisualEdge::edgeDeleted, this, &MainWindow::handleEdgeDeletion);
-
-    auto sNode = nodeMapping[source];
-    auto tNode = nodeMapping[target];
-    if (sNode && tNode) {
-        sNode->connectTo(tNode);
-        tNode->connectTo(sNode);
-    }
-
     ui->textEditLog->append("Connected " + source->getName() + " to " + target->getName());
+    updateNetworkColors();
 }
 
 void MainWindow::handleEdgeDeletion(VisualEdge* edge) {
-    auto sNode = nodeMapping[edge->getSourceNode()];
-    auto tNode = nodeMapping[edge->getTargetNode()];
-    if (sNode && tNode) {
-        sNode->removeConnection(tNode);
-        tNode->removeConnection(sNode);
-    }
-
     ui->textEditLog->append("Connection removed.");
     scene->removeItem(edge);
     delete edge;
+    updateNetworkColors();
+}
+
+void MainWindow::buildLogicalNetwork() {
+    builder.reset("Kyiv Core Network");
+    activeNetwork = builder.getResult();
+
+    std::map<QString, std::shared_ptr<NetworkNode>> pingMapping;
+
+    for (auto const& [vNode, sNode] : coreNodes) {
+        sNode->clearConnections();
+        std::shared_ptr<NetworkNode> finalNode = sNode;
+        if (vNode->getHasFirewall()) {
+            finalNode = std::make_shared<FirewallDecorator>(sNode);
+        }
+        activeNetwork->addNode(finalNode);
+        pingMapping[vNode->getName()] = finalNode;
+    }
+
+    for (QGraphicsItem* item : scene->items()) {
+        VisualEdge* vEdge = dynamic_cast<VisualEdge*>(item);
+        if (vEdge) {
+            auto sNode = pingMapping[vEdge->getSourceNode()->getName()];
+            auto tNode = pingMapping[vEdge->getTargetNode()->getName()];
+            if (sNode && tNode) {
+                sNode->connectTo(tNode);
+                tNode->connectTo(sNode);
+            }
+        }
+    }
 }
 
 void MainWindow::on_btnPingNetwork_clicked()
 {
+    buildLogicalNetwork();
     ui->textEditLog->append("--- Pinging Logical Network ---");
     if (activeNetwork) {
         std::string log = activeNetwork->processTraffic();
@@ -137,6 +184,8 @@ void MainWindow::on_btnSaveNetwork_clicked()
             nodeObj["x"] = vNode->pos().x();
             nodeObj["y"] = vNode->pos().y();
             nodeObj["name"] = vNode->getName();
+            nodeObj["offline"] = vNode->getIsOffline();
+            nodeObj["firewall"] = vNode->getHasFirewall();
             nodesArray.append(nodeObj);
         }
         VisualEdge* vEdge = dynamic_cast<VisualEdge*>(item);
@@ -169,27 +218,18 @@ void MainWindow::on_btnLoadNetwork_clicked()
     if (fileName.isEmpty()) return;
 
     QFile file(fileName);
-    if (!file.open(QIODevice::ReadOnly)) {
-        ui->textEditLog->append("Error opening file for reading!");
-        return;
-    }
+    if (!file.open(QIODevice::ReadOnly)) return;
 
     QByteArray fileData = file.readAll();
     file.close();
 
     QJsonDocument doc = QJsonDocument::fromJson(fileData);
-    if (doc.isNull() || !doc.isObject()) {
-        ui->textEditLog->append("Invalid JSON format!");
-        return;
-    }
+    if (doc.isNull() || !doc.isObject()) return;
 
     scene->clear();
-    nodeMapping.clear();
+    coreNodes.clear();
     serverCounter = 0;
     routerCounter = 0;
-
-    builder.reset("Kyiv Loaded Network");
-    activeNetwork = builder.getResult();
 
     QJsonObject networkObj = doc.object();
     QJsonArray nodesArray = networkObj["nodes"].toArray();
@@ -207,31 +247,24 @@ void MainWindow::on_btnLoadNetwork_clicked()
         node->setPos(x, y);
 
         if (name.startsWith("Router")) {
-            node->setBrush(Qt::cyan);
-            QString numStr = name;
-            numStr.replace("Router-", "");
-            int num = numStr.toInt();
-            if (num > routerCounter) {
-                routerCounter = num;
-            }
+            QString numStr = name; numStr.replace("Router-", "");
+            if (numStr.toInt() > routerCounter) routerCounter = numStr.toInt();
         } else {
-            QString numStr = name;
-            numStr.replace("Server-", "");
-            int num = numStr.toInt();
-            if (num > serverCounter) {
-                serverCounter = num;
-            }
+            QString numStr = name; numStr.replace("Server-", "");
+            if (numStr.toInt() > serverCounter) serverCounter = numStr.toInt();
         }
 
         scene->addItem(node);
+        node->setOffline(nodeObj["offline"].toBool());
+        node->setFirewall(nodeObj["firewall"].toBool());
 
         connect(node, &VisualNode::connectionRequested, this, &MainWindow::handleNodeConnection);
         connect(node, &VisualNode::nodeDeleted, this, &MainWindow::handleNodeDeletion);
         connect(node, &VisualNode::renameRequested, this, &MainWindow::handleNodeRename);
+        connect(node, &VisualNode::toggleStateRequested, this, &MainWindow::handleNodeStateToggle);
+        connect(node, &VisualNode::toggleFirewallRequested, this, &MainWindow::handleNodeFirewallToggle);
 
-        std::shared_ptr<ServerNode> logicalServer = std::make_shared<ServerNode>(name.toStdString());
-        activeNetwork->addNode(logicalServer);
-        nodeMapping[node] = logicalServer;
+        coreNodes[node] = std::make_shared<ServerNode>(name.toStdString());
         createdNodes[name] = node;
     }
 
@@ -241,11 +274,13 @@ void MainWindow::on_btnLoadNetwork_clicked()
         QString targetName = edgeObj["target"].toString();
 
         if (createdNodes.count(sourceName) && createdNodes.count(targetName)) {
-            handleNodeConnection(createdNodes[sourceName], createdNodes[targetName]);
+            VisualEdge* edge = new VisualEdge(createdNodes[sourceName], createdNodes[targetName]);
+            scene->addItem(edge);
+            connect(edge, &VisualEdge::edgeDeleted, this, &MainWindow::handleEdgeDeletion);
         }
     }
-
     ui->textEditLog->append("Network successfully loaded from " + fileName);
+    updateNetworkColors();
 }
 
 void MainWindow::handleNodeDeletion(VisualNode* node) {
@@ -253,31 +288,41 @@ void MainWindow::handleNodeDeletion(VisualNode* node) {
     for (VisualEdge* edge : connectedEdges) {
         handleEdgeDeletion(edge);
     }
-
-    auto logicalNode = nodeMapping[node];
-    if (logicalNode) {
-        activeNetwork->removeNode(logicalNode->getName());
-        ui->textEditLog->append("Removed logical and visual " + QString::fromStdString(logicalNode->getName()));
-    }
-
-    nodeMapping.erase(node);
+    coreNodes.erase(node);
     scene->removeItem(node);
     delete node;
+    ui->textEditLog->append("Node deleted.");
+    updateNetworkColors();
 }
 
 void MainWindow::handleNodeRename(VisualNode* node) {
     bool ok;
     QString newName = QInputDialog::getText(this, "Rename Node", "New name:", QLineEdit::Normal, node->getName(), &ok);
-
     if (ok && !newName.isEmpty() && newName != node->getName()) {
         QString oldName = node->getName();
         node->setName(newName);
-
-        auto logicalNode = nodeMapping[node];
-        if (logicalNode) {
-            logicalNode->setName(newName.toStdString());
-        }
-
+        if (coreNodes[node]) coreNodes[node]->setName(newName.toStdString());
         ui->textEditLog->append("Renamed " + oldName + " to " + newName);
     }
+}
+
+void MainWindow::handleNodeStateToggle(VisualNode* node) {
+    auto sNode = coreNodes[node];
+    if (sNode) {
+        node->setOffline(!node->getIsOffline());
+        if (node->getIsOffline()) {
+            sNode->changeState(std::make_shared<OfflineState>());
+            ui->textEditLog->append(node->getName() + " turned OFFLINE");
+        } else {
+            sNode->changeState(std::make_shared<OnlineState>());
+            ui->textEditLog->append(node->getName() + " turned ONLINE");
+        }
+        updateNetworkColors();
+    }
+}
+
+void MainWindow::handleNodeFirewallToggle(VisualNode* node) {
+    node->setFirewall(!node->getHasFirewall());
+    QString status = node->getHasFirewall() ? "added" : "removed";
+    ui->textEditLog->append("Firewall " + status + " on " + node->getName());
 }

@@ -13,6 +13,7 @@ public:
 
     std::string processTraffic() override;
     std::string getName() const override;
+    bool isOperational() const override;
 };
 
 #endif

@@ -18,10 +18,20 @@ public:
     void setName(const QString& newName);
     QList<VisualEdge*> getEdges() const { return edges; }
 
+    bool getIsOffline() const { return isOffline; }
+    bool getHasFirewall() const { return hasFirewall; }
+    bool getIsReachable() const { return isReachable; }
+
+    void setOffline(bool offline);
+    void setFirewall(bool firewall);
+    void setReachable(bool reachable);
+
 signals:
     void connectionRequested(VisualNode* source, VisualNode* target);
     void nodeDeleted(VisualNode* node);
     void renameRequested(VisualNode* node);
+    void toggleStateRequested(VisualNode* node);
+    void toggleFirewallRequested(VisualNode* node);
 
 protected:
     QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
@@ -29,9 +39,14 @@ protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
 
 private:
+    void updateColor();
+
     QString nodeName;
     QList<VisualEdge*> edges;
     QGraphicsTextItem* textItem;
+    bool isOffline;
+    bool hasFirewall;
+    bool isReachable;
 };
 
 #endif

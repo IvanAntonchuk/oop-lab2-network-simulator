@@ -16,11 +16,13 @@ public:
     virtual std::string processTraffic() = 0;
     virtual std::string getName() const { return name; }
     virtual void setName(const std::string& newName) { name = newName; }
+    virtual bool isOperational() const { return true; }
 
     virtual std::shared_ptr<NetworkNode> clone() const = 0;
 
     virtual void connectTo(std::shared_ptr<NetworkNode> node) {}
     virtual void removeConnection(std::shared_ptr<NetworkNode> node) {}
+    virtual void clearConnections() {}
     virtual std::vector<std::shared_ptr<NetworkNode>> getConnections() const { return {}; }
 };
 

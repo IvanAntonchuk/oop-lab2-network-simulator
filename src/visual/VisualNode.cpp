@@ -5,9 +5,9 @@
 #include <QMenu>
 #include <QAction>
 #include <QStyleOptionGraphicsItem>
+#include <QPainter>
 
-VisualNode::VisualNode(const QString& name) : QGraphicsEllipseItem(0, 0, 70, 70), nodeName(name) {
-    setBrush(Qt::green);
+VisualNode::VisualNode(const QString& name) : QGraphicsEllipseItem(0, 0, 70, 70), nodeName(name), isOffline(false), hasFirewall(false), isReachable(false) {
     setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemSendsGeometryChanges);
     QPen pen(Qt::black, 2);
     setPen(pen);
@@ -15,6 +15,11 @@ VisualNode::VisualNode(const QString& name) : QGraphicsEllipseItem(0, 0, 70, 70)
     textItem = new QGraphicsTextItem(name, this);
     textItem->setDefaultTextColor(Qt::black);
     textItem->setPos(10, 23);
+
+    if (nodeName.startsWith("Router")) {
+        isReachable = true;
+    }
+    updateColor();
 }
 
 void VisualNode::addEdge(VisualEdge* edge) {
@@ -32,6 +37,34 @@ QString VisualNode::getName() const {
 void VisualNode::setName(const QString& newName) {
     nodeName = newName;
     textItem->setPlainText(newName);
+}
+
+void VisualNode::setOffline(bool offline) {
+    isOffline = offline;
+    updateColor();
+}
+
+void VisualNode::setReachable(bool reachable) {
+    isReachable = reachable;
+    updateColor();
+}
+
+void VisualNode::setFirewall(bool firewall) {
+    hasFirewall = firewall;
+    update();
+}
+
+void VisualNode::updateColor() {
+    if (isOffline) {
+        setBrush(Qt::red);
+    } else {
+        if (nodeName.startsWith("Router")) {
+            setBrush(Qt::cyan);
+        } else {
+            setBrush(isReachable ? Qt::green : Qt::yellow);
+        }
+    }
+    update();
 }
 
 QVariant VisualNode::itemChange(GraphicsItemChange change, const QVariant &value) {
@@ -62,18 +95,27 @@ void VisualNode::contextMenuEvent(QGraphicsSceneContextMenuEvent *event) {
     } else {
         QMenu menu;
         QAction* renameAction = menu.addAction("Rename Node");
+        QAction* stateAction = menu.addAction(isOffline ? "Turn Online" : "Turn Offline");
+        QAction* fwAction = menu.addAction(hasFirewall ? "Remove Firewall" : "Add Firewall");
         QAction* deleteAction = menu.addAction("Delete Node");
+
         QAction* selectedAction = menu.exec(event->screenPos());
-        if (selectedAction == renameAction) {
-            emit renameRequested(this);
-        } else if (selectedAction == deleteAction) {
-            emit nodeDeleted(this);
-        }
+        if (selectedAction == renameAction) emit renameRequested(this);
+        else if (selectedAction == stateAction) emit toggleStateRequested(this);
+        else if (selectedAction == fwAction) emit toggleFirewallRequested(this);
+        else if (selectedAction == deleteAction) emit nodeDeleted(this);
     }
 }
 
 void VisualNode::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
     QStyleOptionGraphicsItem opt = *option;
     opt.state &= ~QStyle::State_Selected;
+
+    QPen currentPen = pen();
+    if (hasFirewall) {
+        currentPen = QPen(Qt::blue, 4);
+    }
+    painter->setPen(currentPen);
+
     QGraphicsEllipseItem::paint(painter, &opt, widget);
 }

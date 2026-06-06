@@ -20,10 +20,12 @@ public:
     void changeState(std::shared_ptr<NodeState> newState);
 
     std::string processTraffic() override;
+    bool isOperational() const override;
     std::shared_ptr<NetworkNode> clone() const override;
 
     void connectTo(std::shared_ptr<NetworkNode> node) override;
     void removeConnection(std::shared_ptr<NetworkNode> node) override;
+    void clearConnections() override;
     std::vector<std::shared_ptr<NetworkNode>> getConnections() const override;
 };
 

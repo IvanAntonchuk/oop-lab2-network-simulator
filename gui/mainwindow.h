@@ -6,6 +6,7 @@
 #include <map>
 #include "NetworkBuilder.h"
 #include "NetworkNode.h"
+#include "ServerNode.h"
 #include "VisualNode.h"
 #include "VisualEdge.h"
 
@@ -31,8 +32,13 @@ private slots:
     void handleEdgeDeletion(VisualEdge* edge);
     void handleNodeDeletion(VisualNode* node);
     void handleNodeRename(VisualNode* node);
+    void handleNodeStateToggle(VisualNode* node);
+    void handleNodeFirewallToggle(VisualNode* node);
 
 private:
+    void buildLogicalNetwork();
+    void updateNetworkColors();
+
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     int serverCounter;
@@ -40,7 +46,7 @@ private:
 
     NetworkBuilder builder;
     std::shared_ptr<Subnet> activeNetwork;
-    std::map<VisualNode*, std::shared_ptr<NetworkNode>> nodeMapping;
+    std::map<VisualNode*, std::shared_ptr<ServerNode>> coreNodes;
 };
 
 #endif
