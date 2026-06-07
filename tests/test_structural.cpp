@@ -4,8 +4,6 @@
 #include "FirewallDecorator.h"
 #include <memory>
 
-// ТЕСТИ СТРУКТУРНИХ ПАТЕРНІВ (STRUCTURAL)
-
 TEST(StructuralPatternsTest, CompositeSubnetHierarchy) {
     auto rootNetwork = std::make_shared<Subnet>("Root-Net");
     auto branchNetwork = std::make_shared<Subnet>("Branch-Net");

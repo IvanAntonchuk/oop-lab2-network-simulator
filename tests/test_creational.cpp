@@ -4,8 +4,6 @@
 #include "ServerNode.h"
 #include "Subnet.h"
 
-// ТЕСТИ ПОРОДЖУВАЛЬНИХ ПАТЕРНІВ (CREATIONAL)
-
 TEST(CreationalPatternsTest, SingletonInstanceIsUnique) {
     SimulationManager& instance1 = SimulationManager::getInstance();
     SimulationManager& instance2 = SimulationManager::getInstance();
