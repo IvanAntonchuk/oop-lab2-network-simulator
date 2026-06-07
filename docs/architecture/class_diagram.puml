@@ -1,123 +1,142 @@
 @startuml
 skinparam classAttributeIconSize 0
 
-package "Core Simulation (Singleton & Facade)" {
+package "Core & History (Singleton, Facade, Memento)" {
     class SimulationManager <<Singleton>> {
         - static instance: SimulationManager
-        - state: SimulationMemento
+        - history: HistoryManager
         - observers: List<SimulationObserver>
         - SimulationManager()
         + static getInstance(): SimulationManager
-        + startSimulation(): void
-        + pauseSimulation(): void
-        + saveState(): SimulationMemento
-        + restoreState(m: SimulationMemento): void
+        + getHistory(): HistoryManager
         + attach(o: SimulationObserver): void
-        + notifyObservers(): void
+        + notifyObservers(event: String): void
     }
 
     class ReportFacade <<Facade>> {
-        + generateNetworkReport(): void
-        + exportMetricsToCSV(): void
+        - network: NetworkNode
+        + generateNetworkReport(): String
+        + getCalculatedPaths(): List<Path>
+    }
+
+    class HistoryManager {
+        - undoStack: Stack<SimulationCommand>
+        - redoStack: Stack<SimulationCommand>
+        + executeCommand(c: SimulationCommand): void
+        + undo(): void
+        + redo(): void
+    }
+
+    class SimulationMemento <<Memento>> {
+        - stateSnapshot: Map
+        + getState(): Map
     }
 }
 
 package "Network Entities (Composite & Decorator)" {
     abstract class NetworkNode <<Composite Component>> {
-        + {abstract} processTraffic(): void
+        + {abstract} processTraffic(): String
         + {abstract} getName(): String
+        + {abstract} clone(): NetworkNode
     }
 
     class ServerNode {
         - state: NodeState
         - strategy: RoutingStrategy
-        + processTraffic(): void
+        + processTraffic(): String
         + getName(): String
         + changeState(s: NodeState): void
+        + clone(): NetworkNode
     }
 
     class Subnet <<Composite>> {
         - nodes: List<NetworkNode>
         + addNode(n: NetworkNode): void
-        + processTraffic(): void
+        + processTraffic(): String
         + createIterator(): NodeIterator
     }
 
     abstract class NodeDecorator <<Decorator>> {
         # wrappee: NetworkNode
         + NodeDecorator(n: NetworkNode)
-        + processTraffic(): void
+        + processTraffic(): String
     }
 
     class FirewallDecorator {
-        + processTraffic(): void
-        - blockMaliciousPackets(): void
+        + processTraffic(): String
     }
 }
 
 package "Behavior & State (Strategy & State)" {
     interface RoutingStrategy <<Strategy>> {
-        + routePacket(): void
+        + calculatePath(): List<NetworkNode>
+        + getName(): String
     }
     class ShortestPathStrategy {
-        + routePacket(): void
+        + calculatePath(): List<NetworkNode>
+    }
+    class RandomPathStrategy {
+        + calculatePath(): List<NetworkNode>
     }
 
     interface NodeState <<State>> {
-        + handle(node: ServerNode): void
+        + handle(node: ServerNode): String
     }
     class OnlineState {
-        + handle(node: ServerNode): void
+        + handle(node: ServerNode): String
     }
     class OfflineState {
-        + handle(node: ServerNode): void
+        + handle(node: ServerNode): String
     }
 }
 
-package "Creation & Topologies (Builder & Prototype)" {
+package "Creation (Builder & Prototype)" {
     class NetworkBuilder <<Builder>> {
-        + reset(): void
-        + buildServer(name: String): void
-        + buildRouter(): void
+        - currentSubnet: Subnet
+        + reset(name: String): void
+        + addServer(name: String): NetworkBuilder
+        + buildStarTopology(routerName: String, count: int): NetworkBuilder
         + getResult(): Subnet
     }
 
     interface TopologyPrototype <<Prototype>> {
-        + cloneTopology(): TopologyPrototype
-    }
-    class StarTopology {
-        + cloneTopology(): TopologyPrototype
+        + clone(): TopologyPrototype
     }
 }
 
-package "Interaction (Command, Observer, Iterator, Memento)" {
+package "Interaction (Command, Observer, Iterator)" {
     interface SimulationCommand <<Command>> {
         + execute(): void
+        + undo(): void
     }
-    class StartCommand {
+    class AddNodeCommand {
         + execute(): void
+        + undo(): void
+    }
+    class DeleteNodeCommand {
+        + execute(): void
+        + undo(): void
     }
 
     interface SimulationObserver <<Observer>> {
-        + update(): void
+        + update(event: String): void
     }
-    class MetricsCollector {
-        + update(): void
+    class DashboardObserver {
+        + update(event: String): void
     }
 
     interface NodeIterator <<Iterator>> {
         + hasNext(): boolean
         + next(): NetworkNode
     }
-
-    class SimulationMemento <<Memento>> {
-        - savedTime: double
-        - savedTopologyState: String
-        + getState(): String
+    class SubnetIterator {
+        + hasNext(): boolean
+        + next(): NetworkNode
     }
 }
 
 ' Зв'язки між класами
+TopologyPrototype <|-- NetworkNode
 NetworkNode <|-- ServerNode
 NetworkNode <|-- Subnet
 Subnet o-- NetworkNode
@@ -128,17 +147,21 @@ NodeDecorator <|-- FirewallDecorator
 ServerNode *-- RoutingStrategy
 ServerNode *-- NodeState
 RoutingStrategy <|.. ShortestPathStrategy
+RoutingStrategy <|.. RandomPathStrategy
 NodeState <|.. OnlineState
 NodeState <|.. OfflineState
 
-SimulationManager --> SimulationMemento
 SimulationManager o-- SimulationObserver
-SimulationObserver <|.. MetricsCollector
+SimulationManager *-- HistoryManager
+HistoryManager o-- SimulationCommand
+SimulationObserver <|.. DashboardObserver
+SimulationCommand <|.. AddNodeCommand
+SimulationCommand <|.. DeleteNodeCommand
+SimulationCommand ..> SimulationMemento : saves/restores >
 
-SimulationCommand <|.. StartCommand
-TopologyPrototype <|.. StarTopology
 Subnet ..> NodeIterator : creates >
-SimulationManager --> NetworkBuilder : uses >
-SimulationManager --> ReportFacade : uses >
+NodeIterator <|.. SubnetIterator
+NetworkBuilder ..> Subnet : creates >
+ReportFacade --> NetworkNode : analyzes >
 
 @enduml
