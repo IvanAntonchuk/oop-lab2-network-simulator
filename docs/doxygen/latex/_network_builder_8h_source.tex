@@ -1,0 +1,31 @@
+\doxysection{Network\+Builder.\+h}
+\hypertarget{_network_builder_8h_source}{}\label{_network_builder_8h_source}\index{include/patterns/creational/NetworkBuilder.h@{include/patterns/creational/NetworkBuilder.h}}
+\mbox{\hyperlink{_network_builder_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ NETWORKBUILDER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ NETWORKBUILDER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_subnet_8h}{Subnet.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_server_node_8h}{ServerNode.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_network_builder_a5458433932ff4c349b200cc6c3475308}{NetworkBuilder}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00016\ \ \ \ \ std::shared\_ptr<Subnet>\ currentSubnet;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_network_builder_a5458433932ff4c349b200cc6c3475308}{NetworkBuilder}}();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_network_builder_adb24dfd8753d50be7851bcf7a9ff4374}{reset}}(\textcolor{keyword}{const}\ std::string\&\ subnetName);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_network_builder_a5458433932ff4c349b200cc6c3475308}{NetworkBuilder}}\&\ \mbox{\hyperlink{class_network_builder_a9a13d9e409af7631dc905ddc045672c2}{addServer}}(\textcolor{keyword}{const}\ std::string\&\ serverName);}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_network_builder_a5458433932ff4c349b200cc6c3475308}{NetworkBuilder}}\&\ \mbox{\hyperlink{class_network_builder_a381faf670ef82c45a95858cef47cd56b}{addSubnet}}(std::shared\_ptr<Subnet>\ subnet);}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_network_builder_a5458433932ff4c349b200cc6c3475308}{NetworkBuilder}}\&\ \mbox{\hyperlink{class_network_builder_a53bbfad92e209e3c98968e88de5202ca}{buildStarTopology}}(\textcolor{keyword}{const}\ std::string\&\ routerName,\ \textcolor{keywordtype}{int}\ serverCount);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ std::shared\_ptr<Subnet>\ \mbox{\hyperlink{class_network_builder_a1625cfa0af4e6fc91e01eb733f54ba7c}{getResult}}();}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

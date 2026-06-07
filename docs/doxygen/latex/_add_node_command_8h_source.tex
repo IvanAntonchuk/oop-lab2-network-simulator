@@ -1,0 +1,43 @@
+\doxysection{Add\+Node\+Command.\+h}
+\hypertarget{_add_node_command_8h_source}{}\label{_add_node_command_8h_source}\index{include/patterns/behavioral/AddNodeCommand.h@{include/patterns/behavioral/AddNodeCommand.h}}
+\mbox{\hyperlink{_add_node_command_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ADDNODECOMMAND\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ADDNODECOMMAND\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_simulation_command_8h}{SimulationCommand.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_visual_node}{VisualNode}};}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_server_node}{ServerNode}};}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }QGraphicsScene;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_add_node_command_a6deb52dcd4aa761019e4af4820909f34}{AddNodeCommand}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_command}{ICommand}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_add_node_command_a6deb52dcd4aa761019e4af4820909f34}{AddNodeCommand}}(std::map<\mbox{\hyperlink{class_visual_node}{VisualNode}}*,\ std::shared\_ptr<ServerNode>>\&\ nodesMap,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ QGraphicsScene*\ scene,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_visual_node}{VisualNode}}*\ vNode,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<ServerNode>\ sNode,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ sCounter,\ \textcolor{keywordtype}{int}\ oldSCounter,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ rCounter,\ \textcolor{keywordtype}{int}\ oldRCounter,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\textcolor{keywordtype}{void}()>\ cb);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_add_node_command_a0ec1e67a38977c908662733b1e7dca9b}{execute}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_add_node_command_a0744b462156ad08d360309125eb4e98b}{undo}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ \ \ \ \ std::map<VisualNode*,\ std::shared\_ptr<ServerNode>>\&\ coreNodes;}
+\DoxyCodeLine{00031\ \ \ \ \ QGraphicsScene*\ graphicsScene;}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_visual_node}{VisualNode}}*\ visualNode;}
+\DoxyCodeLine{00033\ \ \ \ \ std::shared\_ptr<ServerNode>\ serverNode;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}*\ serverCounter;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ savedServerCounter;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}*\ routerCounter;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ savedRouterCounter;}
+\DoxyCodeLine{00038\ \ \ \ \ std::function<void()>\ updateCallback;}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

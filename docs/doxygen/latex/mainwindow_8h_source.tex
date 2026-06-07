@@ -1,0 +1,90 @@
+\doxysection{mainwindow.\+h}
+\hypertarget{mainwindow_8h_source}{}\label{mainwindow_8h_source}\index{gui/mainwindow.h@{gui/mainwindow.h}}
+\mbox{\hyperlink{mainwindow_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MAINWINDOW\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MAINWINDOW\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QMainWindow>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QGraphicsScene>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QVBoxLayout>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QDockWidget>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QScrollArea>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QKeyEvent>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_network_builder_8h}{NetworkBuilder.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_network_node_8h}{NetworkNode.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_server_node_8h}{ServerNode.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_visual_node_8h}{VisualNode.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_visual_edge_8h}{VisualEdge.h}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }QLabel;}
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_dashboard_observer}{DashboardObserver}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ QT\_BEGIN\_NAMESPACE}
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_ui}{Ui}}\ \{\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_main_window}{MainWindow}};\ \}}
+\DoxyCodeLine{00022\ QT\_END\_NAMESPACE}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_active_path}{ActivePath}}\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_active_path_aeca86968d5eee4fb612111e5b5758f9e}{id}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ QString\ \mbox{\hyperlink{struct_active_path_a0a948d8500015674ca373ac4a932b9d9}{targetName}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ QString\ \mbox{\hyperlink{struct_active_path_a12437a13692868ac1da87a98a4a94cee}{strategyName}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ std::vector<std::shared\_ptr<NetworkNode>>\ \mbox{\hyperlink{struct_active_path_a522e1b2b83715cba916430029731d987}{pathNodes}};\ }
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_main_window_a996c5a2b6f77944776856f08ec30858d}{MainWindow}}\ :\ \textcolor{keyword}{public}\ QMainWindow\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_main_window_a996c5a2b6f77944776856f08ec30858d}{MainWindow}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}{\string~MainWindow}}();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_a55ae3e0d4303334ccabae0a5050cfd88}{keyPressEvent}}(QKeyEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_btnAddServer\_clicked();}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_btnAddRouter\_clicked();}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_btnSaveNetwork\_clicked();}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_btnLoadNetwork\_clicked();}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_btnPingNetwork\_clicked();}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ handleGuideClick();}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_btnCloneNetwork\_clicked();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ handleNodeConnection(\mbox{\hyperlink{class_visual_node}{VisualNode}}*\ source,\ \mbox{\hyperlink{class_visual_node}{VisualNode}}*\ target);}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ handleEdgeDeletion(\mbox{\hyperlink{class_visual_edge}{VisualEdge}}*\ edge);}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ handleNodeDeletion(\mbox{\hyperlink{class_visual_node}{VisualNode}}*\ node);}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ handleNodeRename(\mbox{\hyperlink{class_visual_node}{VisualNode}}*\ node);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ handleNodeStateToggle(\mbox{\hyperlink{class_visual_node}{VisualNode}}*\ node);}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ handleNodeFirewallToggle(\mbox{\hyperlink{class_visual_node}{VisualNode}}*\ node);}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ handleNodeStrategyChange(\mbox{\hyperlink{class_visual_node}{VisualNode}}*\ node,\ \textcolor{keywordtype}{int}\ type);}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ handlePathDeletion(\textcolor{keywordtype}{int}\ pathId,\ QWidget*\ widget);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ buildLogicalNetwork();}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ updateNetworkColors();}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ setupActivePathsPanel();}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ recalculateHighlights();}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ highlightPath(\textcolor{keyword}{const}\ std::vector<std::shared\_ptr<NetworkNode>>\&\ path);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ Ui::MainWindow\ *ui;}
+\DoxyCodeLine{00075\ \ \ \ \ QGraphicsScene\ *scene;}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{int}\ serverCounter;}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{int}\ routerCounter;}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{class_network_builder}{NetworkBuilder}}\ builder;}
+\DoxyCodeLine{00080\ \ \ \ \ std::shared\_ptr<Subnet>\ activeNetwork;}
+\DoxyCodeLine{00081\ \ \ \ \ std::map<VisualNode*,\ std::shared\_ptr<ServerNode>>\ coreNodes;}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ QVBoxLayout*\ pathsLayout;}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{int}\ pathCounter;}
+\DoxyCodeLine{00085\ \ \ \ \ std::map<int,\ ActivePath>\ activePaths;}
+\DoxyCodeLine{00086\ \ \ \ \ QString\ generateCloneName(\textcolor{keyword}{const}\ QString\&\ originalName);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ QLabel*\ lblDashboard;}
+\DoxyCodeLine{00089\ \ \ \ \ std::shared\_ptr<DashboardObserver>\ dashboard;}
+\DoxyCodeLine{00090\ \};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,24 @@
+\doxysection{Shortest\+Path\+Strategy.\+h}
+\hypertarget{_shortest_path_strategy_8h_source}{}\label{_shortest_path_strategy_8h_source}\index{include/patterns/behavioral/ShortestPathStrategy.h@{include/patterns/behavioral/ShortestPathStrategy.h}}
+\mbox{\hyperlink{_shortest_path_strategy_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SHORTESTPATHSTRATEGY\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SHORTESTPATHSTRATEGY\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_routing_strategy_8h}{RoutingStrategy.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_shortest_path_strategy}{ShortestPathStrategy}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_routing_strategy}{RoutingStrategy}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ std::vector<std::shared\_ptr<NetworkNode>>\ \mbox{\hyperlink{class_shortest_path_strategy_a88cd415cd3729a8f3773938f97e44135}{calculatePath}}(}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ std::shared\_ptr<NetworkNode>\ source,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ std::shared\_ptr<NetworkNode>\ destination)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ std::string\ \mbox{\hyperlink{class_shortest_path_strategy_aaf745db3218a8669f13b76660c5623c4}{getName}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

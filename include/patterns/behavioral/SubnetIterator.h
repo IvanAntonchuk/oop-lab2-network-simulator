@@ -6,6 +6,9 @@
 #include <vector>
 #include <memory>
 
+/**
+ * @brief Concrete iterator for traversing nodes within a Subnet.
+ */
 class SubnetIterator : public NodeIterator {
 public:
     explicit SubnetIterator(const std::vector<std::shared_ptr<NetworkNode>>& networkNodes);

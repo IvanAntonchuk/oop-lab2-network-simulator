@@ -1,0 +1,76 @@
+\doxysection{Random\+Path\+Strategy Class Reference}
+\hypertarget{class_random_path_strategy}{}\label{class_random_path_strategy}\index{RandomPathStrategy@{RandomPathStrategy}}
+
+
+Concrete strategy implementing Randomized DFS routing (Strategy pattern).  
+
+
+
+
+{\ttfamily \#include $<$Random\+Path\+Strategy.\+h$>$}
+
+Inheritance diagram for Random\+Path\+Strategy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_random_path_strategy}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ $>$ \mbox{\hyperlink{class_random_path_strategy_ab05a6507c945f324a8b2944ddbc9366e}{calculate\+Path}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ source, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ destination) override
+\begin{DoxyCompactList}\small\item\em Calculates a path from the start node to the end node. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_random_path_strategy_a5a9aa16716cedf1c697674af2d4f4a3b}{get\+Name}} () const override
+\begin{DoxyCompactList}\small\item\em Gets the human-\/readable name of the strategy algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_routing_strategy}{Routing\+Strategy}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_routing_strategy_ae5c91901dfda00c985cbcb2492187450}{\texorpdfstring{$\sim$}{\string~}\+Routing\+Strategy}} ()=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Concrete strategy implementing Randomized DFS routing (Strategy pattern). 
+
+
+\begin{DoxyItemize}
+\item Explores paths randomly using Depth-\/\+First Search with backtracking. 
+\end{DoxyItemize}
+
+\label{doc-func-members}
+\Hypertarget{class_random_path_strategy_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_random_path_strategy_ab05a6507c945f324a8b2944ddbc9366e}\index{RandomPathStrategy@{RandomPathStrategy}!calculatePath@{calculatePath}}
+\index{calculatePath@{calculatePath}!RandomPathStrategy@{RandomPathStrategy}}
+\doxysubsubsection{\texorpdfstring{calculatePath()}{calculatePath()}}
+{\footnotesize\ttfamily \label{class_random_path_strategy_ab05a6507c945f324a8b2944ddbc9366e} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ $>$ Random\+Path\+Strategy\+::calculate\+Path (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$}]{start}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$}]{end}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calculates a path from the start node to the end node. 
+
+
+
+Implements \mbox{\hyperlink{class_routing_strategy_a6a5aaf9053a2665bf90014d27c821a31}{Routing\+Strategy}}.
+
+\Hypertarget{class_random_path_strategy_a5a9aa16716cedf1c697674af2d4f4a3b}\index{RandomPathStrategy@{RandomPathStrategy}!getName@{getName}}
+\index{getName@{getName}!RandomPathStrategy@{RandomPathStrategy}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{class_random_path_strategy_a5a9aa16716cedf1c697674af2d4f4a3b} 
+std\+::string Random\+Path\+Strategy\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the human-\/readable name of the strategy algorithm. 
+
+
+
+Implements \mbox{\hyperlink{class_routing_strategy_ae22bb55ea1ed57f46e56169c935d60cc}{Routing\+Strategy}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/behavioral/\mbox{\hyperlink{_random_path_strategy_8h}{Random\+Path\+Strategy.\+h}}\item 
+src/patterns/behavioral/\mbox{\hyperlink{_random_path_strategy_8cpp}{Random\+Path\+Strategy.\+cpp}}\end{DoxyCompactItemize}

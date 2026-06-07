@@ -1,0 +1,31 @@
+\doxysection{Random\+Path\+Strategy.\+h}
+\hypertarget{_random_path_strategy_8h_source}{}\label{_random_path_strategy_8h_source}\index{include/patterns/behavioral/RandomPathStrategy.h@{include/patterns/behavioral/RandomPathStrategy.h}}
+\mbox{\hyperlink{_random_path_strategy_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ RANDOMPATHSTRATEGY\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ RANDOMPATHSTRATEGY\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_routing_strategy_8h}{RoutingStrategy.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_random_path_strategy}{RandomPathStrategy}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_routing_strategy}{RoutingStrategy}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{bool}\ dfs(std::shared\_ptr<NetworkNode>\ current,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<NetworkNode>\ target,}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ std::set<std::string>\&\ visited,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<NetworkNode>>\&\ path)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ std::vector<std::shared\_ptr<NetworkNode>>\ \mbox{\hyperlink{class_random_path_strategy_ab05a6507c945f324a8b2944ddbc9366e}{calculatePath}}(}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ std::shared\_ptr<NetworkNode>\ source,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ std::shared\_ptr<NetworkNode>\ destination)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ std::string\ \mbox{\hyperlink{class_random_path_strategy_a5a9aa16716cedf1c697674af2d4f4a3b}{getName}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

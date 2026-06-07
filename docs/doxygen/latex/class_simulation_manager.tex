@@ -1,0 +1,109 @@
+\doxysection{Simulation\+Manager Class Reference}
+\hypertarget{class_simulation_manager}{}\label{class_simulation_manager}\index{SimulationManager@{SimulationManager}}
+
+
+Global access point for managing simulation events and history (Singleton pattern).  
+
+
+
+
+{\ttfamily \#include $<$Simulation\+Manager.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_simulation_manager_aec0b6707c60797b3bcdcd164726e9a67}{Simulation\+Manager}} (const \mbox{\hyperlink{class_simulation_manager}{Simulation\+Manager}} \&)=delete
+\item 
+\mbox{\hyperlink{class_simulation_manager}{Simulation\+Manager}} \& \mbox{\hyperlink{class_simulation_manager_a12d0ca3962e2720bce355db4a9627c2f}{operator=}} (const \mbox{\hyperlink{class_simulation_manager}{Simulation\+Manager}} \&)=delete
+\item 
+void \mbox{\hyperlink{class_simulation_manager_a40983df87b263784ba6b9ec78d56a699}{attach}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_simulation_observer}{Simulation\+Observer}} $>$ observer)
+\item 
+std\+::string \mbox{\hyperlink{class_simulation_manager_a2481662b6c8eb767cb07bc0f07985d8e}{notify\+Observers}} (const std\+::string \&event)
+\item 
+bool \mbox{\hyperlink{class_simulation_manager_aa227d33255c70f89d7e060c13fc3072d}{get\+Is\+Running}} () const
+\item 
+void \mbox{\hyperlink{class_simulation_manager_ab092f1bdea4b7f6e0512e2fd8e7e108b}{set\+Running}} (bool state)
+\item 
+\mbox{\hyperlink{class_history_manager}{History\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_simulation_manager_a0513ac233565f46889ad69c03a3c33b9}{get\+History}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_simulation_manager}{Simulation\+Manager}} \& \mbox{\hyperlink{class_simulation_manager_a15cf92e763af82475c4e6e050caa7876}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the single instance of the \doxylink{class_simulation_manager}{Simulation\+Manager}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Global access point for managing simulation events and history (Singleton pattern). 
+
+
+\begin{DoxyItemize}
+\item Coordinates UI updates by notifying observers when the network changes, and holds the \doxylink{class_history_manager}{History\+Manager} for Undo/\+Redo functionality. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_simulation_manager_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_simulation_manager_aec0b6707c60797b3bcdcd164726e9a67}\index{SimulationManager@{SimulationManager}!SimulationManager@{SimulationManager}}
+\index{SimulationManager@{SimulationManager}!SimulationManager@{SimulationManager}}
+\doxysubsubsection{\texorpdfstring{SimulationManager()}{SimulationManager()}}
+{\footnotesize\ttfamily \label{class_simulation_manager_aec0b6707c60797b3bcdcd164726e9a67} 
+Simulation\+Manager\+::\+Simulation\+Manager (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_simulation_manager}{Simulation\+Manager}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_simulation_manager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_simulation_manager_a40983df87b263784ba6b9ec78d56a699}\index{SimulationManager@{SimulationManager}!attach@{attach}}
+\index{attach@{attach}!SimulationManager@{SimulationManager}}
+\doxysubsubsection{\texorpdfstring{attach()}{attach()}}
+{\footnotesize\ttfamily \label{class_simulation_manager_a40983df87b263784ba6b9ec78d56a699} 
+void Simulation\+Manager\+::attach (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_simulation_observer}{Simulation\+Observer}} $>$}]{observer}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_simulation_manager_a0513ac233565f46889ad69c03a3c33b9}\index{SimulationManager@{SimulationManager}!getHistory@{getHistory}}
+\index{getHistory@{getHistory}!SimulationManager@{SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getHistory()}{getHistory()}}
+{\footnotesize\ttfamily \label{class_simulation_manager_a0513ac233565f46889ad69c03a3c33b9} 
+\mbox{\hyperlink{class_history_manager}{History\+Manager}} \texorpdfstring{$\ast$}{*} Simulation\+Manager\+::get\+History (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_simulation_manager_a15cf92e763af82475c4e6e050caa7876}\index{SimulationManager@{SimulationManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!SimulationManager@{SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{class_simulation_manager_a15cf92e763af82475c4e6e050caa7876} 
+\mbox{\hyperlink{class_simulation_manager}{Simulation\+Manager}} \& Simulation\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Retrieves the single instance of the \doxylink{class_simulation_manager}{Simulation\+Manager}. 
+
+\Hypertarget{class_simulation_manager_aa227d33255c70f89d7e060c13fc3072d}\index{SimulationManager@{SimulationManager}!getIsRunning@{getIsRunning}}
+\index{getIsRunning@{getIsRunning}!SimulationManager@{SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getIsRunning()}{getIsRunning()}}
+{\footnotesize\ttfamily \label{class_simulation_manager_aa227d33255c70f89d7e060c13fc3072d} 
+bool Simulation\+Manager\+::get\+Is\+Running (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_simulation_manager_a2481662b6c8eb767cb07bc0f07985d8e}\index{SimulationManager@{SimulationManager}!notifyObservers@{notifyObservers}}
+\index{notifyObservers@{notifyObservers}!SimulationManager@{SimulationManager}}
+\doxysubsubsection{\texorpdfstring{notifyObservers()}{notifyObservers()}}
+{\footnotesize\ttfamily \label{class_simulation_manager_a2481662b6c8eb767cb07bc0f07985d8e} 
+std\+::string Simulation\+Manager\+::notify\+Observers (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{event}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_simulation_manager_a12d0ca3962e2720bce355db4a9627c2f}\index{SimulationManager@{SimulationManager}!operator=@{operator=}}
+\index{operator=@{operator=}!SimulationManager@{SimulationManager}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{class_simulation_manager_a12d0ca3962e2720bce355db4a9627c2f} 
+\mbox{\hyperlink{class_simulation_manager}{Simulation\+Manager}} \& Simulation\+Manager\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_simulation_manager}{Simulation\+Manager}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{class_simulation_manager_ab092f1bdea4b7f6e0512e2fd8e7e108b}\index{SimulationManager@{SimulationManager}!setRunning@{setRunning}}
+\index{setRunning@{setRunning}!SimulationManager@{SimulationManager}}
+\doxysubsubsection{\texorpdfstring{setRunning()}{setRunning()}}
+{\footnotesize\ttfamily \label{class_simulation_manager_ab092f1bdea4b7f6e0512e2fd8e7e108b} 
+void Simulation\+Manager\+::set\+Running (\begin{DoxyParamCaption}\item[{bool}]{state}{}\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/core/\mbox{\hyperlink{_simulation_manager_8h}{Simulation\+Manager.\+h}}\item 
+src/core/\mbox{\hyperlink{_simulation_manager_8cpp}{Simulation\+Manager.\+cpp}}\end{DoxyCompactItemize}

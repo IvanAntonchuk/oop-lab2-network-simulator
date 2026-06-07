@@ -1,0 +1,84 @@
+\doxysection{Connect\+Command Class Reference}
+\hypertarget{class_connect_command}{}\label{class_connect_command}\index{ConnectCommand@{ConnectCommand}}
+
+
+Command to establish a connection (edge) between two nodes.  
+
+
+
+
+{\ttfamily \#include $<$Connect\+Command.\+h$>$}
+
+Inheritance diagram for Connect\+Command\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_connect_command}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_connect_command_ab707e1e08dea1509ccdef2ee89663a4d}{Connect\+Command}} (QGraphics\+Scene \texorpdfstring{$\ast$}{*}scene, \mbox{\hyperlink{class_visual_edge}{Visual\+Edge}} \texorpdfstring{$\ast$}{*}e, std\+::function$<$ void()$>$ cb)
+\item 
+void \mbox{\hyperlink{class_connect_command_a4b02ca2572f1f5d4282ae961b916d172}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Executes the command\textquotesingle{}s primary logic. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_connect_command_a4c487a7070f3c687acab00d57241ffff}{undo}} () override
+\begin{DoxyCompactList}\small\item\em Reverts the effects of the command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_i_command}{ICommand}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_i_command_aa8a6346c5a0dcfe7fd49413a69e854ef}{\texorpdfstring{$\sim$}{\string~}\+ICommand}} ()=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Command to establish a connection (edge) between two nodes. 
+
+\label{doc-constructors}
+\Hypertarget{class_connect_command_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_connect_command_ab707e1e08dea1509ccdef2ee89663a4d}\index{ConnectCommand@{ConnectCommand}!ConnectCommand@{ConnectCommand}}
+\index{ConnectCommand@{ConnectCommand}!ConnectCommand@{ConnectCommand}}
+\doxysubsubsection{\texorpdfstring{ConnectCommand()}{ConnectCommand()}}
+{\footnotesize\ttfamily \label{class_connect_command_ab707e1e08dea1509ccdef2ee89663a4d} 
+Connect\+Command\+::\+Connect\+Command (\begin{DoxyParamCaption}\item[{QGraphics\+Scene \texorpdfstring{$\ast$}{*}}]{scene}{, }\item[{\mbox{\hyperlink{class_visual_edge}{Visual\+Edge}} \texorpdfstring{$\ast$}{*}}]{e}{, }\item[{std\+::function$<$ void()$>$}]{cb}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_connect_command_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_connect_command_a4b02ca2572f1f5d4282ae961b916d172}\index{ConnectCommand@{ConnectCommand}!execute@{execute}}
+\index{execute@{execute}!ConnectCommand@{ConnectCommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{class_connect_command_a4b02ca2572f1f5d4282ae961b916d172} 
+void Connect\+Command\+::execute (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Executes the command\textquotesingle{}s primary logic. 
+
+
+
+Implements \mbox{\hyperlink{class_i_command_ace81beb0beea968f876f292446bf1120}{ICommand}}.
+
+\Hypertarget{class_connect_command_a4c487a7070f3c687acab00d57241ffff}\index{ConnectCommand@{ConnectCommand}!undo@{undo}}
+\index{undo@{undo}!ConnectCommand@{ConnectCommand}}
+\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
+{\footnotesize\ttfamily \label{class_connect_command_a4c487a7070f3c687acab00d57241ffff} 
+void Connect\+Command\+::undo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reverts the effects of the command. 
+
+
+
+Implements \mbox{\hyperlink{class_i_command_a86e1942e4564840b6c5e09c3a7cdba78}{ICommand}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/behavioral/\mbox{\hyperlink{_connect_command_8h}{Connect\+Command.\+h}}\item 
+src/patterns/behavioral/\mbox{\hyperlink{_connect_command_8cpp}{Connect\+Command.\+cpp}}\end{DoxyCompactItemize}

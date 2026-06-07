@@ -1,0 +1,27 @@
+\doxysection{Disconnect\+Command.\+h}
+\hypertarget{_disconnect_command_8h_source}{}\label{_disconnect_command_8h_source}\index{include/patterns/behavioral/DisconnectCommand.h@{include/patterns/behavioral/DisconnectCommand.h}}
+\mbox{\hyperlink{_disconnect_command_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DISCONNECTCOMMAND\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DISCONNECTCOMMAND\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_simulation_command_8h}{SimulationCommand.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }QGraphicsScene;}
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_visual_edge}{VisualEdge}};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_disconnect_command_a04dc725ee5727bdb8b4dc36309b8336c}{DisconnectCommand}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_command}{ICommand}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_disconnect_command_a04dc725ee5727bdb8b4dc36309b8336c}{DisconnectCommand}}(QGraphicsScene*\ scene,\ \mbox{\hyperlink{class_visual_edge}{VisualEdge}}*\ e,\ std::function<\textcolor{keywordtype}{void}()>\ cb);}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_disconnect_command_a43cc67de69b25f7f52b49caff827c9f3}{execute}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_disconnect_command_a4df4a794b2659ce64b30411f0ddccd1b}{undo}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00018\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ \ \ QGraphicsScene*\ graphicsScene;}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_visual_edge}{VisualEdge}}*\ edge;}
+\DoxyCodeLine{00021\ \ \ \ \ std::function<void()>\ updateCallback;}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

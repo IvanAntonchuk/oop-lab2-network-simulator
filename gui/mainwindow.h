@@ -21,13 +21,21 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
+/**
+ * @brief Structure to store information about an active highlighted path in the network.
+ */
 struct ActivePath {
-    int id;
-    QString targetName;
-    QString strategyName;
-    std::vector<std::shared_ptr<NetworkNode>> pathNodes;
+    int id;                                           ///< Unique identifier for the path.
+    QString targetName;                               ///< Name of the target node.
+    QString strategyName;                             ///< Name of the routing strategy used.
+    std::vector<std::shared_ptr<NetworkNode>> pathNodes; ///< The sequence of nodes in the path.
 };
 
+/**
+ * @brief The main graphical user interface for the Network Simulator.
+ * * Manages the Qt graphics scene, user interactions, and coordinates
+ * with the underlying logical core (SimulationManager, Commands, etc.).
+ */
 class MainWindow : public QMainWindow {
     Q_OBJECT
 

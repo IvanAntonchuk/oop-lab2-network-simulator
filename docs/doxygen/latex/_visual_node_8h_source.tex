@@ -1,0 +1,59 @@
+\doxysection{Visual\+Node.\+h}
+\hypertarget{_visual_node_8h_source}{}\label{_visual_node_8h_source}\index{include/visual/VisualNode.h@{include/visual/VisualNode.h}}
+\mbox{\hyperlink{_visual_node_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ VISUALNODE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ VISUALNODE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QGraphicsEllipseItem>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QGraphicsSceneMouseEvent>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QPen>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_visual_edge}{VisualEdge}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_visual_node_a85bbbe69759d466dbdf856c2cdb2ce09}{VisualNode}}\ :\ \textcolor{keyword}{public}\ QObject,\ \textcolor{keyword}{public}\ QGraphicsEllipseItem\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_visual_node_a85bbbe69759d466dbdf856c2cdb2ce09}{VisualNode}}(\textcolor{keyword}{const}\ QString\&\ name);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_visual_node_a3e0a5e0b6a4b00e30cf92a510b370b4d}{addEdge}}(\mbox{\hyperlink{class_visual_edge}{VisualEdge}}*\ edge);}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_visual_node_ab2da80f16c5a76fdd8ee7fa06791490d}{removeEdge}}(\mbox{\hyperlink{class_visual_edge}{VisualEdge}}*\ edge);}
+\DoxyCodeLine{00022\ \ \ \ \ QString\ \mbox{\hyperlink{class_visual_node_a30faca94429d4bae9a624c1fb1cd8cf8}{getName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_visual_node_aaa63f1b7e04123fee127d78c91b21c4f}{setName}}(\textcolor{keyword}{const}\ QString\&\ newName);}
+\DoxyCodeLine{00024\ \ \ \ \ QList<VisualEdge*>\ \mbox{\hyperlink{class_visual_node_a1e6263abef382677f4e77d2c124b9c53}{getEdges}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ edges;\ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_visual_node_ae7ea1ef993b0aa224037d56680fcb49f}{getIsOffline}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ isOffline;\ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_visual_node_a3978ed8c80c5b2364ffa3b78d53e4f92}{getHasFirewall}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ hasFirewall;\ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_visual_node_ab946ec0309d461d63cbf3169ef4fdda4}{getIsReachable}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ isReachable;\ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_visual_node_adef6b51d3414bfadf13163cac4a88bf2}{setOffline}}(\textcolor{keywordtype}{bool}\ offline);}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_visual_node_a57045fd2bbe5a1de388c6a732054eeb4}{setFirewall}}(\textcolor{keywordtype}{bool}\ firewall);}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_visual_node_a75e04ce821ce2a2c59c2315eb00878f9}{setReachable}}(\textcolor{keywordtype}{bool}\ reachable);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ signals:}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_visual_node_a46357eba9583f6e88b282d14058d082e}{connectionRequested}}(\mbox{\hyperlink{class_visual_node_a85bbbe69759d466dbdf856c2cdb2ce09}{VisualNode}}*\ source,\ \mbox{\hyperlink{class_visual_node_a85bbbe69759d466dbdf856c2cdb2ce09}{VisualNode}}*\ target);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_visual_node_a95d5bf6bf4384c71a9906f8f6ea53dbc}{nodeDeleted}}(\mbox{\hyperlink{class_visual_node_a85bbbe69759d466dbdf856c2cdb2ce09}{VisualNode}}*\ node);}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_visual_node_ad7f038bb12bf3d14084bf8cf3d6a764d}{renameRequested}}(\mbox{\hyperlink{class_visual_node_a85bbbe69759d466dbdf856c2cdb2ce09}{VisualNode}}*\ node);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_visual_node_a6bf8337e438f7ba5b94e8df88c081e59}{toggleStateRequested}}(\mbox{\hyperlink{class_visual_node_a85bbbe69759d466dbdf856c2cdb2ce09}{VisualNode}}*\ node);}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_visual_node_ac04e29401a42886cf20eaf1768bc29ba}{toggleFirewallRequested}}(\mbox{\hyperlink{class_visual_node_a85bbbe69759d466dbdf856c2cdb2ce09}{VisualNode}}*\ node);}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_visual_node_a3a6887cbe623adf7648dc4feed10f590}{strategyChangedRequested}}(\mbox{\hyperlink{class_visual_node_a85bbbe69759d466dbdf856c2cdb2ce09}{VisualNode}}*\ node,\ \textcolor{keywordtype}{int}\ type);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00043\ \ \ \ \ QVariant\ \mbox{\hyperlink{class_visual_node_af7499be485976ff8804dbdd182608efd}{itemChange}}(GraphicsItemChange\ change,\ \textcolor{keyword}{const}\ QVariant\ \&value)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_visual_node_addd6a7b2018abf6d9853de1df473a044}{contextMenuEvent}}(QGraphicsSceneContextMenuEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_visual_node_ad29c290035f6d9fe929fe3447458d6b6}{paint}}(QPainter\ *painter,\ \textcolor{keyword}{const}\ QStyleOptionGraphicsItem\ *option,\ QWidget\ *widget\ =\ \textcolor{keyword}{nullptr})\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ updateStyle();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ QString\ nodeName;}
+\DoxyCodeLine{00051\ \ \ \ \ QList<VisualEdge*>\ edges;}
+\DoxyCodeLine{00052\ \ \ \ \ QGraphicsTextItem*\ textItem;}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{bool}\ isOffline;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{bool}\ hasFirewall;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{bool}\ isReachable;}
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

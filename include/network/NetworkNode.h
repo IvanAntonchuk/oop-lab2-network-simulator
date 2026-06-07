@@ -5,6 +5,10 @@
 #include <memory>
 #include <vector>
 
+/**
+ * @brief Abstract base class representing any network component (Composite & Prototype patterns).
+ * * Provides a common interface for individual servers and collections of nodes (Subnets).
+ */
 class NetworkNode {
 protected:
     std::string name;
@@ -18,6 +22,7 @@ public:
     virtual void setName(const std::string& newName) { name = newName; }
     virtual bool isOperational() const { return true; }
 
+    /** @brief Creates a deep copy of the node (Prototype pattern). */
     virtual std::shared_ptr<NetworkNode> clone() const = 0;
 
     virtual void connectTo(std::shared_ptr<NetworkNode> node) {}

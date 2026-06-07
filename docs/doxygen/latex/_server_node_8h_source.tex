@@ -1,0 +1,39 @@
+\doxysection{Server\+Node.\+h}
+\hypertarget{_server_node_8h_source}{}\label{_server_node_8h_source}\index{include/network/ServerNode.h@{include/network/ServerNode.h}}
+\mbox{\hyperlink{_server_node_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SERVERNODE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SERVERNODE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_network_node_8h}{NetworkNode.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_routing_strategy_8h}{RoutingStrategy.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_node_state_8h}{NodeState.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_server_node_a985a11f4a50b5365ffb27c7ecaba9669}{ServerNode}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_network_node_ad78bd0bd52f67a52cbc11ce53d281423}{NetworkNode}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00017\ \ \ \ \ std::shared\_ptr<RoutingStrategy>\ strategy;}
+\DoxyCodeLine{00018\ \ \ \ \ std::shared\_ptr<NodeState>\ state;}
+\DoxyCodeLine{00019\ \ \ \ \ std::vector<std::weak\_ptr<NetworkNode>>\ connections;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_server_node_a985a11f4a50b5365ffb27c7ecaba9669}{ServerNode}}(\textcolor{keyword}{const}\ std::string\&\ nodeName);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_server_node_a9241ffe16e4ce0ae4c0c8344eefeb747}{setStrategy}}(std::shared\_ptr<RoutingStrategy>\ newStrategy);}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_server_node_a29bb8bdb9112504496473c3c03f3e7a6}{changeState}}(std::shared\_ptr<NodeState>\ newState);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ std::string\ \mbox{\hyperlink{class_server_node_aab44869c194d8cb4adc973c63ed10517}{processTraffic}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_server_node_aabec43679b5fd58e7e17c66c6b70c839}{isOperational}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00029\ \ \ \ \ std::shared\_ptr<NetworkNode>\ \mbox{\hyperlink{class_server_node_ac08156eee7d302d3ba4e0aadd0c32cb9}{clone}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_server_node_acb732448ca1a39587e9d21ac39409fac}{connectTo}}(std::shared\_ptr<NetworkNode>\ node)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_server_node_a880355dc4b83ed5a384e9548049e0a7d}{removeConnection}}(std::shared\_ptr<NetworkNode>\ node)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_server_node_a24c02295eb844db5ed0a6d8c84918438}{clearConnections}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00034\ \ \ \ \ std::vector<std::shared\_ptr<NetworkNode>>\ \mbox{\hyperlink{class_server_node_a2dcbdae0ae9f7da59bc8df4b27ff7ace}{getConnections}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00035\ \ \ \ \ std::shared\_ptr<RoutingStrategy>\ \mbox{\hyperlink{class_server_node_ac282d2117c64d38afd9844148588172b}{getStrategy}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ strategy;\ \}}
+\DoxyCodeLine{00036\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -6,6 +6,11 @@
 #include <memory>
 #include <string>
 
+/**
+ * @brief Constructs complex network topologies step by step (Builder pattern).
+ * * Provides methods to configure and build a Subnet, allowing the creation
+ * of predefined structures like Star Topology easily.
+ */
 class NetworkBuilder {
 private:
     std::shared_ptr<Subnet> currentSubnet;

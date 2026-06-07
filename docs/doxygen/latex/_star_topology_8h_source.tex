@@ -1,0 +1,22 @@
+\doxysection{Star\+Topology.\+h}
+\hypertarget{_star_topology_8h_source}{}\label{_star_topology_8h_source}\index{include/patterns/creational/StarTopology.h@{include/patterns/creational/StarTopology.h}}
+\mbox{\hyperlink{_star_topology_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ STARTOPOLOGY\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ STARTOPOLOGY\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_topology_prototype_8h}{TopologyPrototype.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_subnet_8h}{Subnet.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_star_topology_a5ce34491be65025d422a3d79814c3d63}{StarTopology}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_topology_prototype}{TopologyPrototype}}\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00014\ \ \ \ \ std::shared\_ptr<Subnet>\ baseSubnet;}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_star_topology_a5ce34491be65025d422a3d79814c3d63}{StarTopology}}(std::shared\_ptr<Subnet>\ subnet);}
+\DoxyCodeLine{00017\ \ \ \ \ std::shared\_ptr<TopologyPrototype>\ \mbox{\hyperlink{class_star_topology_aaee6ed8ba1104296c73a739cc825b9a3}{cloneTopology}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00018\ \ \ \ \ std::shared\_ptr<Subnet>\ \mbox{\hyperlink{class_star_topology_ae1e711a9d1b1ecf49277e90bb7951371}{getNetwork}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

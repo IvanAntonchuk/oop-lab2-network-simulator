@@ -1,0 +1,67 @@
+\doxysection{Simulation\+Observer Class Reference}
+\hypertarget{class_simulation_observer}{}\label{class_simulation_observer}\index{SimulationObserver@{SimulationObserver}}
+
+
+Interface for objects that need to be notified of system changes (Observer pattern).  
+
+
+
+
+{\ttfamily \#include $<$Simulation\+Observer.\+h$>$}
+
+Inheritance diagram for Simulation\+Observer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_simulation_observer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_simulation_observer_af13d142f67161bbd74fc4c5cfe970c1f}{\texorpdfstring{$\sim$}{\string~}\+Simulation\+Observer}} ()=default
+\item 
+virtual std\+::string \mbox{\hyperlink{class_simulation_observer_af8605fae94eece24305e4ee7d2c57231}{update}} (const std\+::string \&event)=0
+\begin{DoxyCompactList}\small\item\em Called by the publisher to notify the observer of a new event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for objects that need to be notified of system changes (Observer pattern). 
+
+
+\begin{DoxyItemize}
+\item Subscribers implement this interface to receive automatic updates. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_simulation_observer_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_simulation_observer_af13d142f67161bbd74fc4c5cfe970c1f}\index{SimulationObserver@{SimulationObserver}!````~SimulationObserver@{\texorpdfstring{$\sim$}{\string~}SimulationObserver}}
+\index{````~SimulationObserver@{\texorpdfstring{$\sim$}{\string~}SimulationObserver}!SimulationObserver@{SimulationObserver}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}SimulationObserver()}{\string~SimulationObserver()}}
+{\footnotesize\ttfamily \label{class_simulation_observer_af13d142f67161bbd74fc4c5cfe970c1f} 
+virtual Simulation\+Observer\+::\texorpdfstring{$\sim$}{\string~}\+Simulation\+Observer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_simulation_observer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_simulation_observer_af8605fae94eece24305e4ee7d2c57231}\index{SimulationObserver@{SimulationObserver}!update@{update}}
+\index{update@{update}!SimulationObserver@{SimulationObserver}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_simulation_observer_af8605fae94eece24305e4ee7d2c57231} 
+virtual std\+::string Simulation\+Observer\+::update (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Called by the publisher to notify the observer of a new event. 
+
+
+
+Implemented in \mbox{\hyperlink{class_dashboard_observer_a3dd5253d1944957ce9426e4e0341cf2f}{Dashboard\+Observer}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/behavioral/\mbox{\hyperlink{_simulation_observer_8h}{Simulation\+Observer.\+h}}\end{DoxyCompactItemize}

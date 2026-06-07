@@ -1,0 +1,25 @@
+\doxysection{Dashboard\+Observer.\+h}
+\hypertarget{_dashboard_observer_8h_source}{}\label{_dashboard_observer_8h_source}\index{include/patterns/behavioral/DashboardObserver.h@{include/patterns/behavioral/DashboardObserver.h}}
+\mbox{\hyperlink{_dashboard_observer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DASHBOARDOBSERVER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DASHBOARDOBSERVER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_simulation_observer_8h}{SimulationObserver.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_subnet}{Subnet}};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_dashboard_observer_afd0990c9e0d385817a22c5911367f398}{DashboardObserver}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_simulation_observer}{SimulationObserver}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_dashboard_observer_afd0990c9e0d385817a22c5911367f398}{DashboardObserver}}(std::shared\_ptr<Subnet>*\ netPtr);}
+\DoxyCodeLine{00017\ \ \ \ \ std::string\ \mbox{\hyperlink{class_dashboard_observer_a3dd5253d1944957ce9426e4e0341cf2f}{update}}(\textcolor{keyword}{const}\ std::string\&\ event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00020\ \ \ \ \ std::shared\_ptr<Subnet>*\ networkPtr;}
+\DoxyCodeLine{00021\ \};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,143 @@
+\doxysection{Subnet Class Reference}
+\hypertarget{class_subnet}{}\label{class_subnet}\index{Subnet@{Subnet}}
+
+
+Represents a network subnet containing multiple nodes (Composite pattern).  
+
+
+
+
+{\ttfamily \#include $<$Subnet.\+h$>$}
+
+Inheritance diagram for Subnet\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_subnet}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_subnet_a427abfc85ed293a80bf06cba90b9500c}{Subnet}} (const std\+::string \&subnet\+Name)
+\item 
+void \mbox{\hyperlink{class_subnet_a7d3aa382a8cf13fde81c6af434ab1e59}{add\+Node}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ node)
+\item 
+void \mbox{\hyperlink{class_subnet_aa8397bee46e468025f58b07c22d7d6e2}{remove\+Node}} (const std\+::string \&node\+Name)
+\item 
+std\+::string \mbox{\hyperlink{class_subnet_a6570e0f5c94982c84d4aa0cd8b4d597d}{process\+Traffic}} () override
+\item 
+const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ $>$ \& \mbox{\hyperlink{class_subnet_abb6e61255942bfdb53fc817edfff48d6}{get\+Nodes}} () const
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ \mbox{\hyperlink{class_subnet_a59373ea624c40730a737a0393a516e77}{clone}} () const override
+\begin{DoxyCompactList}\small\item\em Creates a deep copy of the node (Prototype pattern). \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_node_iterator}{Node\+Iterator}} $>$ \mbox{\hyperlink{class_subnet_a9f1997f2b047ff5db088d1445b843ed4}{create\+Iterator}} () const
+\begin{DoxyCompactList}\small\item\em Creates an iterator to traverse the subnet\textquotesingle{}s children (Iterator pattern). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_network_node}{Network\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_network_node_ad78bd0bd52f67a52cbc11ce53d281423}{Network\+Node}} (const std\+::string \&node\+Name)
+\item 
+virtual \mbox{\hyperlink{class_network_node_a6f25dfa8cc55059aaac785dec94967e1}{\texorpdfstring{$\sim$}{\string~}\+Network\+Node}} ()=default
+\item 
+virtual std\+::string \mbox{\hyperlink{class_network_node_a080a5b93f6e887362aaa53d7f1e01eec}{get\+Name}} () const
+\item 
+virtual void \mbox{\hyperlink{class_network_node_aa1ebd9836fb5830be86c72efb095075a}{set\+Name}} (const std\+::string \&new\+Name)
+\item 
+virtual bool \mbox{\hyperlink{class_network_node_a62aecb76be775656d114749f0c8b82b1}{is\+Operational}} () const
+\item 
+virtual void \mbox{\hyperlink{class_network_node_a36e8de7c17c64f6c14b6f204d21b2690}{connect\+To}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ node)
+\item 
+virtual void \mbox{\hyperlink{class_network_node_a0c3791157c76ba5227dd94f4d57701dd}{remove\+Connection}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ node)
+\item 
+virtual void \mbox{\hyperlink{class_network_node_af99fade8ef92df56bb630ba3e68ffbd5}{clear\+Connections}} ()
+\item 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ $>$ \mbox{\hyperlink{class_network_node_acd67db0b3c05d46c5baa93bf1ac18d25}{get\+Connections}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_network_node}{Network\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_network_node_abf86c659198a2f755fbfb7f6e7177461}{name}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a network subnet containing multiple nodes (Composite pattern). 
+
+
+\begin{DoxyItemize}
+\item Can contain Server\+Nodes or even other Subnets, forming a tree structure. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_subnet_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_subnet_a427abfc85ed293a80bf06cba90b9500c}\index{Subnet@{Subnet}!Subnet@{Subnet}}
+\index{Subnet@{Subnet}!Subnet@{Subnet}}
+\doxysubsubsection{\texorpdfstring{Subnet()}{Subnet()}}
+{\footnotesize\ttfamily \label{class_subnet_a427abfc85ed293a80bf06cba90b9500c} 
+Subnet\+::\+Subnet (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{subnet\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_subnet_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_subnet_a7d3aa382a8cf13fde81c6af434ab1e59}\index{Subnet@{Subnet}!addNode@{addNode}}
+\index{addNode@{addNode}!Subnet@{Subnet}}
+\doxysubsubsection{\texorpdfstring{addNode()}{addNode()}}
+{\footnotesize\ttfamily \label{class_subnet_a7d3aa382a8cf13fde81c6af434ab1e59} 
+void Subnet\+::add\+Node (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$}]{node}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_subnet_a59373ea624c40730a737a0393a516e77}\index{Subnet@{Subnet}!clone@{clone}}
+\index{clone@{clone}!Subnet@{Subnet}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{class_subnet_a59373ea624c40730a737a0393a516e77} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ Subnet\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Creates a deep copy of the node (Prototype pattern). 
+
+
+
+Implements \mbox{\hyperlink{class_network_node_a8715765721caa7fef0fa20aa1005a0e7}{Network\+Node}}.
+
+\Hypertarget{class_subnet_a9f1997f2b047ff5db088d1445b843ed4}\index{Subnet@{Subnet}!createIterator@{createIterator}}
+\index{createIterator@{createIterator}!Subnet@{Subnet}}
+\doxysubsubsection{\texorpdfstring{createIterator()}{createIterator()}}
+{\footnotesize\ttfamily \label{class_subnet_a9f1997f2b047ff5db088d1445b843ed4} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_node_iterator}{Node\+Iterator}} $>$ Subnet\+::create\+Iterator (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Creates an iterator to traverse the subnet\textquotesingle{}s children (Iterator pattern). 
+
+\Hypertarget{class_subnet_abb6e61255942bfdb53fc817edfff48d6}\index{Subnet@{Subnet}!getNodes@{getNodes}}
+\index{getNodes@{getNodes}!Subnet@{Subnet}}
+\doxysubsubsection{\texorpdfstring{getNodes()}{getNodes()}}
+{\footnotesize\ttfamily \label{class_subnet_abb6e61255942bfdb53fc817edfff48d6} 
+const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ $>$ \& Subnet\+::get\+Nodes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_subnet_a6570e0f5c94982c84d4aa0cd8b4d597d}\index{Subnet@{Subnet}!processTraffic@{processTraffic}}
+\index{processTraffic@{processTraffic}!Subnet@{Subnet}}
+\doxysubsubsection{\texorpdfstring{processTraffic()}{processTraffic()}}
+{\footnotesize\ttfamily \label{class_subnet_a6570e0f5c94982c84d4aa0cd8b4d597d} 
+std\+::string Subnet\+::process\+Traffic (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_network_node_afdfa6c61887bd333bfa1e796e2add094}{Network\+Node}}.
+
+\Hypertarget{class_subnet_aa8397bee46e468025f58b07c22d7d6e2}\index{Subnet@{Subnet}!removeNode@{removeNode}}
+\index{removeNode@{removeNode}!Subnet@{Subnet}}
+\doxysubsubsection{\texorpdfstring{removeNode()}{removeNode()}}
+{\footnotesize\ttfamily \label{class_subnet_aa8397bee46e468025f58b07c22d7d6e2} 
+void Subnet\+::remove\+Node (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{node\+Name}{}\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/network/\mbox{\hyperlink{_subnet_8h}{Subnet.\+h}}\item 
+src/network/\mbox{\hyperlink{_subnet_8cpp}{Subnet.\+cpp}}\end{DoxyCompactItemize}

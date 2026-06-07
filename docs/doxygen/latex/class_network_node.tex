@@ -1,0 +1,183 @@
+\doxysection{Network\+Node Class Reference}
+\hypertarget{class_network_node}{}\label{class_network_node}\index{NetworkNode@{NetworkNode}}
+
+
+Abstract base class representing any network component (Composite \& Prototype patterns).  
+
+
+
+
+{\ttfamily \#include $<$Network\+Node.\+h$>$}
+
+Inheritance diagram for Network\+Node\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_network_node}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_network_node_ad78bd0bd52f67a52cbc11ce53d281423}{Network\+Node}} (const std\+::string \&node\+Name)
+\item 
+virtual \mbox{\hyperlink{class_network_node_a6f25dfa8cc55059aaac785dec94967e1}{\texorpdfstring{$\sim$}{\string~}\+Network\+Node}} ()=default
+\item 
+virtual std\+::string \mbox{\hyperlink{class_network_node_afdfa6c61887bd333bfa1e796e2add094}{process\+Traffic}} ()=0
+\item 
+virtual std\+::string \mbox{\hyperlink{class_network_node_a080a5b93f6e887362aaa53d7f1e01eec}{get\+Name}} () const
+\item 
+virtual void \mbox{\hyperlink{class_network_node_aa1ebd9836fb5830be86c72efb095075a}{set\+Name}} (const std\+::string \&new\+Name)
+\item 
+virtual bool \mbox{\hyperlink{class_network_node_a62aecb76be775656d114749f0c8b82b1}{is\+Operational}} () const
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ \mbox{\hyperlink{class_network_node_a8715765721caa7fef0fa20aa1005a0e7}{clone}} () const =0
+\begin{DoxyCompactList}\small\item\em Creates a deep copy of the node (Prototype pattern). \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_network_node_a36e8de7c17c64f6c14b6f204d21b2690}{connect\+To}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ node)
+\item 
+virtual void \mbox{\hyperlink{class_network_node_a0c3791157c76ba5227dd94f4d57701dd}{remove\+Connection}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ node)
+\item 
+virtual void \mbox{\hyperlink{class_network_node_af99fade8ef92df56bb630ba3e68ffbd5}{clear\+Connections}} ()
+\item 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ $>$ \mbox{\hyperlink{class_network_node_acd67db0b3c05d46c5baa93bf1ac18d25}{get\+Connections}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_network_node_abf86c659198a2f755fbfb7f6e7177461}{name}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class representing any network component (Composite \& Prototype patterns). 
+
+
+\begin{DoxyItemize}
+\item Provides a common interface for individual servers and collections of nodes (Subnets). 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_network_node_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_network_node_ad78bd0bd52f67a52cbc11ce53d281423}\index{NetworkNode@{NetworkNode}!NetworkNode@{NetworkNode}}
+\index{NetworkNode@{NetworkNode}!NetworkNode@{NetworkNode}}
+\doxysubsubsection{\texorpdfstring{NetworkNode()}{NetworkNode()}}
+{\footnotesize\ttfamily \label{class_network_node_ad78bd0bd52f67a52cbc11ce53d281423} 
+Network\+Node\+::\+Network\+Node (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{node\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\Hypertarget{class_network_node_a6f25dfa8cc55059aaac785dec94967e1}\index{NetworkNode@{NetworkNode}!````~NetworkNode@{\texorpdfstring{$\sim$}{\string~}NetworkNode}}
+\index{````~NetworkNode@{\texorpdfstring{$\sim$}{\string~}NetworkNode}!NetworkNode@{NetworkNode}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}NetworkNode()}{\string~NetworkNode()}}
+{\footnotesize\ttfamily \label{class_network_node_a6f25dfa8cc55059aaac785dec94967e1} 
+virtual Network\+Node\+::\texorpdfstring{$\sim$}{\string~}\+Network\+Node (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_network_node_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_network_node_af99fade8ef92df56bb630ba3e68ffbd5}\index{NetworkNode@{NetworkNode}!clearConnections@{clearConnections}}
+\index{clearConnections@{clearConnections}!NetworkNode@{NetworkNode}}
+\doxysubsubsection{\texorpdfstring{clearConnections()}{clearConnections()}}
+{\footnotesize\ttfamily \label{class_network_node_af99fade8ef92df56bb630ba3e68ffbd5} 
+virtual void Network\+Node\+::clear\+Connections (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_server_node_a24c02295eb844db5ed0a6d8c84918438}{Server\+Node}}.
+
+\Hypertarget{class_network_node_a8715765721caa7fef0fa20aa1005a0e7}\index{NetworkNode@{NetworkNode}!clone@{clone}}
+\index{clone@{clone}!NetworkNode@{NetworkNode}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{class_network_node_a8715765721caa7fef0fa20aa1005a0e7} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ Network\+Node\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Creates a deep copy of the node (Prototype pattern). 
+
+
+
+Implemented in \mbox{\hyperlink{class_firewall_decorator_a02345b02aacf3fef8740462ef44d0955}{Firewall\+Decorator}}, \mbox{\hyperlink{class_server_node_ac08156eee7d302d3ba4e0aadd0c32cb9}{Server\+Node}}, and \mbox{\hyperlink{class_subnet_a59373ea624c40730a737a0393a516e77}{Subnet}}.
+
+\Hypertarget{class_network_node_a36e8de7c17c64f6c14b6f204d21b2690}\index{NetworkNode@{NetworkNode}!connectTo@{connectTo}}
+\index{connectTo@{connectTo}!NetworkNode@{NetworkNode}}
+\doxysubsubsection{\texorpdfstring{connectTo()}{connectTo()}}
+{\footnotesize\ttfamily \label{class_network_node_a36e8de7c17c64f6c14b6f204d21b2690} 
+virtual void Network\+Node\+::connect\+To (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_server_node_acb732448ca1a39587e9d21ac39409fac}{Server\+Node}}.
+
+\Hypertarget{class_network_node_acd67db0b3c05d46c5baa93bf1ac18d25}\index{NetworkNode@{NetworkNode}!getConnections@{getConnections}}
+\index{getConnections@{getConnections}!NetworkNode@{NetworkNode}}
+\doxysubsubsection{\texorpdfstring{getConnections()}{getConnections()}}
+{\footnotesize\ttfamily \label{class_network_node_acd67db0b3c05d46c5baa93bf1ac18d25} 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ $>$ Network\+Node\+::get\+Connections (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_server_node_a2dcbdae0ae9f7da59bc8df4b27ff7ace}{Server\+Node}}.
+
+\Hypertarget{class_network_node_a080a5b93f6e887362aaa53d7f1e01eec}\index{NetworkNode@{NetworkNode}!getName@{getName}}
+\index{getName@{getName}!NetworkNode@{NetworkNode}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{class_network_node_a080a5b93f6e887362aaa53d7f1e01eec} 
+virtual std\+::string Network\+Node\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_node_decorator_ab77f56be09c5cbe4808c3833ebfcbbc4}{Node\+Decorator}}.
+
+\Hypertarget{class_network_node_a62aecb76be775656d114749f0c8b82b1}\index{NetworkNode@{NetworkNode}!isOperational@{isOperational}}
+\index{isOperational@{isOperational}!NetworkNode@{NetworkNode}}
+\doxysubsubsection{\texorpdfstring{isOperational()}{isOperational()}}
+{\footnotesize\ttfamily \label{class_network_node_a62aecb76be775656d114749f0c8b82b1} 
+virtual bool Network\+Node\+::is\+Operational (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_node_decorator_a1c7f6c5b25e0825b9bb3f374a9d5b4ad}{Node\+Decorator}}, and \mbox{\hyperlink{class_server_node_aabec43679b5fd58e7e17c66c6b70c839}{Server\+Node}}.
+
+\Hypertarget{class_network_node_afdfa6c61887bd333bfa1e796e2add094}\index{NetworkNode@{NetworkNode}!processTraffic@{processTraffic}}
+\index{processTraffic@{processTraffic}!NetworkNode@{NetworkNode}}
+\doxysubsubsection{\texorpdfstring{processTraffic()}{processTraffic()}}
+{\footnotesize\ttfamily \label{class_network_node_afdfa6c61887bd333bfa1e796e2add094} 
+virtual std\+::string Network\+Node\+::process\+Traffic (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_firewall_decorator_a9175fb8e123bfef359cfc514c7cd3805}{Firewall\+Decorator}}, \mbox{\hyperlink{class_node_decorator_a824c366a29a3137f77e1d084f8993587}{Node\+Decorator}}, \mbox{\hyperlink{class_server_node_aab44869c194d8cb4adc973c63ed10517}{Server\+Node}}, and \mbox{\hyperlink{class_subnet_a6570e0f5c94982c84d4aa0cd8b4d597d}{Subnet}}.
+
+\Hypertarget{class_network_node_a0c3791157c76ba5227dd94f4d57701dd}\index{NetworkNode@{NetworkNode}!removeConnection@{removeConnection}}
+\index{removeConnection@{removeConnection}!NetworkNode@{NetworkNode}}
+\doxysubsubsection{\texorpdfstring{removeConnection()}{removeConnection()}}
+{\footnotesize\ttfamily \label{class_network_node_a0c3791157c76ba5227dd94f4d57701dd} 
+virtual void Network\+Node\+::remove\+Connection (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_server_node_a880355dc4b83ed5a384e9548049e0a7d}{Server\+Node}}.
+
+\Hypertarget{class_network_node_aa1ebd9836fb5830be86c72efb095075a}\index{NetworkNode@{NetworkNode}!setName@{setName}}
+\index{setName@{setName}!NetworkNode@{NetworkNode}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily \label{class_network_node_aa1ebd9836fb5830be86c72efb095075a} 
+virtual void Network\+Node\+::set\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{new\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_network_node_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_network_node_abf86c659198a2f755fbfb7f6e7177461}\index{NetworkNode@{NetworkNode}!name@{name}}
+\index{name@{name}!NetworkNode@{NetworkNode}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \label{class_network_node_abf86c659198a2f755fbfb7f6e7177461} 
+std\+::string Network\+Node\+::name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/network/\mbox{\hyperlink{_network_node_8h}{Network\+Node.\+h}}\end{DoxyCompactItemize}

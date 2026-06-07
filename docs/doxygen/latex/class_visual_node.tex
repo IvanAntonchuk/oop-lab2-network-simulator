@@ -1,0 +1,218 @@
+\doxysection{Visual\+Node Class Reference}
+\hypertarget{class_visual_node}{}\label{class_visual_node}\index{VisualNode@{VisualNode}}
+
+
+Graphical representation of a network node on the Qt Scene.  
+
+
+
+
+{\ttfamily \#include $<$Visual\+Node.\+h$>$}
+
+Inheritance diagram for Visual\+Node\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_visual_node}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_visual_node_a46357eba9583f6e88b282d14058d082e}{connection\+Requested}} (\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}source, \mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}target)
+\item 
+void \mbox{\hyperlink{class_visual_node_a95d5bf6bf4384c71a9906f8f6ea53dbc}{node\+Deleted}} (\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}node)
+\item 
+void \mbox{\hyperlink{class_visual_node_ad7f038bb12bf3d14084bf8cf3d6a764d}{rename\+Requested}} (\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}node)
+\item 
+void \mbox{\hyperlink{class_visual_node_a6bf8337e438f7ba5b94e8df88c081e59}{toggle\+State\+Requested}} (\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}node)
+\item 
+void \mbox{\hyperlink{class_visual_node_ac04e29401a42886cf20eaf1768bc29ba}{toggle\+Firewall\+Requested}} (\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}node)
+\item 
+void \mbox{\hyperlink{class_visual_node_a3a6887cbe623adf7648dc4feed10f590}{strategy\+Changed\+Requested}} (\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}node, int type)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_visual_node_a85bbbe69759d466dbdf856c2cdb2ce09}{Visual\+Node}} (const QString \&name)
+\item 
+void \mbox{\hyperlink{class_visual_node_a3e0a5e0b6a4b00e30cf92a510b370b4d}{add\+Edge}} (\mbox{\hyperlink{class_visual_edge}{Visual\+Edge}} \texorpdfstring{$\ast$}{*}edge)
+\item 
+void \mbox{\hyperlink{class_visual_node_ab2da80f16c5a76fdd8ee7fa06791490d}{remove\+Edge}} (\mbox{\hyperlink{class_visual_edge}{Visual\+Edge}} \texorpdfstring{$\ast$}{*}edge)
+\item 
+QString \mbox{\hyperlink{class_visual_node_a30faca94429d4bae9a624c1fb1cd8cf8}{get\+Name}} () const
+\item 
+void \mbox{\hyperlink{class_visual_node_aaa63f1b7e04123fee127d78c91b21c4f}{set\+Name}} (const QString \&new\+Name)
+\item 
+QList$<$ \mbox{\hyperlink{class_visual_edge}{Visual\+Edge}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_visual_node_a1e6263abef382677f4e77d2c124b9c53}{get\+Edges}} () const
+\item 
+bool \mbox{\hyperlink{class_visual_node_ae7ea1ef993b0aa224037d56680fcb49f}{get\+Is\+Offline}} () const
+\item 
+bool \mbox{\hyperlink{class_visual_node_a3978ed8c80c5b2364ffa3b78d53e4f92}{get\+Has\+Firewall}} () const
+\item 
+bool \mbox{\hyperlink{class_visual_node_ab946ec0309d461d63cbf3169ef4fdda4}{get\+Is\+Reachable}} () const
+\item 
+void \mbox{\hyperlink{class_visual_node_adef6b51d3414bfadf13163cac4a88bf2}{set\+Offline}} (bool offline)
+\item 
+void \mbox{\hyperlink{class_visual_node_a57045fd2bbe5a1de388c6a732054eeb4}{set\+Firewall}} (bool firewall)
+\item 
+void \mbox{\hyperlink{class_visual_node_a75e04ce821ce2a2c59c2315eb00878f9}{set\+Reachable}} (bool reachable)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+QVariant \mbox{\hyperlink{class_visual_node_af7499be485976ff8804dbdd182608efd}{item\+Change}} (Graphics\+Item\+Change change, const QVariant \&value) override
+\item 
+void \mbox{\hyperlink{class_visual_node_addd6a7b2018abf6d9853de1df473a044}{context\+Menu\+Event}} (QGraphics\+Scene\+Context\+Menu\+Event \texorpdfstring{$\ast$}{*}event) override
+\item 
+void \mbox{\hyperlink{class_visual_node_ad29c290035f6d9fe929fe3447458d6b6}{paint}} (QPainter \texorpdfstring{$\ast$}{*}painter, const QStyle\+Option\+Graphics\+Item \texorpdfstring{$\ast$}{*}option, QWidget \texorpdfstring{$\ast$}{*}widget=nullptr) override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Graphical representation of a network node on the Qt Scene. 
+
+
+\begin{DoxyItemize}
+\item Handles mouse events, rendering (colors, shapes), and visual interactions. It is completely separated from the core logical \doxylink{class_server_node}{Server\+Node}. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_visual_node_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_visual_node_a85bbbe69759d466dbdf856c2cdb2ce09}\index{VisualNode@{VisualNode}!VisualNode@{VisualNode}}
+\index{VisualNode@{VisualNode}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{VisualNode()}{VisualNode()}}
+{\footnotesize\ttfamily \label{class_visual_node_a85bbbe69759d466dbdf856c2cdb2ce09} 
+Visual\+Node\+::\+Visual\+Node (\begin{DoxyParamCaption}\item[{const QString \&}]{name}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_visual_node_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_visual_node_a3e0a5e0b6a4b00e30cf92a510b370b4d}\index{VisualNode@{VisualNode}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily \label{class_visual_node_a3e0a5e0b6a4b00e30cf92a510b370b4d} 
+void Visual\+Node\+::add\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_visual_edge}{Visual\+Edge}} \texorpdfstring{$\ast$}{*}}]{edge}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_visual_node_a46357eba9583f6e88b282d14058d082e}\index{VisualNode@{VisualNode}!connectionRequested@{connectionRequested}}
+\index{connectionRequested@{connectionRequested}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{connectionRequested}{connectionRequested}}
+{\footnotesize\ttfamily \label{class_visual_node_a46357eba9583f6e88b282d14058d082e} 
+void Visual\+Node\+::connection\+Requested (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}}]{source}{, }\item[{\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}}]{target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\Hypertarget{class_visual_node_addd6a7b2018abf6d9853de1df473a044}\index{VisualNode@{VisualNode}!contextMenuEvent@{contextMenuEvent}}
+\index{contextMenuEvent@{contextMenuEvent}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{contextMenuEvent()}{contextMenuEvent()}}
+{\footnotesize\ttfamily \label{class_visual_node_addd6a7b2018abf6d9853de1df473a044} 
+void Visual\+Node\+::context\+Menu\+Event (\begin{DoxyParamCaption}\item[{QGraphics\+Scene\+Context\+Menu\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_visual_node_a1e6263abef382677f4e77d2c124b9c53}\index{VisualNode@{VisualNode}!getEdges@{getEdges}}
+\index{getEdges@{getEdges}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{getEdges()}{getEdges()}}
+{\footnotesize\ttfamily \label{class_visual_node_a1e6263abef382677f4e77d2c124b9c53} 
+QList$<$ \mbox{\hyperlink{class_visual_edge}{Visual\+Edge}} \texorpdfstring{$\ast$}{*} $>$ Visual\+Node\+::get\+Edges (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_visual_node_a3978ed8c80c5b2364ffa3b78d53e4f92}\index{VisualNode@{VisualNode}!getHasFirewall@{getHasFirewall}}
+\index{getHasFirewall@{getHasFirewall}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{getHasFirewall()}{getHasFirewall()}}
+{\footnotesize\ttfamily \label{class_visual_node_a3978ed8c80c5b2364ffa3b78d53e4f92} 
+bool Visual\+Node\+::get\+Has\+Firewall (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_visual_node_ae7ea1ef993b0aa224037d56680fcb49f}\index{VisualNode@{VisualNode}!getIsOffline@{getIsOffline}}
+\index{getIsOffline@{getIsOffline}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{getIsOffline()}{getIsOffline()}}
+{\footnotesize\ttfamily \label{class_visual_node_ae7ea1ef993b0aa224037d56680fcb49f} 
+bool Visual\+Node\+::get\+Is\+Offline (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_visual_node_ab946ec0309d461d63cbf3169ef4fdda4}\index{VisualNode@{VisualNode}!getIsReachable@{getIsReachable}}
+\index{getIsReachable@{getIsReachable}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{getIsReachable()}{getIsReachable()}}
+{\footnotesize\ttfamily \label{class_visual_node_ab946ec0309d461d63cbf3169ef4fdda4} 
+bool Visual\+Node\+::get\+Is\+Reachable (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_visual_node_a30faca94429d4bae9a624c1fb1cd8cf8}\index{VisualNode@{VisualNode}!getName@{getName}}
+\index{getName@{getName}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{class_visual_node_a30faca94429d4bae9a624c1fb1cd8cf8} 
+QString Visual\+Node\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_visual_node_af7499be485976ff8804dbdd182608efd}\index{VisualNode@{VisualNode}!itemChange@{itemChange}}
+\index{itemChange@{itemChange}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{itemChange()}{itemChange()}}
+{\footnotesize\ttfamily \label{class_visual_node_af7499be485976ff8804dbdd182608efd} 
+QVariant Visual\+Node\+::item\+Change (\begin{DoxyParamCaption}\item[{Graphics\+Item\+Change}]{change}{, }\item[{const QVariant \&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_visual_node_a95d5bf6bf4384c71a9906f8f6ea53dbc}\index{VisualNode@{VisualNode}!nodeDeleted@{nodeDeleted}}
+\index{nodeDeleted@{nodeDeleted}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{nodeDeleted}{nodeDeleted}}
+{\footnotesize\ttfamily \label{class_visual_node_a95d5bf6bf4384c71a9906f8f6ea53dbc} 
+void Visual\+Node\+::node\+Deleted (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\Hypertarget{class_visual_node_ad29c290035f6d9fe929fe3447458d6b6}\index{VisualNode@{VisualNode}!paint@{paint}}
+\index{paint@{paint}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily \label{class_visual_node_ad29c290035f6d9fe929fe3447458d6b6} 
+void Visual\+Node\+::paint (\begin{DoxyParamCaption}\item[{QPainter \texorpdfstring{$\ast$}{*}}]{painter}{, }\item[{const QStyle\+Option\+Graphics\+Item \texorpdfstring{$\ast$}{*}}]{option}{, }\item[{QWidget \texorpdfstring{$\ast$}{*}}]{widget}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_visual_node_ab2da80f16c5a76fdd8ee7fa06791490d}\index{VisualNode@{VisualNode}!removeEdge@{removeEdge}}
+\index{removeEdge@{removeEdge}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{removeEdge()}{removeEdge()}}
+{\footnotesize\ttfamily \label{class_visual_node_ab2da80f16c5a76fdd8ee7fa06791490d} 
+void Visual\+Node\+::remove\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_visual_edge}{Visual\+Edge}} \texorpdfstring{$\ast$}{*}}]{edge}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_visual_node_ad7f038bb12bf3d14084bf8cf3d6a764d}\index{VisualNode@{VisualNode}!renameRequested@{renameRequested}}
+\index{renameRequested@{renameRequested}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{renameRequested}{renameRequested}}
+{\footnotesize\ttfamily \label{class_visual_node_ad7f038bb12bf3d14084bf8cf3d6a764d} 
+void Visual\+Node\+::rename\+Requested (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\Hypertarget{class_visual_node_a57045fd2bbe5a1de388c6a732054eeb4}\index{VisualNode@{VisualNode}!setFirewall@{setFirewall}}
+\index{setFirewall@{setFirewall}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{setFirewall()}{setFirewall()}}
+{\footnotesize\ttfamily \label{class_visual_node_a57045fd2bbe5a1de388c6a732054eeb4} 
+void Visual\+Node\+::set\+Firewall (\begin{DoxyParamCaption}\item[{bool}]{firewall}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_visual_node_aaa63f1b7e04123fee127d78c91b21c4f}\index{VisualNode@{VisualNode}!setName@{setName}}
+\index{setName@{setName}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily \label{class_visual_node_aaa63f1b7e04123fee127d78c91b21c4f} 
+void Visual\+Node\+::set\+Name (\begin{DoxyParamCaption}\item[{const QString \&}]{new\+Name}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_visual_node_adef6b51d3414bfadf13163cac4a88bf2}\index{VisualNode@{VisualNode}!setOffline@{setOffline}}
+\index{setOffline@{setOffline}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{setOffline()}{setOffline()}}
+{\footnotesize\ttfamily \label{class_visual_node_adef6b51d3414bfadf13163cac4a88bf2} 
+void Visual\+Node\+::set\+Offline (\begin{DoxyParamCaption}\item[{bool}]{offline}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_visual_node_a75e04ce821ce2a2c59c2315eb00878f9}\index{VisualNode@{VisualNode}!setReachable@{setReachable}}
+\index{setReachable@{setReachable}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{setReachable()}{setReachable()}}
+{\footnotesize\ttfamily \label{class_visual_node_a75e04ce821ce2a2c59c2315eb00878f9} 
+void Visual\+Node\+::set\+Reachable (\begin{DoxyParamCaption}\item[{bool}]{reachable}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_visual_node_a3a6887cbe623adf7648dc4feed10f590}\index{VisualNode@{VisualNode}!strategyChangedRequested@{strategyChangedRequested}}
+\index{strategyChangedRequested@{strategyChangedRequested}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{strategyChangedRequested}{strategyChangedRequested}}
+{\footnotesize\ttfamily \label{class_visual_node_a3a6887cbe623adf7648dc4feed10f590} 
+void Visual\+Node\+::strategy\+Changed\+Requested (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{int}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\Hypertarget{class_visual_node_ac04e29401a42886cf20eaf1768bc29ba}\index{VisualNode@{VisualNode}!toggleFirewallRequested@{toggleFirewallRequested}}
+\index{toggleFirewallRequested@{toggleFirewallRequested}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{toggleFirewallRequested}{toggleFirewallRequested}}
+{\footnotesize\ttfamily \label{class_visual_node_ac04e29401a42886cf20eaf1768bc29ba} 
+void Visual\+Node\+::toggle\+Firewall\+Requested (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\Hypertarget{class_visual_node_a6bf8337e438f7ba5b94e8df88c081e59}\index{VisualNode@{VisualNode}!toggleStateRequested@{toggleStateRequested}}
+\index{toggleStateRequested@{toggleStateRequested}!VisualNode@{VisualNode}}
+\doxysubsubsection{\texorpdfstring{toggleStateRequested}{toggleStateRequested}}
+{\footnotesize\ttfamily \label{class_visual_node_a6bf8337e438f7ba5b94e8df88c081e59} 
+void Visual\+Node\+::toggle\+State\+Requested (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/visual/\mbox{\hyperlink{_visual_node_8h}{Visual\+Node.\+h}}\item 
+src/visual/\mbox{\hyperlink{_visual_node_8cpp}{Visual\+Node.\+cpp}}\end{DoxyCompactItemize}

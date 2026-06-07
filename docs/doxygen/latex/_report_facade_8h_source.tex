@@ -1,0 +1,27 @@
+\doxysection{Report\+Facade.\+h}
+\hypertarget{_report_facade_8h_source}{}\label{_report_facade_8h_source}\index{include/patterns/structural/ReportFacade.h@{include/patterns/structural/ReportFacade.h}}
+\mbox{\hyperlink{_report_facade_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ REPORTFACADE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ REPORTFACADE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_network_node_8h}{NetworkNode.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_report_facade_a314d97076ff27c2f845c5f3454cced5d}{ReportFacade}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00016\ \ \ \ \ std::shared\_ptr<NetworkNode>\ network;}
+\DoxyCodeLine{00017\ \ \ \ \ std::vector<std::vector<std::shared\_ptr<NetworkNode>>>\ calculatedPaths;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_report_facade_a314d97076ff27c2f845c5f3454cced5d}{ReportFacade}}(std::shared\_ptr<NetworkNode>\ net);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ std::string\ \mbox{\hyperlink{class_report_facade_acfe051c94b5067b2ea574d167469a4ee}{generateNetworkReport}}();}
+\DoxyCodeLine{00023\ \ \ \ \ std::vector<std::vector<std::shared\_ptr<NetworkNode>>>\ \mbox{\hyperlink{class_report_facade_abd54d21c763cc13ac25718d46a8abeb2}{getCalculatedPaths}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

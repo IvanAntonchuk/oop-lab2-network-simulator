@@ -1,0 +1,26 @@
+\doxysection{Subnet\+Iterator.\+h}
+\hypertarget{_subnet_iterator_8h_source}{}\label{_subnet_iterator_8h_source}\index{include/patterns/behavioral/SubnetIterator.h@{include/patterns/behavioral/SubnetIterator.h}}
+\mbox{\hyperlink{_subnet_iterator_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SUBNETITERATOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SUBNETITERATOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_node_iterator_8h}{NodeIterator.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_network_node_8h}{NetworkNode.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_subnet_iterator_a7e40fa1b05eec252d6257618387e816b}{SubnetIterator}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_node_iterator}{NodeIterator}}\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_subnet_iterator_a7e40fa1b05eec252d6257618387e816b}{SubnetIterator}}(\textcolor{keyword}{const}\ std::vector<std::shared\_ptr<NetworkNode>>\&\ networkNodes);}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_subnet_iterator_aea1f60c4fefff7cd15d42defcd14f8ca}{hasNext}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00016\ \ \ \ \ std::shared\_ptr<NetworkNode>\ \mbox{\hyperlink{class_subnet_iterator_acf7beb6fd39d0a56eea843c33acb0fac}{next}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ \ \ std::vector<std::shared\_ptr<NetworkNode>>\ nodes;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ currentIndex;}
+\DoxyCodeLine{00021\ \};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

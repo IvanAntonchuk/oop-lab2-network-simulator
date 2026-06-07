@@ -1,0 +1,32 @@
+\doxysection{History\+Manager.\+h}
+\hypertarget{_history_manager_8h_source}{}\label{_history_manager_8h_source}\index{include/core/HistoryManager.h@{include/core/HistoryManager.h}}
+\mbox{\hyperlink{_history_manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ HISTORYMANAGER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ HISTORYMANAGER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stack>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_simulation_command_8h}{SimulationCommand.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_simulation_manager}{SimulationManager}};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_history_manager_a61275c0ac976647a9c4f011a11b7a3fc}{HistoryManager}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_history_manager_a61275c0ac976647a9c4f011a11b7a3fc}{HistoryManager}}(\mbox{\hyperlink{class_simulation_manager}{SimulationManager}}*\ simManager);}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_history_manager_a05a376252e4f33b0238da19f3df73340}{executeCommand}}(std::unique\_ptr<ICommand>\ command);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_history_manager_a9411e23fe0ab1ad1517f0bd15d60d418}{undo}}();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_history_manager_a0a285df1e97d78c12022d8c9f55e37cd}{redo}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_simulation_manager}{SimulationManager}}*\ manager;}
+\DoxyCodeLine{00031\ \ \ \ \ std::stack<std::unique\_ptr<ICommand>>\ undoStack;}
+\DoxyCodeLine{00032\ \ \ \ \ std::stack<std::unique\_ptr<ICommand>>\ redoStack;}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

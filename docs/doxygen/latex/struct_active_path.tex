@@ -1,0 +1,75 @@
+\doxysection{Active\+Path Struct Reference}
+\hypertarget{struct_active_path}{}\label{struct_active_path}\index{ActivePath@{ActivePath}}
+
+
+Structure to store information about an active highlighted path in the network.  
+
+
+
+
+{\ttfamily \#include $<$mainwindow.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{struct_active_path_aeca86968d5eee4fb612111e5b5758f9e}{id}}
+\begin{DoxyCompactList}\small\item\em Unique identifier for the path. \end{DoxyCompactList}\item 
+QString \mbox{\hyperlink{struct_active_path_a0a948d8500015674ca373ac4a932b9d9}{target\+Name}}
+\begin{DoxyCompactList}\small\item\em Name of the target node. \end{DoxyCompactList}\item 
+QString \mbox{\hyperlink{struct_active_path_a12437a13692868ac1da87a98a4a94cee}{strategy\+Name}}
+\begin{DoxyCompactList}\small\item\em Name of the routing strategy used. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ $>$ \mbox{\hyperlink{struct_active_path_a522e1b2b83715cba916430029731d987}{path\+Nodes}}
+\begin{DoxyCompactList}\small\item\em The sequence of nodes in the path. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure to store information about an active highlighted path in the network. 
+
+\label{doc-variable-members}
+\Hypertarget{struct_active_path_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_active_path_aeca86968d5eee4fb612111e5b5758f9e}\index{ActivePath@{ActivePath}!id@{id}}
+\index{id@{id}!ActivePath@{ActivePath}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily \label{struct_active_path_aeca86968d5eee4fb612111e5b5758f9e} 
+int Active\+Path\+::id}
+
+
+
+Unique identifier for the path. 
+
+\Hypertarget{struct_active_path_a522e1b2b83715cba916430029731d987}\index{ActivePath@{ActivePath}!pathNodes@{pathNodes}}
+\index{pathNodes@{pathNodes}!ActivePath@{ActivePath}}
+\doxysubsubsection{\texorpdfstring{pathNodes}{pathNodes}}
+{\footnotesize\ttfamily \label{struct_active_path_a522e1b2b83715cba916430029731d987} 
+std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_network_node}{Network\+Node}}$>$ $>$ Active\+Path\+::path\+Nodes}
+
+
+
+The sequence of nodes in the path. 
+
+\Hypertarget{struct_active_path_a12437a13692868ac1da87a98a4a94cee}\index{ActivePath@{ActivePath}!strategyName@{strategyName}}
+\index{strategyName@{strategyName}!ActivePath@{ActivePath}}
+\doxysubsubsection{\texorpdfstring{strategyName}{strategyName}}
+{\footnotesize\ttfamily \label{struct_active_path_a12437a13692868ac1da87a98a4a94cee} 
+QString Active\+Path\+::strategy\+Name}
+
+
+
+Name of the routing strategy used. 
+
+\Hypertarget{struct_active_path_a0a948d8500015674ca373ac4a932b9d9}\index{ActivePath@{ActivePath}!targetName@{targetName}}
+\index{targetName@{targetName}!ActivePath@{ActivePath}}
+\doxysubsubsection{\texorpdfstring{targetName}{targetName}}
+{\footnotesize\ttfamily \label{struct_active_path_a0a948d8500015674ca373ac4a932b9d9} 
+QString Active\+Path\+::target\+Name}
+
+
+
+Name of the target node. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+gui/\mbox{\hyperlink{mainwindow_8h}{mainwindow.\+h}}\end{DoxyCompactItemize}

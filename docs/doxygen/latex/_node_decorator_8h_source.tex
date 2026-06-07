@@ -1,0 +1,25 @@
+\doxysection{Node\+Decorator.\+h}
+\hypertarget{_node_decorator_8h_source}{}\label{_node_decorator_8h_source}\index{include/patterns/structural/NodeDecorator.h@{include/patterns/structural/NodeDecorator.h}}
+\mbox{\hyperlink{_node_decorator_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ NODEDECORATOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ NODEDECORATOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_network_node_8h}{NetworkNode.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_node_decorator_a2cf1fd5b8bb209f3fdaaa7187e13f166}{NodeDecorator}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_network_node_ad78bd0bd52f67a52cbc11ce53d281423}{NetworkNode}}\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00014\ \ \ \ \ std::shared\_ptr<NetworkNode>\ \mbox{\hyperlink{class_node_decorator_afa160654d5e225270b7afa29d8e528b2}{wrappee}};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_node_decorator_a2cf1fd5b8bb209f3fdaaa7187e13f166}{NodeDecorator}}(std::shared\_ptr<NetworkNode>\ node);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ std::string\ \mbox{\hyperlink{class_node_decorator_a824c366a29a3137f77e1d084f8993587}{processTraffic}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00020\ \ \ \ \ std::string\ \mbox{\hyperlink{class_node_decorator_ab77f56be09c5cbe4808c3833ebfcbbc4}{getName}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_node_decorator_a1c7f6c5b25e0825b9bb3f374a9d5b4ad}{isOperational}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,86 @@
+\doxysection{Network\+Builder Class Reference}
+\hypertarget{class_network_builder}{}\label{class_network_builder}\index{NetworkBuilder@{NetworkBuilder}}
+
+
+Constructs complex network topologies step by step (Builder pattern).  
+
+
+
+
+{\ttfamily \#include $<$Network\+Builder.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_network_builder_a5458433932ff4c349b200cc6c3475308}{Network\+Builder}} ()
+\item 
+void \mbox{\hyperlink{class_network_builder_adb24dfd8753d50be7851bcf7a9ff4374}{reset}} (const std\+::string \&subnet\+Name)
+\item 
+\mbox{\hyperlink{class_network_builder}{Network\+Builder}} \& \mbox{\hyperlink{class_network_builder_a9a13d9e409af7631dc905ddc045672c2}{add\+Server}} (const std\+::string \&server\+Name)
+\item 
+\mbox{\hyperlink{class_network_builder}{Network\+Builder}} \& \mbox{\hyperlink{class_network_builder_a381faf670ef82c45a95858cef47cd56b}{add\+Subnet}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_subnet}{Subnet}} $>$ subnet)
+\item 
+\mbox{\hyperlink{class_network_builder}{Network\+Builder}} \& \mbox{\hyperlink{class_network_builder_a53bbfad92e209e3c98968e88de5202ca}{build\+Star\+Topology}} (const std\+::string \&router\+Name, int server\+Count)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_subnet}{Subnet}} $>$ \mbox{\hyperlink{class_network_builder_a1625cfa0af4e6fc91e01eb733f54ba7c}{get\+Result}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Constructs complex network topologies step by step (Builder pattern). 
+
+
+\begin{DoxyItemize}
+\item Provides methods to configure and build a \doxylink{class_subnet}{Subnet}, allowing the creation of predefined structures like Star Topology easily. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_network_builder_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_network_builder_a5458433932ff4c349b200cc6c3475308}\index{NetworkBuilder@{NetworkBuilder}!NetworkBuilder@{NetworkBuilder}}
+\index{NetworkBuilder@{NetworkBuilder}!NetworkBuilder@{NetworkBuilder}}
+\doxysubsubsection{\texorpdfstring{NetworkBuilder()}{NetworkBuilder()}}
+{\footnotesize\ttfamily \label{class_network_builder_a5458433932ff4c349b200cc6c3475308} 
+Network\+Builder\+::\+Network\+Builder (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_network_builder_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_network_builder_a9a13d9e409af7631dc905ddc045672c2}\index{NetworkBuilder@{NetworkBuilder}!addServer@{addServer}}
+\index{addServer@{addServer}!NetworkBuilder@{NetworkBuilder}}
+\doxysubsubsection{\texorpdfstring{addServer()}{addServer()}}
+{\footnotesize\ttfamily \label{class_network_builder_a9a13d9e409af7631dc905ddc045672c2} 
+\mbox{\hyperlink{class_network_builder}{Network\+Builder}} \& Network\+Builder\+::add\+Server (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{server\+Name}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_network_builder_a381faf670ef82c45a95858cef47cd56b}\index{NetworkBuilder@{NetworkBuilder}!addSubnet@{addSubnet}}
+\index{addSubnet@{addSubnet}!NetworkBuilder@{NetworkBuilder}}
+\doxysubsubsection{\texorpdfstring{addSubnet()}{addSubnet()}}
+{\footnotesize\ttfamily \label{class_network_builder_a381faf670ef82c45a95858cef47cd56b} 
+\mbox{\hyperlink{class_network_builder}{Network\+Builder}} \& Network\+Builder\+::add\+Subnet (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_subnet}{Subnet}} $>$}]{subnet}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_network_builder_a53bbfad92e209e3c98968e88de5202ca}\index{NetworkBuilder@{NetworkBuilder}!buildStarTopology@{buildStarTopology}}
+\index{buildStarTopology@{buildStarTopology}!NetworkBuilder@{NetworkBuilder}}
+\doxysubsubsection{\texorpdfstring{buildStarTopology()}{buildStarTopology()}}
+{\footnotesize\ttfamily \label{class_network_builder_a53bbfad92e209e3c98968e88de5202ca} 
+\mbox{\hyperlink{class_network_builder}{Network\+Builder}} \& Network\+Builder\+::build\+Star\+Topology (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{router\+Name}{, }\item[{int}]{server\+Count}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_network_builder_a1625cfa0af4e6fc91e01eb733f54ba7c}\index{NetworkBuilder@{NetworkBuilder}!getResult@{getResult}}
+\index{getResult@{getResult}!NetworkBuilder@{NetworkBuilder}}
+\doxysubsubsection{\texorpdfstring{getResult()}{getResult()}}
+{\footnotesize\ttfamily \label{class_network_builder_a1625cfa0af4e6fc91e01eb733f54ba7c} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_subnet}{Subnet}} $>$ Network\+Builder\+::get\+Result (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_network_builder_adb24dfd8753d50be7851bcf7a9ff4374}\index{NetworkBuilder@{NetworkBuilder}!reset@{reset}}
+\index{reset@{reset}!NetworkBuilder@{NetworkBuilder}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{class_network_builder_adb24dfd8753d50be7851bcf7a9ff4374} 
+void Network\+Builder\+::reset (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{subnet\+Name}{}\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/creational/\mbox{\hyperlink{_network_builder_8h}{Network\+Builder.\+h}}\item 
+src/patterns/creational/\mbox{\hyperlink{_network_builder_8cpp}{Network\+Builder.\+cpp}}\end{DoxyCompactItemize}

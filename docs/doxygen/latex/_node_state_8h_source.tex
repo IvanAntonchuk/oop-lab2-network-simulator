@@ -1,0 +1,23 @@
+\doxysection{Node\+State.\+h}
+\hypertarget{_node_state_8h_source}{}\label{_node_state_8h_source}\index{include/patterns/behavioral/NodeState.h@{include/patterns/behavioral/NodeState.h}}
+\mbox{\hyperlink{_node_state_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ NODESTATE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ NODESTATE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_server_node}{ServerNode}};}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_node_state}{NodeState}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_node_state_aca8ef08488cc15fd79defc9be9854377}{\string~NodeState}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{class_node_state_ac982360f00111064cb28648682099ac4}{handle}}(\mbox{\hyperlink{class_server_node}{ServerNode}}*\ node)\ =\ 0;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_node_state_a17a01083e1305c582b2bf13d3e9b8441}{isOperational}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

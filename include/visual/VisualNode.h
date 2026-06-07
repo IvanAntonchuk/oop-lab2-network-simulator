@@ -8,6 +8,11 @@
 
 class VisualEdge;
 
+/**
+ * @brief Graphical representation of a network node on the Qt Scene.
+ * * Handles mouse events, rendering (colors, shapes), and visual interactions.
+ * It is completely separated from the core logical ServerNode.
+ */
 class VisualNode : public QObject, public QGraphicsEllipseItem {
     Q_OBJECT
 public:

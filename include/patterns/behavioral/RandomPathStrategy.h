@@ -7,6 +7,10 @@
 #include <string>
 #include <set>
 
+/**
+ * @brief Concrete strategy implementing Randomized DFS routing (Strategy pattern).
+ * * Explores paths randomly using Depth-First Search with backtracking.
+ */
 class RandomPathStrategy : public RoutingStrategy {
 private:
     bool dfs(std::shared_ptr<NetworkNode> current,

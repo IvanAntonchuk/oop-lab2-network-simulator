@@ -1,0 +1,76 @@
+\doxysection{Online\+State Class Reference}
+\hypertarget{class_online_state}{}\label{class_online_state}\index{OnlineState@{OnlineState}}
+
+
+Represents the normal, operational state of a server.  
+
+
+
+
+{\ttfamily \#include $<$Online\+State.\+h$>$}
+
+Inheritance diagram for Online\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_online_state}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_online_state_a2fbf340a8152d23d3ebb057b173d7981}{handle}} (\mbox{\hyperlink{class_server_node}{Server\+Node}} \texorpdfstring{$\ast$}{*}node) override
+\begin{DoxyCompactList}\small\item\em Handles traffic based on the current state. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_online_state_ab917f74750cd2f9add17e29a4263f093}{is\+Operational}} () const override
+\begin{DoxyCompactList}\small\item\em Determines if the server is active in this state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_node_state}{Node\+State}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_node_state_aca8ef08488cc15fd79defc9be9854377}{\texorpdfstring{$\sim$}{\string~}\+Node\+State}} ()=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the normal, operational state of a server. 
+
+
+\begin{DoxyItemize}
+\item In this state, the server actively processes and routes traffic. 
+\end{DoxyItemize}
+
+\label{doc-func-members}
+\Hypertarget{class_online_state_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_online_state_a2fbf340a8152d23d3ebb057b173d7981}\index{OnlineState@{OnlineState}!handle@{handle}}
+\index{handle@{handle}!OnlineState@{OnlineState}}
+\doxysubsubsection{\texorpdfstring{handle()}{handle()}}
+{\footnotesize\ttfamily \label{class_online_state_a2fbf340a8152d23d3ebb057b173d7981} 
+std\+::string Online\+State\+::handle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_server_node}{Server\+Node}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles traffic based on the current state. 
+
+
+
+Implements \mbox{\hyperlink{class_node_state_ac982360f00111064cb28648682099ac4}{Node\+State}}.
+
+\Hypertarget{class_online_state_ab917f74750cd2f9add17e29a4263f093}\index{OnlineState@{OnlineState}!isOperational@{isOperational}}
+\index{isOperational@{isOperational}!OnlineState@{OnlineState}}
+\doxysubsubsection{\texorpdfstring{isOperational()}{isOperational()}}
+{\footnotesize\ttfamily \label{class_online_state_ab917f74750cd2f9add17e29a4263f093} 
+bool Online\+State\+::is\+Operational (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Determines if the server is active in this state. 
+
+
+
+Implements \mbox{\hyperlink{class_node_state_a17a01083e1305c582b2bf13d3e9b8441}{Node\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/behavioral/\mbox{\hyperlink{_online_state_8h}{Online\+State.\+h}}\item 
+src/patterns/behavioral/\mbox{\hyperlink{_online_state_8cpp}{Online\+State.\+cpp}}\end{DoxyCompactItemize}

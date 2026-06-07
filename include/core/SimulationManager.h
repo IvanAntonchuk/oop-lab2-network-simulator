@@ -8,6 +8,11 @@
 
 class HistoryManager;
 
+/**
+ * @brief Global access point for managing simulation events and history (Singleton pattern).
+ * * Coordinates UI updates by notifying observers when the network changes,
+ * and holds the HistoryManager for Undo/Redo functionality.
+ */
 class SimulationManager {
 private:
     bool isRunning;
@@ -21,6 +26,7 @@ public:
     SimulationManager(const SimulationManager&) = delete;
     SimulationManager& operator=(const SimulationManager&) = delete;
 
+    /** @brief Retrieves the single instance of the SimulationManager. */
     static SimulationManager& getInstance();
 
     void attach(std::shared_ptr<SimulationObserver> observer);

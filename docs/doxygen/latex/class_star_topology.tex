@@ -1,0 +1,81 @@
+\doxysection{Star\+Topology Class Reference}
+\hypertarget{class_star_topology}{}\label{class_star_topology}\index{StarTopology@{StarTopology}}
+
+
+Represents a pre-\/configured Star Topology network.  
+
+
+
+
+{\ttfamily \#include $<$Star\+Topology.\+h$>$}
+
+Inheritance diagram for Star\+Topology\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_star_topology}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_star_topology_a5ce34491be65025d422a3d79814c3d63}{Star\+Topology}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_subnet}{Subnet}} $>$ subnet)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_topology_prototype}{Topology\+Prototype}} $>$ \mbox{\hyperlink{class_star_topology_aaee6ed8ba1104296c73a739cc825b9a3}{clone\+Topology}} () const override
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_subnet}{Subnet}} $>$ \mbox{\hyperlink{class_star_topology_ae1e711a9d1b1ecf49277e90bb7951371}{get\+Network}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_topology_prototype}{Topology\+Prototype}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_topology_prototype_ad8d31a6b29b95a39bebda9b95a151c3a}{\texorpdfstring{$\sim$}{\string~}\+Topology\+Prototype}} ()=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a pre-\/configured Star Topology network. 
+
+
+\begin{DoxyItemize}
+\item Implements the Prototype pattern to allow quick cloning of a standard star network configuration. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_star_topology_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_star_topology_a5ce34491be65025d422a3d79814c3d63}\index{StarTopology@{StarTopology}!StarTopology@{StarTopology}}
+\index{StarTopology@{StarTopology}!StarTopology@{StarTopology}}
+\doxysubsubsection{\texorpdfstring{StarTopology()}{StarTopology()}}
+{\footnotesize\ttfamily \label{class_star_topology_a5ce34491be65025d422a3d79814c3d63} 
+Star\+Topology\+::\+Star\+Topology (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_subnet}{Subnet}} $>$}]{subnet}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_star_topology_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_star_topology_aaee6ed8ba1104296c73a739cc825b9a3}\index{StarTopology@{StarTopology}!cloneTopology@{cloneTopology}}
+\index{cloneTopology@{cloneTopology}!StarTopology@{StarTopology}}
+\doxysubsubsection{\texorpdfstring{cloneTopology()}{cloneTopology()}}
+{\footnotesize\ttfamily \label{class_star_topology_aaee6ed8ba1104296c73a739cc825b9a3} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_topology_prototype}{Topology\+Prototype}} $>$ Star\+Topology\+::clone\+Topology (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_topology_prototype_a0c44a8876a847b7005fd8d3e08601130}{Topology\+Prototype}}.
+
+\Hypertarget{class_star_topology_ae1e711a9d1b1ecf49277e90bb7951371}\index{StarTopology@{StarTopology}!getNetwork@{getNetwork}}
+\index{getNetwork@{getNetwork}!StarTopology@{StarTopology}}
+\doxysubsubsection{\texorpdfstring{getNetwork()}{getNetwork()}}
+{\footnotesize\ttfamily \label{class_star_topology_ae1e711a9d1b1ecf49277e90bb7951371} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_subnet}{Subnet}} $>$ Star\+Topology\+::get\+Network (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_topology_prototype_a42471460bdfd606627a6de8956bc5e8c}{Topology\+Prototype}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/creational/\mbox{\hyperlink{_star_topology_8h}{Star\+Topology.\+h}}\item 
+src/patterns/creational/\mbox{\hyperlink{_star_topology_8cpp}{Star\+Topology.\+cpp}}\end{DoxyCompactItemize}

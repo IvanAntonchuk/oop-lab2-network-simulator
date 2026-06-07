@@ -1,0 +1,128 @@
+\doxysection{Node\+Decorator Class Reference}
+\hypertarget{class_node_decorator}{}\label{class_node_decorator}\index{NodeDecorator@{NodeDecorator}}
+
+
+Base decorator class for dynamically adding behavior to nodes (Decorator pattern).  
+
+
+
+
+{\ttfamily \#include $<$Node\+Decorator.\+h$>$}
+
+Inheritance diagram for Node\+Decorator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_node_decorator}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_node_decorator_a2cf1fd5b8bb209f3fdaaa7187e13f166}{Node\+Decorator}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ node)
+\item 
+std\+::string \mbox{\hyperlink{class_node_decorator_a824c366a29a3137f77e1d084f8993587}{process\+Traffic}} () override
+\item 
+std\+::string \mbox{\hyperlink{class_node_decorator_ab77f56be09c5cbe4808c3833ebfcbbc4}{get\+Name}} () const override
+\item 
+bool \mbox{\hyperlink{class_node_decorator_a1c7f6c5b25e0825b9bb3f374a9d5b4ad}{is\+Operational}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_network_node}{Network\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_network_node_ad78bd0bd52f67a52cbc11ce53d281423}{Network\+Node}} (const std\+::string \&node\+Name)
+\item 
+virtual \mbox{\hyperlink{class_network_node_a6f25dfa8cc55059aaac785dec94967e1}{\texorpdfstring{$\sim$}{\string~}\+Network\+Node}} ()=default
+\item 
+virtual void \mbox{\hyperlink{class_network_node_aa1ebd9836fb5830be86c72efb095075a}{set\+Name}} (const std\+::string \&new\+Name)
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ \mbox{\hyperlink{class_network_node_a8715765721caa7fef0fa20aa1005a0e7}{clone}} () const =0
+\begin{DoxyCompactList}\small\item\em Creates a deep copy of the node (Prototype pattern). \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_network_node_a36e8de7c17c64f6c14b6f204d21b2690}{connect\+To}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ node)
+\item 
+virtual void \mbox{\hyperlink{class_network_node_a0c3791157c76ba5227dd94f4d57701dd}{remove\+Connection}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ node)
+\item 
+virtual void \mbox{\hyperlink{class_network_node_af99fade8ef92df56bb630ba3e68ffbd5}{clear\+Connections}} ()
+\item 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ $>$ \mbox{\hyperlink{class_network_node_acd67db0b3c05d46c5baa93bf1ac18d25}{get\+Connections}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ \mbox{\hyperlink{class_node_decorator_afa160654d5e225270b7afa29d8e528b2}{wrappee}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_network_node}{Network\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_network_node_abf86c659198a2f755fbfb7f6e7177461}{name}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base decorator class for dynamically adding behavior to nodes (Decorator pattern). 
+
+
+\begin{DoxyItemize}
+\item Wraps a \doxylink{class_network_node}{Network\+Node} and delegates traffic processing to it, allowing subclasses to add pre-\/ or post-\/processing logic. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_node_decorator_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_node_decorator_a2cf1fd5b8bb209f3fdaaa7187e13f166}\index{NodeDecorator@{NodeDecorator}!NodeDecorator@{NodeDecorator}}
+\index{NodeDecorator@{NodeDecorator}!NodeDecorator@{NodeDecorator}}
+\doxysubsubsection{\texorpdfstring{NodeDecorator()}{NodeDecorator()}}
+{\footnotesize\ttfamily \label{class_node_decorator_a2cf1fd5b8bb209f3fdaaa7187e13f166} 
+Node\+Decorator\+::\+Node\+Decorator (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_node_decorator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_node_decorator_ab77f56be09c5cbe4808c3833ebfcbbc4}\index{NodeDecorator@{NodeDecorator}!getName@{getName}}
+\index{getName@{getName}!NodeDecorator@{NodeDecorator}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{class_node_decorator_ab77f56be09c5cbe4808c3833ebfcbbc4} 
+std\+::string Node\+Decorator\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_network_node_a080a5b93f6e887362aaa53d7f1e01eec}{Network\+Node}}.
+
+\Hypertarget{class_node_decorator_a1c7f6c5b25e0825b9bb3f374a9d5b4ad}\index{NodeDecorator@{NodeDecorator}!isOperational@{isOperational}}
+\index{isOperational@{isOperational}!NodeDecorator@{NodeDecorator}}
+\doxysubsubsection{\texorpdfstring{isOperational()}{isOperational()}}
+{\footnotesize\ttfamily \label{class_node_decorator_a1c7f6c5b25e0825b9bb3f374a9d5b4ad} 
+bool Node\+Decorator\+::is\+Operational (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_network_node_a62aecb76be775656d114749f0c8b82b1}{Network\+Node}}.
+
+\Hypertarget{class_node_decorator_a824c366a29a3137f77e1d084f8993587}\index{NodeDecorator@{NodeDecorator}!processTraffic@{processTraffic}}
+\index{processTraffic@{processTraffic}!NodeDecorator@{NodeDecorator}}
+\doxysubsubsection{\texorpdfstring{processTraffic()}{processTraffic()}}
+{\footnotesize\ttfamily \label{class_node_decorator_a824c366a29a3137f77e1d084f8993587} 
+std\+::string Node\+Decorator\+::process\+Traffic (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_network_node_afdfa6c61887bd333bfa1e796e2add094}{Network\+Node}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_node_decorator_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_node_decorator_afa160654d5e225270b7afa29d8e528b2}\index{NodeDecorator@{NodeDecorator}!wrappee@{wrappee}}
+\index{wrappee@{wrappee}!NodeDecorator@{NodeDecorator}}
+\doxysubsubsection{\texorpdfstring{wrappee}{wrappee}}
+{\footnotesize\ttfamily \label{class_node_decorator_afa160654d5e225270b7afa29d8e528b2} 
+std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_network_node}{Network\+Node}}$>$ Node\+Decorator\+::wrappee\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/structural/\mbox{\hyperlink{_node_decorator_8h}{Node\+Decorator.\+h}}\item 
+src/patterns/structural/\mbox{\hyperlink{_node_decorator_8cpp}{Node\+Decorator.\+cpp}}\end{DoxyCompactItemize}

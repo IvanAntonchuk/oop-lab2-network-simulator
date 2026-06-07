@@ -1,0 +1,75 @@
+\doxysection{Topology\+Prototype Class Reference}
+\hypertarget{class_topology_prototype}{}\label{class_topology_prototype}\index{TopologyPrototype@{TopologyPrototype}}
+
+
+Interface for cloning network topologies (Prototype pattern).  
+
+
+
+
+{\ttfamily \#include $<$Topology\+Prototype.\+h$>$}
+
+Inheritance diagram for Topology\+Prototype\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_topology_prototype}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_topology_prototype_ad8d31a6b29b95a39bebda9b95a151c3a}{\texorpdfstring{$\sim$}{\string~}\+Topology\+Prototype}} ()=default
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_topology_prototype}{Topology\+Prototype}} $>$ \mbox{\hyperlink{class_topology_prototype_a0c44a8876a847b7005fd8d3e08601130}{clone\+Topology}} () const =0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_subnet}{Subnet}} $>$ \mbox{\hyperlink{class_topology_prototype_a42471460bdfd606627a6de8956bc5e8c}{get\+Network}} () const =0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for cloning network topologies (Prototype pattern). 
+
+
+\begin{DoxyItemize}
+\item Allows creating deep copies of complex objects or entire network structures without coupling code to their specific classes. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_topology_prototype_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_topology_prototype_ad8d31a6b29b95a39bebda9b95a151c3a}\index{TopologyPrototype@{TopologyPrototype}!````~TopologyPrototype@{\texorpdfstring{$\sim$}{\string~}TopologyPrototype}}
+\index{````~TopologyPrototype@{\texorpdfstring{$\sim$}{\string~}TopologyPrototype}!TopologyPrototype@{TopologyPrototype}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}TopologyPrototype()}{\string~TopologyPrototype()}}
+{\footnotesize\ttfamily \label{class_topology_prototype_ad8d31a6b29b95a39bebda9b95a151c3a} 
+virtual Topology\+Prototype\+::\texorpdfstring{$\sim$}{\string~}\+Topology\+Prototype (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_topology_prototype_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_topology_prototype_a0c44a8876a847b7005fd8d3e08601130}\index{TopologyPrototype@{TopologyPrototype}!cloneTopology@{cloneTopology}}
+\index{cloneTopology@{cloneTopology}!TopologyPrototype@{TopologyPrototype}}
+\doxysubsubsection{\texorpdfstring{cloneTopology()}{cloneTopology()}}
+{\footnotesize\ttfamily \label{class_topology_prototype_a0c44a8876a847b7005fd8d3e08601130} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_topology_prototype}{Topology\+Prototype}} $>$ Topology\+Prototype\+::clone\+Topology (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_star_topology_aaee6ed8ba1104296c73a739cc825b9a3}{Star\+Topology}}.
+
+\Hypertarget{class_topology_prototype_a42471460bdfd606627a6de8956bc5e8c}\index{TopologyPrototype@{TopologyPrototype}!getNetwork@{getNetwork}}
+\index{getNetwork@{getNetwork}!TopologyPrototype@{TopologyPrototype}}
+\doxysubsubsection{\texorpdfstring{getNetwork()}{getNetwork()}}
+{\footnotesize\ttfamily \label{class_topology_prototype_a42471460bdfd606627a6de8956bc5e8c} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_subnet}{Subnet}} $>$ Topology\+Prototype\+::get\+Network (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_star_topology_ae1e711a9d1b1ecf49277e90bb7951371}{Star\+Topology}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/creational/\mbox{\hyperlink{_topology_prototype_8h}{Topology\+Prototype.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,181 @@
+\doxysection{Server\+Node Class Reference}
+\hypertarget{class_server_node}{}\label{class_server_node}\index{ServerNode@{ServerNode}}
+
+
+Represents a single physical or virtual server in the network.  
+
+
+
+
+{\ttfamily \#include $<$Server\+Node.\+h$>$}
+
+Inheritance diagram for Server\+Node\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_server_node}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_server_node_a985a11f4a50b5365ffb27c7ecaba9669}{Server\+Node}} (const std\+::string \&node\+Name)
+\item 
+void \mbox{\hyperlink{class_server_node_a9241ffe16e4ce0ae4c0c8344eefeb747}{set\+Strategy}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_routing_strategy}{Routing\+Strategy}} $>$ new\+Strategy)
+\item 
+void \mbox{\hyperlink{class_server_node_a29bb8bdb9112504496473c3c03f3e7a6}{change\+State}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_node_state}{Node\+State}} $>$ new\+State)
+\item 
+std\+::string \mbox{\hyperlink{class_server_node_aab44869c194d8cb4adc973c63ed10517}{process\+Traffic}} () override
+\item 
+bool \mbox{\hyperlink{class_server_node_aabec43679b5fd58e7e17c66c6b70c839}{is\+Operational}} () const override
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ \mbox{\hyperlink{class_server_node_ac08156eee7d302d3ba4e0aadd0c32cb9}{clone}} () const override
+\begin{DoxyCompactList}\small\item\em Creates a deep copy of the node (Prototype pattern). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_server_node_acb732448ca1a39587e9d21ac39409fac}{connect\+To}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ node) override
+\item 
+void \mbox{\hyperlink{class_server_node_a880355dc4b83ed5a384e9548049e0a7d}{remove\+Connection}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ node) override
+\item 
+void \mbox{\hyperlink{class_server_node_a24c02295eb844db5ed0a6d8c84918438}{clear\+Connections}} () override
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ $>$ \mbox{\hyperlink{class_server_node_a2dcbdae0ae9f7da59bc8df4b27ff7ace}{get\+Connections}} () const override
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_routing_strategy}{Routing\+Strategy}} $>$ \mbox{\hyperlink{class_server_node_ac282d2117c64d38afd9844148588172b}{get\+Strategy}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_network_node}{Network\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_network_node_ad78bd0bd52f67a52cbc11ce53d281423}{Network\+Node}} (const std\+::string \&node\+Name)
+\item 
+virtual \mbox{\hyperlink{class_network_node_a6f25dfa8cc55059aaac785dec94967e1}{\texorpdfstring{$\sim$}{\string~}\+Network\+Node}} ()=default
+\item 
+virtual std\+::string \mbox{\hyperlink{class_network_node_a080a5b93f6e887362aaa53d7f1e01eec}{get\+Name}} () const
+\item 
+virtual void \mbox{\hyperlink{class_network_node_aa1ebd9836fb5830be86c72efb095075a}{set\+Name}} (const std\+::string \&new\+Name)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_network_node}{Network\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_network_node_abf86c659198a2f755fbfb7f6e7177461}{name}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a single physical or virtual server in the network. 
+
+
+\begin{DoxyItemize}
+\item A leaf in the Composite structure. It maintains its own routing strategy and operational state (State \& Strategy patterns). 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_server_node_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_server_node_a985a11f4a50b5365ffb27c7ecaba9669}\index{ServerNode@{ServerNode}!ServerNode@{ServerNode}}
+\index{ServerNode@{ServerNode}!ServerNode@{ServerNode}}
+\doxysubsubsection{\texorpdfstring{ServerNode()}{ServerNode()}}
+{\footnotesize\ttfamily \label{class_server_node_a985a11f4a50b5365ffb27c7ecaba9669} 
+Server\+Node\+::\+Server\+Node (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{node\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_server_node_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_server_node_a29bb8bdb9112504496473c3c03f3e7a6}\index{ServerNode@{ServerNode}!changeState@{changeState}}
+\index{changeState@{changeState}!ServerNode@{ServerNode}}
+\doxysubsubsection{\texorpdfstring{changeState()}{changeState()}}
+{\footnotesize\ttfamily \label{class_server_node_a29bb8bdb9112504496473c3c03f3e7a6} 
+void Server\+Node\+::change\+State (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_node_state}{Node\+State}} $>$}]{new\+State}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_server_node_a24c02295eb844db5ed0a6d8c84918438}\index{ServerNode@{ServerNode}!clearConnections@{clearConnections}}
+\index{clearConnections@{clearConnections}!ServerNode@{ServerNode}}
+\doxysubsubsection{\texorpdfstring{clearConnections()}{clearConnections()}}
+{\footnotesize\ttfamily \label{class_server_node_a24c02295eb844db5ed0a6d8c84918438} 
+void Server\+Node\+::clear\+Connections (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_network_node_af99fade8ef92df56bb630ba3e68ffbd5}{Network\+Node}}.
+
+\Hypertarget{class_server_node_ac08156eee7d302d3ba4e0aadd0c32cb9}\index{ServerNode@{ServerNode}!clone@{clone}}
+\index{clone@{clone}!ServerNode@{ServerNode}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{class_server_node_ac08156eee7d302d3ba4e0aadd0c32cb9} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ Server\+Node\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Creates a deep copy of the node (Prototype pattern). 
+
+
+
+Implements \mbox{\hyperlink{class_network_node_a8715765721caa7fef0fa20aa1005a0e7}{Network\+Node}}.
+
+\Hypertarget{class_server_node_acb732448ca1a39587e9d21ac39409fac}\index{ServerNode@{ServerNode}!connectTo@{connectTo}}
+\index{connectTo@{connectTo}!ServerNode@{ServerNode}}
+\doxysubsubsection{\texorpdfstring{connectTo()}{connectTo()}}
+{\footnotesize\ttfamily \label{class_server_node_acb732448ca1a39587e9d21ac39409fac} 
+void Server\+Node\+::connect\+To (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_network_node_a36e8de7c17c64f6c14b6f204d21b2690}{Network\+Node}}.
+
+\Hypertarget{class_server_node_a2dcbdae0ae9f7da59bc8df4b27ff7ace}\index{ServerNode@{ServerNode}!getConnections@{getConnections}}
+\index{getConnections@{getConnections}!ServerNode@{ServerNode}}
+\doxysubsubsection{\texorpdfstring{getConnections()}{getConnections()}}
+{\footnotesize\ttfamily \label{class_server_node_a2dcbdae0ae9f7da59bc8df4b27ff7ace} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ $>$ Server\+Node\+::get\+Connections (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_network_node_acd67db0b3c05d46c5baa93bf1ac18d25}{Network\+Node}}.
+
+\Hypertarget{class_server_node_ac282d2117c64d38afd9844148588172b}\index{ServerNode@{ServerNode}!getStrategy@{getStrategy}}
+\index{getStrategy@{getStrategy}!ServerNode@{ServerNode}}
+\doxysubsubsection{\texorpdfstring{getStrategy()}{getStrategy()}}
+{\footnotesize\ttfamily \label{class_server_node_ac282d2117c64d38afd9844148588172b} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_routing_strategy}{Routing\+Strategy}} $>$ Server\+Node\+::get\+Strategy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_server_node_aabec43679b5fd58e7e17c66c6b70c839}\index{ServerNode@{ServerNode}!isOperational@{isOperational}}
+\index{isOperational@{isOperational}!ServerNode@{ServerNode}}
+\doxysubsubsection{\texorpdfstring{isOperational()}{isOperational()}}
+{\footnotesize\ttfamily \label{class_server_node_aabec43679b5fd58e7e17c66c6b70c839} 
+bool Server\+Node\+::is\+Operational (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_network_node_a62aecb76be775656d114749f0c8b82b1}{Network\+Node}}.
+
+\Hypertarget{class_server_node_aab44869c194d8cb4adc973c63ed10517}\index{ServerNode@{ServerNode}!processTraffic@{processTraffic}}
+\index{processTraffic@{processTraffic}!ServerNode@{ServerNode}}
+\doxysubsubsection{\texorpdfstring{processTraffic()}{processTraffic()}}
+{\footnotesize\ttfamily \label{class_server_node_aab44869c194d8cb4adc973c63ed10517} 
+std\+::string Server\+Node\+::process\+Traffic (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_network_node_afdfa6c61887bd333bfa1e796e2add094}{Network\+Node}}.
+
+\Hypertarget{class_server_node_a880355dc4b83ed5a384e9548049e0a7d}\index{ServerNode@{ServerNode}!removeConnection@{removeConnection}}
+\index{removeConnection@{removeConnection}!ServerNode@{ServerNode}}
+\doxysubsubsection{\texorpdfstring{removeConnection()}{removeConnection()}}
+{\footnotesize\ttfamily \label{class_server_node_a880355dc4b83ed5a384e9548049e0a7d} 
+void Server\+Node\+::remove\+Connection (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_network_node_a0c3791157c76ba5227dd94f4d57701dd}{Network\+Node}}.
+
+\Hypertarget{class_server_node_a9241ffe16e4ce0ae4c0c8344eefeb747}\index{ServerNode@{ServerNode}!setStrategy@{setStrategy}}
+\index{setStrategy@{setStrategy}!ServerNode@{ServerNode}}
+\doxysubsubsection{\texorpdfstring{setStrategy()}{setStrategy()}}
+{\footnotesize\ttfamily \label{class_server_node_a9241ffe16e4ce0ae4c0c8344eefeb747} 
+void Server\+Node\+::set\+Strategy (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_routing_strategy}{Routing\+Strategy}} $>$}]{new\+Strategy}{}\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/network/\mbox{\hyperlink{_server_node_8h}{Server\+Node.\+h}}\item 
+src/network/\mbox{\hyperlink{_server_node_8cpp}{Server\+Node.\+cpp}}\end{DoxyCompactItemize}

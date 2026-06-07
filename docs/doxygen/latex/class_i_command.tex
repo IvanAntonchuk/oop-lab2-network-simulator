@@ -1,0 +1,83 @@
+\doxysection{ICommand Class Reference}
+\hypertarget{class_i_command}{}\label{class_i_command}\index{ICommand@{ICommand}}
+
+
+Interface for encapsulating requests as objects (Command pattern).  
+
+
+
+
+{\ttfamily \#include $<$Simulation\+Command.\+h$>$}
+
+Inheritance diagram for ICommand\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.588652cm]{class_i_command}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_i_command_aa8a6346c5a0dcfe7fd49413a69e854ef}{\texorpdfstring{$\sim$}{\string~}\+ICommand}} ()=default
+\item 
+virtual void \mbox{\hyperlink{class_i_command_ace81beb0beea968f876f292446bf1120}{execute}} ()=0
+\begin{DoxyCompactList}\small\item\em Executes the command\textquotesingle{}s primary logic. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_i_command_a86e1942e4564840b6c5e09c3a7cdba78}{undo}} ()=0
+\begin{DoxyCompactList}\small\item\em Reverts the effects of the command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for encapsulating requests as objects (Command pattern). 
+
+
+\begin{DoxyItemize}
+\item Defines the standard structure for any action that can be executed and undone. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_i_command_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_i_command_aa8a6346c5a0dcfe7fd49413a69e854ef}\index{ICommand@{ICommand}!````~ICommand@{\texorpdfstring{$\sim$}{\string~}ICommand}}
+\index{````~ICommand@{\texorpdfstring{$\sim$}{\string~}ICommand}!ICommand@{ICommand}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ICommand()}{\string~ICommand()}}
+{\footnotesize\ttfamily \label{class_i_command_aa8a6346c5a0dcfe7fd49413a69e854ef} 
+virtual ICommand\+::\texorpdfstring{$\sim$}{\string~}\+ICommand (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_i_command_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_i_command_ace81beb0beea968f876f292446bf1120}\index{ICommand@{ICommand}!execute@{execute}}
+\index{execute@{execute}!ICommand@{ICommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{class_i_command_ace81beb0beea968f876f292446bf1120} 
+virtual void ICommand\+::execute (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Executes the command\textquotesingle{}s primary logic. 
+
+
+
+Implemented in \mbox{\hyperlink{class_add_node_command_a0ec1e67a38977c908662733b1e7dca9b}{Add\+Node\+Command}}, \mbox{\hyperlink{class_connect_command_a4b02ca2572f1f5d4282ae961b916d172}{Connect\+Command}}, \mbox{\hyperlink{class_delete_node_command_a15d5eeecf7621e8eb9e4316f3767b84b}{Delete\+Node\+Command}}, \mbox{\hyperlink{class_disconnect_command_a43cc67de69b25f7f52b49caff827c9f3}{Disconnect\+Command}}, and \mbox{\hyperlink{class_toggle_state_command_a4ef1ce1728cfbb63d59f54d35ada1646}{Toggle\+State\+Command}}.
+
+\Hypertarget{class_i_command_a86e1942e4564840b6c5e09c3a7cdba78}\index{ICommand@{ICommand}!undo@{undo}}
+\index{undo@{undo}!ICommand@{ICommand}}
+\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
+{\footnotesize\ttfamily \label{class_i_command_a86e1942e4564840b6c5e09c3a7cdba78} 
+virtual void ICommand\+::undo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Reverts the effects of the command. 
+
+
+
+Implemented in \mbox{\hyperlink{class_add_node_command_a0744b462156ad08d360309125eb4e98b}{Add\+Node\+Command}}, \mbox{\hyperlink{class_connect_command_a4c487a7070f3c687acab00d57241ffff}{Connect\+Command}}, \mbox{\hyperlink{class_delete_node_command_a15d6c474a06d038c9643792aa000903f}{Delete\+Node\+Command}}, \mbox{\hyperlink{class_disconnect_command_a4df4a794b2659ce64b30411f0ddccd1b}{Disconnect\+Command}}, and \mbox{\hyperlink{class_toggle_state_command_ab62035bacc2781ab6cf3a6131d0fe7f6}{Toggle\+State\+Command}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/behavioral/\mbox{\hyperlink{_simulation_command_8h}{Simulation\+Command.\+h}}\end{DoxyCompactItemize}

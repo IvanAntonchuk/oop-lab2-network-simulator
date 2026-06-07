@@ -1,0 +1,41 @@
+\doxysection{Simulation\+Manager.\+h}
+\hypertarget{_simulation_manager_8h_source}{}\label{_simulation_manager_8h_source}\index{include/core/SimulationManager.h@{include/core/SimulationManager.h}}
+\mbox{\hyperlink{_simulation_manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SIMULATIONMANAGER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SIMULATIONMANAGER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_simulation_observer_8h}{SimulationObserver.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_history_manager}{HistoryManager}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }SimulationManager\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{bool}\ isRunning;}
+\DoxyCodeLine{00019\ \ \ \ \ std::vector<std::shared\_ptr<SimulationObserver>>\ observers;}
+\DoxyCodeLine{00020\ \ \ \ \ std::unique\_ptr<HistoryManager>\ history;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ SimulationManager();}
+\DoxyCodeLine{00023\ \ \ \ \ \string~SimulationManager();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{class_simulation_manager_aec0b6707c60797b3bcdcd164726e9a67}{SimulationManager}}(\textcolor{keyword}{const}\ SimulationManager\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00027\ \ \ \ \ SimulationManager\&\ \mbox{\hyperlink{class_simulation_manager_a12d0ca3962e2720bce355db4a9627c2f}{operator=}}(\textcolor{keyword}{const}\ SimulationManager\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{static}\ SimulationManager\&\ \mbox{\hyperlink{class_simulation_manager_a15cf92e763af82475c4e6e050caa7876}{getInstance}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_simulation_manager_a40983df87b263784ba6b9ec78d56a699}{attach}}(std::shared\_ptr<SimulationObserver>\ observer);}
+\DoxyCodeLine{00033\ \ \ \ \ std::string\ \mbox{\hyperlink{class_simulation_manager_a2481662b6c8eb767cb07bc0f07985d8e}{notifyObservers}}(\textcolor{keyword}{const}\ std::string\&\ event);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_simulation_manager_aa227d33255c70f89d7e060c13fc3072d}{getIsRunning}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_simulation_manager_ab092f1bdea4b7f6e0512e2fd8e7e108b}{setRunning}}(\textcolor{keywordtype}{bool}\ state);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{class_history_manager}{HistoryManager}}*\ \mbox{\hyperlink{class_simulation_manager_a0513ac233565f46889ad69c03a3c33b9}{getHistory}}();}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

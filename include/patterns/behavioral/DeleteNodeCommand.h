@@ -12,6 +12,9 @@ class ServerNode;
 class QGraphicsScene;
 class VisualEdge;
 
+/**
+ * @brief Command to remove a node and all its connected edges from the network.
+ */
 class DeleteNodeCommand : public ICommand {
 public:
     DeleteNodeCommand(std::map<VisualNode*, std::shared_ptr<ServerNode>>& nodesMap,

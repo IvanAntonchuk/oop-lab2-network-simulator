@@ -6,6 +6,10 @@
 #include <memory>
 #include <string>
 
+/**
+ * @brief Concrete strategy implementing Shortest Path routing (BFS algorithm).
+ * * Finds the most optimal, shortest route between two nodes.
+ */
 class ShortestPathStrategy : public RoutingStrategy {
 public:
     std::vector<std::shared_ptr<NetworkNode>> calculatePath(

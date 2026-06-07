@@ -1,0 +1,20 @@
+\doxysection{Topology\+Prototype.\+h}
+\hypertarget{_topology_prototype_8h_source}{}\label{_topology_prototype_8h_source}\index{include/patterns/creational/TopologyPrototype.h@{include/patterns/creational/TopologyPrototype.h}}
+\mbox{\hyperlink{_topology_prototype_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TOPOLOGYPROTOTYPE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TOPOLOGYPROTOTYPE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_subnet_8h}{Subnet.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_topology_prototype}{TopologyPrototype}}\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_topology_prototype_ad8d31a6b29b95a39bebda9b95a151c3a}{\string~TopologyPrototype}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<TopologyPrototype>\ \mbox{\hyperlink{class_topology_prototype_a0c44a8876a847b7005fd8d3e08601130}{cloneTopology}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<Subnet>\ \mbox{\hyperlink{class_topology_prototype_a42471460bdfd606627a6de8956bc5e8c}{getNetwork}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00017\ \};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

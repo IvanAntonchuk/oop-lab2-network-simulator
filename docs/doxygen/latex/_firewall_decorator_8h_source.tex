@@ -1,0 +1,23 @@
+\doxysection{Firewall\+Decorator.\+h}
+\hypertarget{_firewall_decorator_8h_source}{}\label{_firewall_decorator_8h_source}\index{include/patterns/structural/FirewallDecorator.h@{include/patterns/structural/FirewallDecorator.h}}
+\mbox{\hyperlink{_firewall_decorator_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ FIREWALLDECORATOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ FIREWALLDECORATOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_node_decorator_8h}{NodeDecorator.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_firewall_decorator_af5d9aa947d2a126a30e99d1df014035c}{FirewallDecorator}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_node_decorator_a2cf1fd5b8bb209f3fdaaa7187e13f166}{NodeDecorator}}\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00013\ \ \ \ \ std::string\ blockMaliciousPackets();}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_firewall_decorator_af5d9aa947d2a126a30e99d1df014035c}{FirewallDecorator}}(std::shared\_ptr<NetworkNode>\ node);}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ std::string\ \mbox{\hyperlink{class_firewall_decorator_a9175fb8e123bfef359cfc514c7cd3805}{processTraffic}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00019\ \ \ \ \ std::shared\_ptr<NetworkNode>\ \mbox{\hyperlink{class_firewall_decorator_a02345b02aacf3fef8740462ef44d0955}{clone}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

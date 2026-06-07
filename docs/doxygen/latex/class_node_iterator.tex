@@ -1,0 +1,83 @@
+\doxysection{Node\+Iterator Class Reference}
+\hypertarget{class_node_iterator}{}\label{class_node_iterator}\index{NodeIterator@{NodeIterator}}
+
+
+Interface for sequentially accessing elements of a composite network (Iterator pattern).  
+
+
+
+
+{\ttfamily \#include $<$Node\+Iterator.\+h$>$}
+
+Inheritance diagram for Node\+Iterator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_node_iterator}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_node_iterator_ae4ddccb1a99721ebedc783bc70e2430d}{\texorpdfstring{$\sim$}{\string~}\+Node\+Iterator}} ()=default
+\item 
+virtual bool \mbox{\hyperlink{class_node_iterator_a1d11a2a7b929298988bab5d7f2899e6a}{has\+Next}} () const =0
+\begin{DoxyCompactList}\small\item\em Checks if there are more nodes in the iteration. \end{DoxyCompactList}\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ \mbox{\hyperlink{class_node_iterator_a707f637e5b44fe8eef605b3d66d598a8}{next}} ()=0
+\begin{DoxyCompactList}\small\item\em Retrieves the next node in the iteration sequence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for sequentially accessing elements of a composite network (Iterator pattern). 
+
+
+\begin{DoxyItemize}
+\item Provides a standard way to traverse through nodes in a \doxylink{class_subnet}{Subnet} without exposing its internal underlying representation. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_node_iterator_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_node_iterator_ae4ddccb1a99721ebedc783bc70e2430d}\index{NodeIterator@{NodeIterator}!````~NodeIterator@{\texorpdfstring{$\sim$}{\string~}NodeIterator}}
+\index{````~NodeIterator@{\texorpdfstring{$\sim$}{\string~}NodeIterator}!NodeIterator@{NodeIterator}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}NodeIterator()}{\string~NodeIterator()}}
+{\footnotesize\ttfamily \label{class_node_iterator_ae4ddccb1a99721ebedc783bc70e2430d} 
+virtual Node\+Iterator\+::\texorpdfstring{$\sim$}{\string~}\+Node\+Iterator (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_node_iterator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_node_iterator_a1d11a2a7b929298988bab5d7f2899e6a}\index{NodeIterator@{NodeIterator}!hasNext@{hasNext}}
+\index{hasNext@{hasNext}!NodeIterator@{NodeIterator}}
+\doxysubsubsection{\texorpdfstring{hasNext()}{hasNext()}}
+{\footnotesize\ttfamily \label{class_node_iterator_a1d11a2a7b929298988bab5d7f2899e6a} 
+virtual bool Node\+Iterator\+::has\+Next (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Checks if there are more nodes in the iteration. 
+
+
+
+Implemented in \mbox{\hyperlink{class_subnet_iterator_aea1f60c4fefff7cd15d42defcd14f8ca}{Subnet\+Iterator}}.
+
+\Hypertarget{class_node_iterator_a707f637e5b44fe8eef605b3d66d598a8}\index{NodeIterator@{NodeIterator}!next@{next}}
+\index{next@{next}!NodeIterator@{NodeIterator}}
+\doxysubsubsection{\texorpdfstring{next()}{next()}}
+{\footnotesize\ttfamily \label{class_node_iterator_a707f637e5b44fe8eef605b3d66d598a8} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ Node\+Iterator\+::next (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Retrieves the next node in the iteration sequence. 
+
+
+
+Implemented in \mbox{\hyperlink{class_subnet_iterator_acf7beb6fd39d0a56eea843c33acb0fac}{Subnet\+Iterator}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/behavioral/\mbox{\hyperlink{_node_iterator_8h}{Node\+Iterator.\+h}}\end{DoxyCompactItemize}

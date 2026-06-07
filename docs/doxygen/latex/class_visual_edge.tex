@@ -1,0 +1,130 @@
+\doxysection{Visual\+Edge Class Reference}
+\hypertarget{class_visual_edge}{}\label{class_visual_edge}\index{VisualEdge@{VisualEdge}}
+
+
+Graphical representation of a connection (cable) between two Visual\+Nodes.  
+
+
+
+
+{\ttfamily \#include $<$Visual\+Edge.\+h$>$}
+
+Inheritance diagram for Visual\+Edge\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_visual_edge}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_visual_edge_acee64cad4390979f1501b01357ec9ccb}{edge\+Deleted}} (\mbox{\hyperlink{class_visual_edge}{Visual\+Edge}} \texorpdfstring{$\ast$}{*}edge)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_visual_edge_a14b34baa3e67978b189e6308b358acf4}{Visual\+Edge}} (\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}source, \mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}target)
+\item 
+\mbox{\hyperlink{class_visual_edge_ac01d69f8b7f99975c2ebd40f26d0c804}{\texorpdfstring{$\sim$}{\string~}\+Visual\+Edge}} ()
+\item 
+void \mbox{\hyperlink{class_visual_edge_a48f748fde6041813b87275118c5ff30a}{update\+Position}} ()
+\item 
+void \mbox{\hyperlink{class_visual_edge_ac877d7189e9666d8a9372231fe9b4efa}{set\+Highlighted}} (bool active)
+\item 
+\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_visual_edge_a231a581662c0c9fd4b783dd9de027178}{get\+Source\+Node}} () const
+\item 
+\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_visual_edge_aad1ead1145bf1a473cb2a15b0cac7817}{get\+Target\+Node}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_visual_edge_add07375e8554b8910081ad3f337ef55e}{context\+Menu\+Event}} (QGraphics\+Scene\+Context\+Menu\+Event \texorpdfstring{$\ast$}{*}event) override
+\item 
+QVariant \mbox{\hyperlink{class_visual_edge_aa6288bbab0b25b9f0b2b4c1549f1b6dd}{item\+Change}} (Graphics\+Item\+Change change, const QVariant \&value) override
+\item 
+void \mbox{\hyperlink{class_visual_edge_a7be2b5f6eed12493144cb77050d00396}{paint}} (QPainter \texorpdfstring{$\ast$}{*}painter, const QStyle\+Option\+Graphics\+Item \texorpdfstring{$\ast$}{*}option, QWidget \texorpdfstring{$\ast$}{*}widget=nullptr) override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Graphical representation of a connection (cable) between two Visual\+Nodes. 
+
+
+\begin{DoxyItemize}
+\item Automatically updates its position and draws a line between source and target nodes when they are moved on the Qt scene. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_visual_edge_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_visual_edge_a14b34baa3e67978b189e6308b358acf4}\index{VisualEdge@{VisualEdge}!VisualEdge@{VisualEdge}}
+\index{VisualEdge@{VisualEdge}!VisualEdge@{VisualEdge}}
+\doxysubsubsection{\texorpdfstring{VisualEdge()}{VisualEdge()}}
+{\footnotesize\ttfamily \label{class_visual_edge_a14b34baa3e67978b189e6308b358acf4} 
+Visual\+Edge\+::\+Visual\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}}]{source}{, }\item[{\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}}]{target}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_visual_edge_ac01d69f8b7f99975c2ebd40f26d0c804}\index{VisualEdge@{VisualEdge}!````~VisualEdge@{\texorpdfstring{$\sim$}{\string~}VisualEdge}}
+\index{````~VisualEdge@{\texorpdfstring{$\sim$}{\string~}VisualEdge}!VisualEdge@{VisualEdge}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}VisualEdge()}{\string~VisualEdge()}}
+{\footnotesize\ttfamily \label{class_visual_edge_ac01d69f8b7f99975c2ebd40f26d0c804} 
+Visual\+Edge\+::\texorpdfstring{$\sim$}{\string~}\+Visual\+Edge (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_visual_edge_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_visual_edge_add07375e8554b8910081ad3f337ef55e}\index{VisualEdge@{VisualEdge}!contextMenuEvent@{contextMenuEvent}}
+\index{contextMenuEvent@{contextMenuEvent}!VisualEdge@{VisualEdge}}
+\doxysubsubsection{\texorpdfstring{contextMenuEvent()}{contextMenuEvent()}}
+{\footnotesize\ttfamily \label{class_visual_edge_add07375e8554b8910081ad3f337ef55e} 
+void Visual\+Edge\+::context\+Menu\+Event (\begin{DoxyParamCaption}\item[{QGraphics\+Scene\+Context\+Menu\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_visual_edge_acee64cad4390979f1501b01357ec9ccb}\index{VisualEdge@{VisualEdge}!edgeDeleted@{edgeDeleted}}
+\index{edgeDeleted@{edgeDeleted}!VisualEdge@{VisualEdge}}
+\doxysubsubsection{\texorpdfstring{edgeDeleted}{edgeDeleted}}
+{\footnotesize\ttfamily \label{class_visual_edge_acee64cad4390979f1501b01357ec9ccb} 
+void Visual\+Edge\+::edge\+Deleted (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_visual_edge}{Visual\+Edge}} \texorpdfstring{$\ast$}{*}}]{edge}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\Hypertarget{class_visual_edge_a231a581662c0c9fd4b783dd9de027178}\index{VisualEdge@{VisualEdge}!getSourceNode@{getSourceNode}}
+\index{getSourceNode@{getSourceNode}!VisualEdge@{VisualEdge}}
+\doxysubsubsection{\texorpdfstring{getSourceNode()}{getSourceNode()}}
+{\footnotesize\ttfamily \label{class_visual_edge_a231a581662c0c9fd4b783dd9de027178} 
+\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*} Visual\+Edge\+::get\+Source\+Node (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_visual_edge_aad1ead1145bf1a473cb2a15b0cac7817}\index{VisualEdge@{VisualEdge}!getTargetNode@{getTargetNode}}
+\index{getTargetNode@{getTargetNode}!VisualEdge@{VisualEdge}}
+\doxysubsubsection{\texorpdfstring{getTargetNode()}{getTargetNode()}}
+{\footnotesize\ttfamily \label{class_visual_edge_aad1ead1145bf1a473cb2a15b0cac7817} 
+\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*} Visual\+Edge\+::get\+Target\+Node (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_visual_edge_aa6288bbab0b25b9f0b2b4c1549f1b6dd}\index{VisualEdge@{VisualEdge}!itemChange@{itemChange}}
+\index{itemChange@{itemChange}!VisualEdge@{VisualEdge}}
+\doxysubsubsection{\texorpdfstring{itemChange()}{itemChange()}}
+{\footnotesize\ttfamily \label{class_visual_edge_aa6288bbab0b25b9f0b2b4c1549f1b6dd} 
+QVariant Visual\+Edge\+::item\+Change (\begin{DoxyParamCaption}\item[{Graphics\+Item\+Change}]{change}{, }\item[{const QVariant \&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_visual_edge_a7be2b5f6eed12493144cb77050d00396}\index{VisualEdge@{VisualEdge}!paint@{paint}}
+\index{paint@{paint}!VisualEdge@{VisualEdge}}
+\doxysubsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily \label{class_visual_edge_a7be2b5f6eed12493144cb77050d00396} 
+void Visual\+Edge\+::paint (\begin{DoxyParamCaption}\item[{QPainter \texorpdfstring{$\ast$}{*}}]{painter}{, }\item[{const QStyle\+Option\+Graphics\+Item \texorpdfstring{$\ast$}{*}}]{option}{, }\item[{QWidget \texorpdfstring{$\ast$}{*}}]{widget}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_visual_edge_ac877d7189e9666d8a9372231fe9b4efa}\index{VisualEdge@{VisualEdge}!setHighlighted@{setHighlighted}}
+\index{setHighlighted@{setHighlighted}!VisualEdge@{VisualEdge}}
+\doxysubsubsection{\texorpdfstring{setHighlighted()}{setHighlighted()}}
+{\footnotesize\ttfamily \label{class_visual_edge_ac877d7189e9666d8a9372231fe9b4efa} 
+void Visual\+Edge\+::set\+Highlighted (\begin{DoxyParamCaption}\item[{bool}]{active}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_visual_edge_a48f748fde6041813b87275118c5ff30a}\index{VisualEdge@{VisualEdge}!updatePosition@{updatePosition}}
+\index{updatePosition@{updatePosition}!VisualEdge@{VisualEdge}}
+\doxysubsubsection{\texorpdfstring{updatePosition()}{updatePosition()}}
+{\footnotesize\ttfamily \label{class_visual_edge_a48f748fde6041813b87275118c5ff30a} 
+void Visual\+Edge\+::update\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/visual/\mbox{\hyperlink{_visual_edge_8h}{Visual\+Edge.\+h}}\item 
+src/visual/\mbox{\hyperlink{_visual_edge_8cpp}{Visual\+Edge.\+cpp}}\end{DoxyCompactItemize}

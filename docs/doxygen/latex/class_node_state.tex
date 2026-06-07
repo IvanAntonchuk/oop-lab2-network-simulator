@@ -1,0 +1,83 @@
+\doxysection{Node\+State Class Reference}
+\hypertarget{class_node_state}{}\label{class_node_state}\index{NodeState@{NodeState}}
+
+
+Interface defining the operational state of a server (State pattern).  
+
+
+
+
+{\ttfamily \#include $<$Node\+State.\+h$>$}
+
+Inheritance diagram for Node\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_node_state}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_node_state_aca8ef08488cc15fd79defc9be9854377}{\texorpdfstring{$\sim$}{\string~}\+Node\+State}} ()=default
+\item 
+virtual std\+::string \mbox{\hyperlink{class_node_state_ac982360f00111064cb28648682099ac4}{handle}} (\mbox{\hyperlink{class_server_node}{Server\+Node}} \texorpdfstring{$\ast$}{*}node)=0
+\begin{DoxyCompactList}\small\item\em Handles traffic based on the current state. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_node_state_a17a01083e1305c582b2bf13d3e9b8441}{is\+Operational}} () const =0
+\begin{DoxyCompactList}\small\item\em Determines if the server is active in this state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface defining the operational state of a server (State pattern). 
+
+
+\begin{DoxyItemize}
+\item Extracts state-\/specific behavior into separate classes, allowing a server to change its behavior dynamically. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_node_state_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_node_state_aca8ef08488cc15fd79defc9be9854377}\index{NodeState@{NodeState}!````~NodeState@{\texorpdfstring{$\sim$}{\string~}NodeState}}
+\index{````~NodeState@{\texorpdfstring{$\sim$}{\string~}NodeState}!NodeState@{NodeState}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}NodeState()}{\string~NodeState()}}
+{\footnotesize\ttfamily \label{class_node_state_aca8ef08488cc15fd79defc9be9854377} 
+virtual Node\+State\+::\texorpdfstring{$\sim$}{\string~}\+Node\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_node_state_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_node_state_ac982360f00111064cb28648682099ac4}\index{NodeState@{NodeState}!handle@{handle}}
+\index{handle@{handle}!NodeState@{NodeState}}
+\doxysubsubsection{\texorpdfstring{handle()}{handle()}}
+{\footnotesize\ttfamily \label{class_node_state_ac982360f00111064cb28648682099ac4} 
+virtual std\+::string Node\+State\+::handle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_server_node}{Server\+Node}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Handles traffic based on the current state. 
+
+
+
+Implemented in \mbox{\hyperlink{class_offline_state_ad8aa18f4d5badd84c03a752f44b48a5e}{Offline\+State}}, and \mbox{\hyperlink{class_online_state_a2fbf340a8152d23d3ebb057b173d7981}{Online\+State}}.
+
+\Hypertarget{class_node_state_a17a01083e1305c582b2bf13d3e9b8441}\index{NodeState@{NodeState}!isOperational@{isOperational}}
+\index{isOperational@{isOperational}!NodeState@{NodeState}}
+\doxysubsubsection{\texorpdfstring{isOperational()}{isOperational()}}
+{\footnotesize\ttfamily \label{class_node_state_a17a01083e1305c582b2bf13d3e9b8441} 
+virtual bool Node\+State\+::is\+Operational (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Determines if the server is active in this state. 
+
+
+
+Implemented in \mbox{\hyperlink{class_offline_state_a7dbbc7cf79f9bc4dc047e87688cfb315}{Offline\+State}}, and \mbox{\hyperlink{class_online_state_ab917f74750cd2f9add17e29a4263f093}{Online\+State}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/behavioral/\mbox{\hyperlink{_node_state_8h}{Node\+State.\+h}}\end{DoxyCompactItemize}

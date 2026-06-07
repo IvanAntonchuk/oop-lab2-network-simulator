@@ -4,6 +4,11 @@
 #include "TopologyPrototype.h"
 #include "Subnet.h"
 
+/**
+ * @brief Represents a pre-configured Star Topology network.
+ * * Implements the Prototype pattern to allow quick cloning of a
+ * standard star network configuration.
+ */
 class StarTopology : public TopologyPrototype {
 private:
     std::shared_ptr<Subnet> baseSubnet;

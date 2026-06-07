@@ -1,0 +1,22 @@
+\doxysection{Node\+Iterator.\+h}
+\hypertarget{_node_iterator_8h_source}{}\label{_node_iterator_8h_source}\index{include/patterns/behavioral/NodeIterator.h@{include/patterns/behavioral/NodeIterator.h}}
+\mbox{\hyperlink{_node_iterator_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ NODEITERATOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ NODEITERATOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_network_node_8h}{NetworkNode.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_node_iterator}{NodeIterator}}\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_node_iterator_ae4ddccb1a99721ebedc783bc70e2430d}{\string~NodeIterator}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_node_iterator_a1d11a2a7b929298988bab5d7f2899e6a}{hasNext}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<NetworkNode>\ \mbox{\hyperlink{class_node_iterator_a707f637e5b44fe8eef605b3d66d598a8}{next}}()\ =\ 0;}
+\DoxyCodeLine{00021\ \};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

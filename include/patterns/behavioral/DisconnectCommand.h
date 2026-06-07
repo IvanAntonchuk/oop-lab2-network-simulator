@@ -7,6 +7,9 @@
 class QGraphicsScene;
 class VisualEdge;
 
+/**
+ * @brief Command to remove an existing connection between two nodes.
+ */
 class DisconnectCommand : public ICommand {
 public:
     DisconnectCommand(QGraphicsScene* scene, VisualEdge* e, std::function<void()> cb);

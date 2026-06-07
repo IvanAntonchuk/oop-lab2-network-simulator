@@ -8,6 +8,9 @@
 class VisualNode;
 class ServerNode;
 
+/**
+ * @brief Command to toggle the operational state (Online/Offline) of a node.
+ */
 class ToggleStateCommand : public ICommand {
 public:
     ToggleStateCommand(VisualNode* vNode, std::shared_ptr<ServerNode> sNode, bool prevOffline, std::function<void()> cb);

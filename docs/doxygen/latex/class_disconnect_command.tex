@@ -1,0 +1,84 @@
+\doxysection{Disconnect\+Command Class Reference}
+\hypertarget{class_disconnect_command}{}\label{class_disconnect_command}\index{DisconnectCommand@{DisconnectCommand}}
+
+
+Command to remove an existing connection between two nodes.  
+
+
+
+
+{\ttfamily \#include $<$Disconnect\+Command.\+h$>$}
+
+Inheritance diagram for Disconnect\+Command\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_disconnect_command}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_disconnect_command_a04dc725ee5727bdb8b4dc36309b8336c}{Disconnect\+Command}} (QGraphics\+Scene \texorpdfstring{$\ast$}{*}scene, \mbox{\hyperlink{class_visual_edge}{Visual\+Edge}} \texorpdfstring{$\ast$}{*}e, std\+::function$<$ void()$>$ cb)
+\item 
+void \mbox{\hyperlink{class_disconnect_command_a43cc67de69b25f7f52b49caff827c9f3}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Executes the command\textquotesingle{}s primary logic. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_disconnect_command_a4df4a794b2659ce64b30411f0ddccd1b}{undo}} () override
+\begin{DoxyCompactList}\small\item\em Reverts the effects of the command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_i_command}{ICommand}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_i_command_aa8a6346c5a0dcfe7fd49413a69e854ef}{\texorpdfstring{$\sim$}{\string~}\+ICommand}} ()=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Command to remove an existing connection between two nodes. 
+
+\label{doc-constructors}
+\Hypertarget{class_disconnect_command_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_disconnect_command_a04dc725ee5727bdb8b4dc36309b8336c}\index{DisconnectCommand@{DisconnectCommand}!DisconnectCommand@{DisconnectCommand}}
+\index{DisconnectCommand@{DisconnectCommand}!DisconnectCommand@{DisconnectCommand}}
+\doxysubsubsection{\texorpdfstring{DisconnectCommand()}{DisconnectCommand()}}
+{\footnotesize\ttfamily \label{class_disconnect_command_a04dc725ee5727bdb8b4dc36309b8336c} 
+Disconnect\+Command\+::\+Disconnect\+Command (\begin{DoxyParamCaption}\item[{QGraphics\+Scene \texorpdfstring{$\ast$}{*}}]{scene}{, }\item[{\mbox{\hyperlink{class_visual_edge}{Visual\+Edge}} \texorpdfstring{$\ast$}{*}}]{e}{, }\item[{std\+::function$<$ void()$>$}]{cb}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_disconnect_command_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_disconnect_command_a43cc67de69b25f7f52b49caff827c9f3}\index{DisconnectCommand@{DisconnectCommand}!execute@{execute}}
+\index{execute@{execute}!DisconnectCommand@{DisconnectCommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{class_disconnect_command_a43cc67de69b25f7f52b49caff827c9f3} 
+void Disconnect\+Command\+::execute (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Executes the command\textquotesingle{}s primary logic. 
+
+
+
+Implements \mbox{\hyperlink{class_i_command_ace81beb0beea968f876f292446bf1120}{ICommand}}.
+
+\Hypertarget{class_disconnect_command_a4df4a794b2659ce64b30411f0ddccd1b}\index{DisconnectCommand@{DisconnectCommand}!undo@{undo}}
+\index{undo@{undo}!DisconnectCommand@{DisconnectCommand}}
+\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
+{\footnotesize\ttfamily \label{class_disconnect_command_a4df4a794b2659ce64b30411f0ddccd1b} 
+void Disconnect\+Command\+::undo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reverts the effects of the command. 
+
+
+
+Implements \mbox{\hyperlink{class_i_command_a86e1942e4564840b6c5e09c3a7cdba78}{ICommand}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/behavioral/\mbox{\hyperlink{_disconnect_command_8h}{Disconnect\+Command.\+h}}\item 
+src/patterns/behavioral/\mbox{\hyperlink{_disconnect_command_8cpp}{Disconnect\+Command.\+cpp}}\end{DoxyCompactItemize}

@@ -7,6 +7,11 @@
 
 class VisualNode;
 
+/**
+ * @brief Graphical representation of a connection (cable) between two VisualNodes.
+ * * Automatically updates its position and draws a line between source and target
+ * nodes when they are moved on the Qt scene.
+ */
 class VisualEdge : public QObject, public QGraphicsLineItem {
     Q_OBJECT
 public:

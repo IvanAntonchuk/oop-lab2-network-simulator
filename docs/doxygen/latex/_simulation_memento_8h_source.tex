@@ -1,0 +1,24 @@
+\doxysection{Simulation\+Memento.\+h}
+\hypertarget{_simulation_memento_8h_source}{}\label{_simulation_memento_8h_source}\index{include/patterns/behavioral/SimulationMemento.h@{include/patterns/behavioral/SimulationMemento.h}}
+\mbox{\hyperlink{_simulation_memento_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SIMULATIONMEMENTO\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SIMULATIONMEMENTO\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_visual_node}{VisualNode}};}
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_server_node}{ServerNode}};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_simulation_memento_a7f138ac1da576f8dece930929fdc8292}{SimulationMemento}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_simulation_memento_a7f138ac1da576f8dece930929fdc8292}{SimulationMemento}}(\textcolor{keyword}{const}\ std::map<\mbox{\hyperlink{class_visual_node}{VisualNode}}*,\ std::shared\_ptr<ServerNode>>\&\ nodesState);}
+\DoxyCodeLine{00017\ \ \ \ \ std::map<VisualNode*,\ std::shared\_ptr<ServerNode>>\ \mbox{\hyperlink{class_simulation_memento_a6f4782786e320f4586205da48eeff191}{getState}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00018\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ \ \ std::map<VisualNode*,\ std::shared\_ptr<ServerNode>>\ state;}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

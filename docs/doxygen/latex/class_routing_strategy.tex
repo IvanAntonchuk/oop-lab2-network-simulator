@@ -1,0 +1,83 @@
+\doxysection{Routing\+Strategy Class Reference}
+\hypertarget{class_routing_strategy}{}\label{class_routing_strategy}\index{RoutingStrategy@{RoutingStrategy}}
+
+
+Interface for interchangeable packet routing algorithms (Strategy pattern).  
+
+
+
+
+{\ttfamily \#include $<$Routing\+Strategy.\+h$>$}
+
+Inheritance diagram for Routing\+Strategy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_routing_strategy}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_routing_strategy_ae5c91901dfda00c985cbcb2492187450}{\texorpdfstring{$\sim$}{\string~}\+Routing\+Strategy}} ()=default
+\item 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ $>$ \mbox{\hyperlink{class_routing_strategy_a6a5aaf9053a2665bf90014d27c821a31}{calculate\+Path}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ start, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ end)=0
+\begin{DoxyCompactList}\small\item\em Calculates a path from the start node to the end node. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{class_routing_strategy_ae22bb55ea1ed57f46e56169c935d60cc}{get\+Name}} () const =0
+\begin{DoxyCompactList}\small\item\em Gets the human-\/readable name of the strategy algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for interchangeable packet routing algorithms (Strategy pattern). 
+
+
+\begin{DoxyItemize}
+\item Allows dynamic switching between different pathfinding algorithms. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_routing_strategy_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_routing_strategy_ae5c91901dfda00c985cbcb2492187450}\index{RoutingStrategy@{RoutingStrategy}!````~RoutingStrategy@{\texorpdfstring{$\sim$}{\string~}RoutingStrategy}}
+\index{````~RoutingStrategy@{\texorpdfstring{$\sim$}{\string~}RoutingStrategy}!RoutingStrategy@{RoutingStrategy}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}RoutingStrategy()}{\string~RoutingStrategy()}}
+{\footnotesize\ttfamily \label{class_routing_strategy_ae5c91901dfda00c985cbcb2492187450} 
+virtual Routing\+Strategy\+::\texorpdfstring{$\sim$}{\string~}\+Routing\+Strategy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_routing_strategy_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_routing_strategy_a6a5aaf9053a2665bf90014d27c821a31}\index{RoutingStrategy@{RoutingStrategy}!calculatePath@{calculatePath}}
+\index{calculatePath@{calculatePath}!RoutingStrategy@{RoutingStrategy}}
+\doxysubsubsection{\texorpdfstring{calculatePath()}{calculatePath()}}
+{\footnotesize\ttfamily \label{class_routing_strategy_a6a5aaf9053a2665bf90014d27c821a31} 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ $>$ Routing\+Strategy\+::calculate\+Path (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$}]{start}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$}]{end}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Calculates a path from the start node to the end node. 
+
+
+
+Implemented in \mbox{\hyperlink{class_random_path_strategy_ab05a6507c945f324a8b2944ddbc9366e}{Random\+Path\+Strategy}}, and \mbox{\hyperlink{class_shortest_path_strategy_a88cd415cd3729a8f3773938f97e44135}{Shortest\+Path\+Strategy}}.
+
+\Hypertarget{class_routing_strategy_ae22bb55ea1ed57f46e56169c935d60cc}\index{RoutingStrategy@{RoutingStrategy}!getName@{getName}}
+\index{getName@{getName}!RoutingStrategy@{RoutingStrategy}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{class_routing_strategy_ae22bb55ea1ed57f46e56169c935d60cc} 
+virtual std\+::string Routing\+Strategy\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Gets the human-\/readable name of the strategy algorithm. 
+
+
+
+Implemented in \mbox{\hyperlink{class_random_path_strategy_a5a9aa16716cedf1c697674af2d4f4a3b}{Random\+Path\+Strategy}}, and \mbox{\hyperlink{class_shortest_path_strategy_aaf745db3218a8669f13b76660c5623c4}{Shortest\+Path\+Strategy}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/behavioral/\mbox{\hyperlink{_routing_strategy_8h}{Routing\+Strategy.\+h}}\end{DoxyCompactItemize}

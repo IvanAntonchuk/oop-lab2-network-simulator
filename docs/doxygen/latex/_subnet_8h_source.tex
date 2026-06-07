@@ -1,0 +1,33 @@
+\doxysection{Subnet.\+h}
+\hypertarget{_subnet_8h_source}{}\label{_subnet_8h_source}\index{include/network/Subnet.h@{include/network/Subnet.h}}
+\mbox{\hyperlink{_subnet_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SUBNET\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SUBNET\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_network_node_8h}{NetworkNode.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_node_iterator_8h}{NodeIterator.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_subnet_a427abfc85ed293a80bf06cba90b9500c}{Subnet}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_network_node_ad78bd0bd52f67a52cbc11ce53d281423}{NetworkNode}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015\ \ \ \ \ std::vector<std::shared\_ptr<NetworkNode>>\ nodes;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_subnet_a427abfc85ed293a80bf06cba90b9500c}{Subnet}}(\textcolor{keyword}{const}\ std::string\&\ subnetName);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_subnet_a7d3aa382a8cf13fde81c6af434ab1e59}{addNode}}(std::shared\_ptr<NetworkNode>\ node);}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_subnet_aa8397bee46e468025f58b07c22d7d6e2}{removeNode}}(\textcolor{keyword}{const}\ std::string\&\ nodeName);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ std::string\ \mbox{\hyperlink{class_subnet_a6570e0f5c94982c84d4aa0cd8b4d597d}{processTraffic}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::shared\_ptr<NetworkNode>>\&\ \mbox{\hyperlink{class_subnet_abb6e61255942bfdb53fc817edfff48d6}{getNodes}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ std::shared\_ptr<NetworkNode>\ \mbox{\hyperlink{class_subnet_a59373ea624c40730a737a0393a516e77}{clone}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00029\ \ \ \ \ std::unique\_ptr<NodeIterator>\ \mbox{\hyperlink{class_subnet_a9f1997f2b047ff5db088d1445b843ed4}{createIterator}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

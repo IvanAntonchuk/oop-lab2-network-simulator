@@ -1,0 +1,35 @@
+\doxysection{Network\+Node.\+h}
+\hypertarget{_network_node_8h_source}{}\label{_network_node_8h_source}\index{include/network/NetworkNode.h@{include/network/NetworkNode.h}}
+\mbox{\hyperlink{_network_node_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ NETWORKNODE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ NETWORKNODE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_network_node_ad78bd0bd52f67a52cbc11ce53d281423}{NetworkNode}}\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00014\ \ \ \ \ std::string\ \mbox{\hyperlink{class_network_node_abf86c659198a2f755fbfb7f6e7177461}{name}};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_network_node_ad78bd0bd52f67a52cbc11ce53d281423}{NetworkNode}}(\textcolor{keyword}{const}\ std::string\&\ nodeName)\ :\ \mbox{\hyperlink{class_network_node_abf86c659198a2f755fbfb7f6e7177461}{name}}(nodeName)\ \{\}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_network_node_a6f25dfa8cc55059aaac785dec94967e1}{\string~NetworkNode}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{class_network_node_afdfa6c61887bd333bfa1e796e2add094}{processTraffic}}()\ =\ 0;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{class_network_node_a080a5b93f6e887362aaa53d7f1e01eec}{getName}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_network_node_abf86c659198a2f755fbfb7f6e7177461}{name}};\ \}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_network_node_aa1ebd9836fb5830be86c72efb095075a}{setName}}(\textcolor{keyword}{const}\ std::string\&\ newName)\ \{\ \mbox{\hyperlink{class_network_node_abf86c659198a2f755fbfb7f6e7177461}{name}}\ =\ newName;\ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_network_node_a62aecb76be775656d114749f0c8b82b1}{isOperational}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<NetworkNode>\ \mbox{\hyperlink{class_network_node_a8715765721caa7fef0fa20aa1005a0e7}{clone}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_network_node_a36e8de7c17c64f6c14b6f204d21b2690}{connectTo}}(std::shared\_ptr<NetworkNode>\ node)\ \{\}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_network_node_a0c3791157c76ba5227dd94f4d57701dd}{removeConnection}}(std::shared\_ptr<NetworkNode>\ node)\ \{\}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_network_node_af99fade8ef92df56bb630ba3e68ffbd5}{clearConnections}}()\ \{\}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<std::shared\_ptr<NetworkNode>>\ \mbox{\hyperlink{class_network_node_acd67db0b3c05d46c5baa93bf1ac18d25}{getConnections}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \{\};\ \}}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

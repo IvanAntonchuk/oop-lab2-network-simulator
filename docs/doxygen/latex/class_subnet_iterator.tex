@@ -1,0 +1,84 @@
+\doxysection{Subnet\+Iterator Class Reference}
+\hypertarget{class_subnet_iterator}{}\label{class_subnet_iterator}\index{SubnetIterator@{SubnetIterator}}
+
+
+Concrete iterator for traversing nodes within a \doxylink{class_subnet}{Subnet}.  
+
+
+
+
+{\ttfamily \#include $<$Subnet\+Iterator.\+h$>$}
+
+Inheritance diagram for Subnet\+Iterator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_subnet_iterator}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_subnet_iterator_a7e40fa1b05eec252d6257618387e816b}{Subnet\+Iterator}} (const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ $>$ \&network\+Nodes)
+\item 
+bool \mbox{\hyperlink{class_subnet_iterator_aea1f60c4fefff7cd15d42defcd14f8ca}{has\+Next}} () const override
+\begin{DoxyCompactList}\small\item\em Checks if there are more nodes in the iteration. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ \mbox{\hyperlink{class_subnet_iterator_acf7beb6fd39d0a56eea843c33acb0fac}{next}} () override
+\begin{DoxyCompactList}\small\item\em Retrieves the next node in the iteration sequence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_node_iterator}{Node\+Iterator}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_node_iterator_ae4ddccb1a99721ebedc783bc70e2430d}{\texorpdfstring{$\sim$}{\string~}\+Node\+Iterator}} ()=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Concrete iterator for traversing nodes within a \doxylink{class_subnet}{Subnet}. 
+
+\label{doc-constructors}
+\Hypertarget{class_subnet_iterator_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_subnet_iterator_a7e40fa1b05eec252d6257618387e816b}\index{SubnetIterator@{SubnetIterator}!SubnetIterator@{SubnetIterator}}
+\index{SubnetIterator@{SubnetIterator}!SubnetIterator@{SubnetIterator}}
+\doxysubsubsection{\texorpdfstring{SubnetIterator()}{SubnetIterator()}}
+{\footnotesize\ttfamily \label{class_subnet_iterator_a7e40fa1b05eec252d6257618387e816b} 
+Subnet\+Iterator\+::\+Subnet\+Iterator (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ $>$ \&}]{network\+Nodes}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_subnet_iterator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_subnet_iterator_aea1f60c4fefff7cd15d42defcd14f8ca}\index{SubnetIterator@{SubnetIterator}!hasNext@{hasNext}}
+\index{hasNext@{hasNext}!SubnetIterator@{SubnetIterator}}
+\doxysubsubsection{\texorpdfstring{hasNext()}{hasNext()}}
+{\footnotesize\ttfamily \label{class_subnet_iterator_aea1f60c4fefff7cd15d42defcd14f8ca} 
+bool Subnet\+Iterator\+::has\+Next (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Checks if there are more nodes in the iteration. 
+
+
+
+Implements \mbox{\hyperlink{class_node_iterator_a1d11a2a7b929298988bab5d7f2899e6a}{Node\+Iterator}}.
+
+\Hypertarget{class_subnet_iterator_acf7beb6fd39d0a56eea843c33acb0fac}\index{SubnetIterator@{SubnetIterator}!next@{next}}
+\index{next@{next}!SubnetIterator@{SubnetIterator}}
+\doxysubsubsection{\texorpdfstring{next()}{next()}}
+{\footnotesize\ttfamily \label{class_subnet_iterator_acf7beb6fd39d0a56eea843c33acb0fac} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ Subnet\+Iterator\+::next (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Retrieves the next node in the iteration sequence. 
+
+
+
+Implements \mbox{\hyperlink{class_node_iterator_a707f637e5b44fe8eef605b3d66d598a8}{Node\+Iterator}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/behavioral/\mbox{\hyperlink{_subnet_iterator_8h}{Subnet\+Iterator.\+h}}\item 
+src/patterns/behavioral/\mbox{\hyperlink{_subnet_iterator_8cpp}{Subnet\+Iterator.\+cpp}}\end{DoxyCompactItemize}

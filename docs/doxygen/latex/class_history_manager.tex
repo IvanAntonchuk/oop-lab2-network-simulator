@@ -1,0 +1,82 @@
+\doxysection{History\+Manager Class Reference}
+\hypertarget{class_history_manager}{}\label{class_history_manager}\index{HistoryManager@{HistoryManager}}
+
+
+Manages the execution and history of user commands (Command \& Memento patterns).  
+
+
+
+
+{\ttfamily \#include $<$History\+Manager.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_history_manager_a61275c0ac976647a9c4f011a11b7a3fc}{History\+Manager}} (\mbox{\hyperlink{class_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}sim\+Manager)
+\item 
+void \mbox{\hyperlink{class_history_manager_a05a376252e4f33b0238da19f3df73340}{execute\+Command}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_i_command}{ICommand}} $>$ command)
+\begin{DoxyCompactList}\small\item\em Executes a new command and saves it to the undo history. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_history_manager_a9411e23fe0ab1ad1517f0bd15d60d418}{undo}} ()
+\begin{DoxyCompactList}\small\item\em Reverts the last executed command. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_history_manager_a0a285df1e97d78c12022d8c9f55e37cd}{redo}} ()
+\begin{DoxyCompactList}\small\item\em Re-\/applies the last reverted command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages the execution and history of user commands (Command \& Memento patterns). 
+
+
+\begin{DoxyItemize}
+\item Provides the ability to undo and redo actions in the network editor. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_history_manager_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_history_manager_a61275c0ac976647a9c4f011a11b7a3fc}\index{HistoryManager@{HistoryManager}!HistoryManager@{HistoryManager}}
+\index{HistoryManager@{HistoryManager}!HistoryManager@{HistoryManager}}
+\doxysubsubsection{\texorpdfstring{HistoryManager()}{HistoryManager()}}
+{\footnotesize\ttfamily \label{class_history_manager_a61275c0ac976647a9c4f011a11b7a3fc} 
+History\+Manager\+::\+History\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}}]{sim\+Manager}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_history_manager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_history_manager_a05a376252e4f33b0238da19f3df73340}\index{HistoryManager@{HistoryManager}!executeCommand@{executeCommand}}
+\index{executeCommand@{executeCommand}!HistoryManager@{HistoryManager}}
+\doxysubsubsection{\texorpdfstring{executeCommand()}{executeCommand()}}
+{\footnotesize\ttfamily \label{class_history_manager_a05a376252e4f33b0238da19f3df73340} 
+void History\+Manager\+::execute\+Command (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_i_command}{ICommand}} $>$}]{command}{}\end{DoxyParamCaption})}
+
+
+
+Executes a new command and saves it to the undo history. 
+
+\Hypertarget{class_history_manager_a0a285df1e97d78c12022d8c9f55e37cd}\index{HistoryManager@{HistoryManager}!redo@{redo}}
+\index{redo@{redo}!HistoryManager@{HistoryManager}}
+\doxysubsubsection{\texorpdfstring{redo()}{redo()}}
+{\footnotesize\ttfamily \label{class_history_manager_a0a285df1e97d78c12022d8c9f55e37cd} 
+void History\+Manager\+::redo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Re-\/applies the last reverted command. 
+
+\Hypertarget{class_history_manager_a9411e23fe0ab1ad1517f0bd15d60d418}\index{HistoryManager@{HistoryManager}!undo@{undo}}
+\index{undo@{undo}!HistoryManager@{HistoryManager}}
+\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
+{\footnotesize\ttfamily \label{class_history_manager_a9411e23fe0ab1ad1517f0bd15d60d418} 
+void History\+Manager\+::undo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Reverts the last executed command. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/core/\mbox{\hyperlink{_history_manager_8h}{History\+Manager.\+h}}\item 
+src/core/\mbox{\hyperlink{_history_manager_8cpp}{History\+Manager.\+cpp}}\end{DoxyCompactItemize}

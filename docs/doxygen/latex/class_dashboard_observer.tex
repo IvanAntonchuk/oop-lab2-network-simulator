@@ -1,0 +1,73 @@
+\doxysection{Dashboard\+Observer Class Reference}
+\hypertarget{class_dashboard_observer}{}\label{class_dashboard_observer}\index{DashboardObserver@{DashboardObserver}}
+
+
+Concrete observer that updates the UI dashboard (Observer pattern).  
+
+
+
+
+{\ttfamily \#include $<$Dashboard\+Observer.\+h$>$}
+
+Inheritance diagram for Dashboard\+Observer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_dashboard_observer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_dashboard_observer_afd0990c9e0d385817a22c5911367f398}{Dashboard\+Observer}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_subnet}{Subnet}} $>$ \texorpdfstring{$\ast$}{*}net\+Ptr)
+\item 
+std\+::string \mbox{\hyperlink{class_dashboard_observer_a3dd5253d1944957ce9426e4e0341cf2f}{update}} (const std\+::string \&event) override
+\begin{DoxyCompactList}\small\item\em Called by the publisher to notify the observer of a new event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_simulation_observer}{Simulation\+Observer}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_simulation_observer_af13d142f67161bbd74fc4c5cfe970c1f}{\texorpdfstring{$\sim$}{\string~}\+Simulation\+Observer}} ()=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Concrete observer that updates the UI dashboard (Observer pattern). 
+
+
+\begin{DoxyItemize}
+\item Reacts to events from the \doxylink{class_simulation_manager}{Simulation\+Manager} and calculates real-\/time statistics. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_dashboard_observer_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_dashboard_observer_afd0990c9e0d385817a22c5911367f398}\index{DashboardObserver@{DashboardObserver}!DashboardObserver@{DashboardObserver}}
+\index{DashboardObserver@{DashboardObserver}!DashboardObserver@{DashboardObserver}}
+\doxysubsubsection{\texorpdfstring{DashboardObserver()}{DashboardObserver()}}
+{\footnotesize\ttfamily \label{class_dashboard_observer_afd0990c9e0d385817a22c5911367f398} 
+Dashboard\+Observer\+::\+Dashboard\+Observer (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_subnet}{Subnet}} $>$ \texorpdfstring{$\ast$}{*}}]{net\+Ptr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_dashboard_observer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_dashboard_observer_a3dd5253d1944957ce9426e4e0341cf2f}\index{DashboardObserver@{DashboardObserver}!update@{update}}
+\index{update@{update}!DashboardObserver@{DashboardObserver}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_dashboard_observer_a3dd5253d1944957ce9426e4e0341cf2f} 
+std\+::string Dashboard\+Observer\+::update (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Called by the publisher to notify the observer of a new event. 
+
+
+
+Implements \mbox{\hyperlink{class_simulation_observer_af8605fae94eece24305e4ee7d2c57231}{Simulation\+Observer}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/behavioral/\mbox{\hyperlink{_dashboard_observer_8h}{Dashboard\+Observer.\+h}}\item 
+src/patterns/behavioral/\mbox{\hyperlink{_dashboard_observer_8cpp}{Dashboard\+Observer.\+cpp}}\end{DoxyCompactItemize}

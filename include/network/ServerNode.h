@@ -7,6 +7,11 @@
 #include <memory>
 #include <vector>
 
+/**
+ * @brief Represents a single physical or virtual server in the network.
+ * * A leaf in the Composite structure. It maintains its own routing strategy
+ * and operational state (State & Strategy patterns).
+ */
 class ServerNode : public NetworkNode {
 private:
     std::shared_ptr<RoutingStrategy> strategy;

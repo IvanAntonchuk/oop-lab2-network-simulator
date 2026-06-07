@@ -6,6 +6,10 @@
 #include <vector>
 #include <memory>
 
+/**
+ * @brief Represents a network subnet containing multiple nodes (Composite pattern).
+ * * Can contain ServerNodes or even other Subnets, forming a tree structure.
+ */
 class Subnet : public NetworkNode {
 private:
     std::vector<std::shared_ptr<NetworkNode>> nodes;
@@ -21,6 +25,7 @@ public:
 
     std::shared_ptr<NetworkNode> clone() const override;
 
+    /** @brief Creates an iterator to traverse the subnet's children (Iterator pattern). */
     std::unique_ptr<NodeIterator> createIterator() const;
 };
 

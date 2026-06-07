@@ -1,0 +1,29 @@
+\doxysection{Toggle\+State\+Command.\+h}
+\hypertarget{_toggle_state_command_8h_source}{}\label{_toggle_state_command_8h_source}\index{include/patterns/behavioral/ToggleStateCommand.h@{include/patterns/behavioral/ToggleStateCommand.h}}
+\mbox{\hyperlink{_toggle_state_command_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TOGGLESTATECOMMAND\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TOGGLESTATECOMMAND\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_simulation_command_8h}{SimulationCommand.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_visual_node}{VisualNode}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_server_node}{ServerNode}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_toggle_state_command_a5004c1c082186569b9d19e67e4aa486e}{ToggleStateCommand}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_command}{ICommand}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_toggle_state_command_a5004c1c082186569b9d19e67e4aa486e}{ToggleStateCommand}}(\mbox{\hyperlink{class_visual_node}{VisualNode}}*\ vNode,\ std::shared\_ptr<ServerNode>\ sNode,\ \textcolor{keywordtype}{bool}\ prevOffline,\ std::function<\textcolor{keywordtype}{void}()>\ cb);}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_toggle_state_command_a4ef1ce1728cfbb63d59f54d35ada1646}{execute}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_toggle_state_command_ab62035bacc2781ab6cf3a6131d0fe7f6}{undo}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00019\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_visual_node}{VisualNode}}*\ visualNode;}
+\DoxyCodeLine{00021\ \ \ \ \ std::shared\_ptr<ServerNode>\ serverNode;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ wasOffline;}
+\DoxyCodeLine{00023\ \ \ \ \ std::function<void()>\ updateCallback;}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

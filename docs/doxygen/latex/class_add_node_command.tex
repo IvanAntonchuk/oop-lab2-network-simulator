@@ -1,0 +1,89 @@
+\doxysection{Add\+Node\+Command Class Reference}
+\hypertarget{class_add_node_command}{}\label{class_add_node_command}\index{AddNodeCommand@{AddNodeCommand}}
+
+
+Command to add a new visual and logical node to the network.  
+
+
+
+
+{\ttfamily \#include $<$Add\+Node\+Command.\+h$>$}
+
+Inheritance diagram for Add\+Node\+Command\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_add_node_command}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_add_node_command_a6deb52dcd4aa761019e4af4820909f34}{Add\+Node\+Command}} (std\+::map$<$ \mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_server_node}{Server\+Node}} $>$ $>$ \&nodes\+Map, QGraphics\+Scene \texorpdfstring{$\ast$}{*}scene, \mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}v\+Node, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_server_node}{Server\+Node}} $>$ s\+Node, int \texorpdfstring{$\ast$}{*}s\+Counter, int old\+SCounter, int \texorpdfstring{$\ast$}{*}r\+Counter, int old\+RCounter, std\+::function$<$ void()$>$ cb)
+\item 
+void \mbox{\hyperlink{class_add_node_command_a0ec1e67a38977c908662733b1e7dca9b}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Executes the command\textquotesingle{}s primary logic. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_add_node_command_a0744b462156ad08d360309125eb4e98b}{undo}} () override
+\begin{DoxyCompactList}\small\item\em Reverts the effects of the command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_i_command}{ICommand}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_i_command_aa8a6346c5a0dcfe7fd49413a69e854ef}{\texorpdfstring{$\sim$}{\string~}\+ICommand}} ()=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Command to add a new visual and logical node to the network. 
+
+
+\begin{DoxyItemize}
+\item Encapsulates the addition logic allowing it to be undone via \doxylink{class_history_manager}{History\+Manager}. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_add_node_command_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_add_node_command_a6deb52dcd4aa761019e4af4820909f34}\index{AddNodeCommand@{AddNodeCommand}!AddNodeCommand@{AddNodeCommand}}
+\index{AddNodeCommand@{AddNodeCommand}!AddNodeCommand@{AddNodeCommand}}
+\doxysubsubsection{\texorpdfstring{AddNodeCommand()}{AddNodeCommand()}}
+{\footnotesize\ttfamily \label{class_add_node_command_a6deb52dcd4aa761019e4af4820909f34} 
+Add\+Node\+Command\+::\+Add\+Node\+Command (\begin{DoxyParamCaption}\item[{std\+::map$<$ \mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_server_node}{Server\+Node}} $>$ $>$ \&}]{nodes\+Map}{, }\item[{QGraphics\+Scene \texorpdfstring{$\ast$}{*}}]{scene}{, }\item[{\mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}}]{v\+Node}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_server_node}{Server\+Node}} $>$}]{s\+Node}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{s\+Counter}{, }\item[{int}]{old\+SCounter}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{r\+Counter}{, }\item[{int}]{old\+RCounter}{, }\item[{std\+::function$<$ void()$>$}]{cb}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_add_node_command_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_add_node_command_a0ec1e67a38977c908662733b1e7dca9b}\index{AddNodeCommand@{AddNodeCommand}!execute@{execute}}
+\index{execute@{execute}!AddNodeCommand@{AddNodeCommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{class_add_node_command_a0ec1e67a38977c908662733b1e7dca9b} 
+void Add\+Node\+Command\+::execute (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Executes the command\textquotesingle{}s primary logic. 
+
+
+
+Implements \mbox{\hyperlink{class_i_command_ace81beb0beea968f876f292446bf1120}{ICommand}}.
+
+\Hypertarget{class_add_node_command_a0744b462156ad08d360309125eb4e98b}\index{AddNodeCommand@{AddNodeCommand}!undo@{undo}}
+\index{undo@{undo}!AddNodeCommand@{AddNodeCommand}}
+\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
+{\footnotesize\ttfamily \label{class_add_node_command_a0744b462156ad08d360309125eb4e98b} 
+void Add\+Node\+Command\+::undo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reverts the effects of the command. 
+
+
+
+Implements \mbox{\hyperlink{class_i_command_a86e1942e4564840b6c5e09c3a7cdba78}{ICommand}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/behavioral/\mbox{\hyperlink{_add_node_command_8h}{Add\+Node\+Command.\+h}}\item 
+src/patterns/behavioral/\mbox{\hyperlink{_add_node_command_8cpp}{Add\+Node\+Command.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,76 @@
+\doxysection{Offline\+State Class Reference}
+\hypertarget{class_offline_state}{}\label{class_offline_state}\index{OfflineState@{OfflineState}}
+
+
+Represents a failed or disabled state of a server.  
+
+
+
+
+{\ttfamily \#include $<$Offline\+State.\+h$>$}
+
+Inheritance diagram for Offline\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_offline_state}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_offline_state_ad8aa18f4d5badd84c03a752f44b48a5e}{handle}} (\mbox{\hyperlink{class_server_node}{Server\+Node}} \texorpdfstring{$\ast$}{*}node) override
+\begin{DoxyCompactList}\small\item\em Handles traffic based on the current state. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_offline_state_a7dbbc7cf79f9bc4dc047e87688cfb315}{is\+Operational}} () const override
+\begin{DoxyCompactList}\small\item\em Determines if the server is active in this state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_node_state}{Node\+State}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_node_state_aca8ef08488cc15fd79defc9be9854377}{\texorpdfstring{$\sim$}{\string~}\+Node\+State}} ()=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a failed or disabled state of a server. 
+
+
+\begin{DoxyItemize}
+\item In this state, the server drops packets and is ignored by routing algorithms. 
+\end{DoxyItemize}
+
+\label{doc-func-members}
+\Hypertarget{class_offline_state_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_offline_state_ad8aa18f4d5badd84c03a752f44b48a5e}\index{OfflineState@{OfflineState}!handle@{handle}}
+\index{handle@{handle}!OfflineState@{OfflineState}}
+\doxysubsubsection{\texorpdfstring{handle()}{handle()}}
+{\footnotesize\ttfamily \label{class_offline_state_ad8aa18f4d5badd84c03a752f44b48a5e} 
+std\+::string Offline\+State\+::handle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_server_node}{Server\+Node}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles traffic based on the current state. 
+
+
+
+Implements \mbox{\hyperlink{class_node_state_ac982360f00111064cb28648682099ac4}{Node\+State}}.
+
+\Hypertarget{class_offline_state_a7dbbc7cf79f9bc4dc047e87688cfb315}\index{OfflineState@{OfflineState}!isOperational@{isOperational}}
+\index{isOperational@{isOperational}!OfflineState@{OfflineState}}
+\doxysubsubsection{\texorpdfstring{isOperational()}{isOperational()}}
+{\footnotesize\ttfamily \label{class_offline_state_a7dbbc7cf79f9bc4dc047e87688cfb315} 
+bool Offline\+State\+::is\+Operational (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Determines if the server is active in this state. 
+
+
+
+Implements \mbox{\hyperlink{class_node_state_a17a01083e1305c582b2bf13d3e9b8441}{Node\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/behavioral/\mbox{\hyperlink{_offline_state_8h}{Offline\+State.\+h}}\item 
+src/patterns/behavioral/\mbox{\hyperlink{_offline_state_8cpp}{Offline\+State.\+cpp}}\end{DoxyCompactItemize}

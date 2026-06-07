@@ -1,0 +1,54 @@
+\doxysection{Simulation\+Memento Class Reference}
+\hypertarget{class_simulation_memento}{}\label{class_simulation_memento}\index{SimulationMemento@{SimulationMemento}}
+
+
+Captures and stores the internal state of the simulation (Memento pattern).  
+
+
+
+
+{\ttfamily \#include $<$Simulation\+Memento.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_simulation_memento_a7f138ac1da576f8dece930929fdc8292}{Simulation\+Memento}} (const std\+::map$<$ \mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_server_node}{Server\+Node}} $>$ $>$ \&nodes\+State)
+\item 
+std\+::map$<$ \mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_server_node}{Server\+Node}} $>$ $>$ \mbox{\hyperlink{class_simulation_memento_a6f4782786e320f4586205da48eeff191}{get\+State}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Captures and stores the internal state of the simulation (Memento pattern). 
+
+
+\begin{DoxyItemize}
+\item Used by the \doxylink{class_history_manager}{History\+Manager} to save snapshots of the network state. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_simulation_memento_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_simulation_memento_a7f138ac1da576f8dece930929fdc8292}\index{SimulationMemento@{SimulationMemento}!SimulationMemento@{SimulationMemento}}
+\index{SimulationMemento@{SimulationMemento}!SimulationMemento@{SimulationMemento}}
+\doxysubsubsection{\texorpdfstring{SimulationMemento()}{SimulationMemento()}}
+{\footnotesize\ttfamily \label{class_simulation_memento_a7f138ac1da576f8dece930929fdc8292} 
+Simulation\+Memento\+::\+Simulation\+Memento (\begin{DoxyParamCaption}\item[{const std\+::map$<$ \mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_server_node}{Server\+Node}} $>$ $>$ \&}]{nodes\+State}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_simulation_memento_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_simulation_memento_a6f4782786e320f4586205da48eeff191}\index{SimulationMemento@{SimulationMemento}!getState@{getState}}
+\index{getState@{getState}!SimulationMemento@{SimulationMemento}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily \label{class_simulation_memento_a6f4782786e320f4586205da48eeff191} 
+std\+::map$<$ \mbox{\hyperlink{class_visual_node}{Visual\+Node}} \texorpdfstring{$\ast$}{*}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_server_node}{Server\+Node}} $>$ $>$ Simulation\+Memento\+::get\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/behavioral/\mbox{\hyperlink{_simulation_memento_8h}{Simulation\+Memento.\+h}}\item 
+src/patterns/behavioral/\mbox{\hyperlink{_simulation_memento_8cpp}{Simulation\+Memento.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,119 @@
+\doxysection{Firewall\+Decorator Class Reference}
+\hypertarget{class_firewall_decorator}{}\label{class_firewall_decorator}\index{FirewallDecorator@{FirewallDecorator}}
+
+
+Concrete decorator that adds firewall protection to a node.  
+
+
+
+
+{\ttfamily \#include $<$Firewall\+Decorator.\+h$>$}
+
+Inheritance diagram for Firewall\+Decorator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_firewall_decorator}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_firewall_decorator_af5d9aa947d2a126a30e99d1df014035c}{Firewall\+Decorator}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ node)
+\item 
+std\+::string \mbox{\hyperlink{class_firewall_decorator_a9175fb8e123bfef359cfc514c7cd3805}{process\+Traffic}} () override
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ \mbox{\hyperlink{class_firewall_decorator_a02345b02aacf3fef8740462ef44d0955}{clone}} () const override
+\begin{DoxyCompactList}\small\item\em Creates a deep copy of the node (Prototype pattern). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_node_decorator}{Node\+Decorator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_node_decorator_a2cf1fd5b8bb209f3fdaaa7187e13f166}{Node\+Decorator}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ node)
+\item 
+std\+::string \mbox{\hyperlink{class_node_decorator_a824c366a29a3137f77e1d084f8993587}{process\+Traffic}} () override
+\item 
+std\+::string \mbox{\hyperlink{class_node_decorator_ab77f56be09c5cbe4808c3833ebfcbbc4}{get\+Name}} () const override
+\item 
+bool \mbox{\hyperlink{class_node_decorator_a1c7f6c5b25e0825b9bb3f374a9d5b4ad}{is\+Operational}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_network_node}{Network\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_network_node_ad78bd0bd52f67a52cbc11ce53d281423}{Network\+Node}} (const std\+::string \&node\+Name)
+\item 
+virtual \mbox{\hyperlink{class_network_node_a6f25dfa8cc55059aaac785dec94967e1}{\texorpdfstring{$\sim$}{\string~}\+Network\+Node}} ()=default
+\item 
+virtual void \mbox{\hyperlink{class_network_node_aa1ebd9836fb5830be86c72efb095075a}{set\+Name}} (const std\+::string \&new\+Name)
+\item 
+virtual void \mbox{\hyperlink{class_network_node_a36e8de7c17c64f6c14b6f204d21b2690}{connect\+To}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ node)
+\item 
+virtual void \mbox{\hyperlink{class_network_node_a0c3791157c76ba5227dd94f4d57701dd}{remove\+Connection}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ node)
+\item 
+virtual void \mbox{\hyperlink{class_network_node_af99fade8ef92df56bb630ba3e68ffbd5}{clear\+Connections}} ()
+\item 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ $>$ \mbox{\hyperlink{class_network_node_acd67db0b3c05d46c5baa93bf1ac18d25}{get\+Connections}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_node_decorator}{Node\+Decorator}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ \mbox{\hyperlink{class_node_decorator_afa160654d5e225270b7afa29d8e528b2}{wrappee}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_network_node}{Network\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_network_node_abf86c659198a2f755fbfb7f6e7177461}{name}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Concrete decorator that adds firewall protection to a node. 
+
+
+\begin{DoxyItemize}
+\item Intercepts traffic before it reaches the wrapped node, simulating packet filtering and security checks. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_firewall_decorator_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_firewall_decorator_af5d9aa947d2a126a30e99d1df014035c}\index{FirewallDecorator@{FirewallDecorator}!FirewallDecorator@{FirewallDecorator}}
+\index{FirewallDecorator@{FirewallDecorator}!FirewallDecorator@{FirewallDecorator}}
+\doxysubsubsection{\texorpdfstring{FirewallDecorator()}{FirewallDecorator()}}
+{\footnotesize\ttfamily \label{class_firewall_decorator_af5d9aa947d2a126a30e99d1df014035c} 
+Firewall\+Decorator\+::\+Firewall\+Decorator (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_firewall_decorator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_firewall_decorator_a02345b02aacf3fef8740462ef44d0955}\index{FirewallDecorator@{FirewallDecorator}!clone@{clone}}
+\index{clone@{clone}!FirewallDecorator@{FirewallDecorator}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{class_firewall_decorator_a02345b02aacf3fef8740462ef44d0955} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ Firewall\+Decorator\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Creates a deep copy of the node (Prototype pattern). 
+
+
+
+Implements \mbox{\hyperlink{class_network_node_a8715765721caa7fef0fa20aa1005a0e7}{Network\+Node}}.
+
+\Hypertarget{class_firewall_decorator_a9175fb8e123bfef359cfc514c7cd3805}\index{FirewallDecorator@{FirewallDecorator}!processTraffic@{processTraffic}}
+\index{processTraffic@{processTraffic}!FirewallDecorator@{FirewallDecorator}}
+\doxysubsubsection{\texorpdfstring{processTraffic()}{processTraffic()}}
+{\footnotesize\ttfamily \label{class_firewall_decorator_a9175fb8e123bfef359cfc514c7cd3805} 
+std\+::string Firewall\+Decorator\+::process\+Traffic (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_network_node_afdfa6c61887bd333bfa1e796e2add094}{Network\+Node}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/structural/\mbox{\hyperlink{_firewall_decorator_8h}{Firewall\+Decorator.\+h}}\item 
+src/patterns/structural/\mbox{\hyperlink{_firewall_decorator_8cpp}{Firewall\+Decorator.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,62 @@
+\doxysection{Report\+Facade Class Reference}
+\hypertarget{class_report_facade}{}\label{class_report_facade}\index{ReportFacade@{ReportFacade}}
+
+
+Provides a simplified interface for generating network diagnostics (Facade pattern).  
+
+
+
+
+{\ttfamily \#include $<$Report\+Facade.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_report_facade_a314d97076ff27c2f845c5f3454cced5d}{Report\+Facade}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ net)
+\item 
+std\+::string \mbox{\hyperlink{class_report_facade_acfe051c94b5067b2ea574d167469a4ee}{generate\+Network\+Report}} ()
+\item 
+std\+::vector$<$ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ $>$ $>$ \mbox{\hyperlink{class_report_facade_abd54d21c763cc13ac25718d46a8abeb2}{get\+Calculated\+Paths}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides a simplified interface for generating network diagnostics (Facade pattern). 
+
+
+\begin{DoxyItemize}
+\item Hides the complexity of traversing the network, analyzing nodes, and collecting statistics behind a single easy-\/to-\/use class. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_report_facade_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_report_facade_a314d97076ff27c2f845c5f3454cced5d}\index{ReportFacade@{ReportFacade}!ReportFacade@{ReportFacade}}
+\index{ReportFacade@{ReportFacade}!ReportFacade@{ReportFacade}}
+\doxysubsubsection{\texorpdfstring{ReportFacade()}{ReportFacade()}}
+{\footnotesize\ttfamily \label{class_report_facade_a314d97076ff27c2f845c5f3454cced5d} 
+Report\+Facade\+::\+Report\+Facade (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$}]{net}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_report_facade_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_report_facade_acfe051c94b5067b2ea574d167469a4ee}\index{ReportFacade@{ReportFacade}!generateNetworkReport@{generateNetworkReport}}
+\index{generateNetworkReport@{generateNetworkReport}!ReportFacade@{ReportFacade}}
+\doxysubsubsection{\texorpdfstring{generateNetworkReport()}{generateNetworkReport()}}
+{\footnotesize\ttfamily \label{class_report_facade_acfe051c94b5067b2ea574d167469a4ee} 
+std\+::string Report\+Facade\+::generate\+Network\+Report (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_report_facade_abd54d21c763cc13ac25718d46a8abeb2}\index{ReportFacade@{ReportFacade}!getCalculatedPaths@{getCalculatedPaths}}
+\index{getCalculatedPaths@{getCalculatedPaths}!ReportFacade@{ReportFacade}}
+\doxysubsubsection{\texorpdfstring{getCalculatedPaths()}{getCalculatedPaths()}}
+{\footnotesize\ttfamily \label{class_report_facade_abd54d21c763cc13ac25718d46a8abeb2} 
+std\+::vector$<$ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_network_node}{Network\+Node}} $>$ $>$ $>$ Report\+Facade\+::get\+Calculated\+Paths (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/patterns/structural/\mbox{\hyperlink{_report_facade_8h}{Report\+Facade.\+h}}\item 
+src/patterns/structural/\mbox{\hyperlink{_report_facade_8cpp}{Report\+Facade.\+cpp}}\end{DoxyCompactItemize}

@@ -7,6 +7,9 @@
 class QGraphicsScene;
 class VisualEdge;
 
+/**
+ * @brief Command to establish a connection (edge) between two nodes.
+ */
 class ConnectCommand : public ICommand {
 public:
     ConnectCommand(QGraphicsScene* scene, VisualEdge* e, std::function<void()> cb);

@@ -10,6 +10,10 @@ class VisualNode;
 class ServerNode;
 class QGraphicsScene;
 
+/**
+ * @brief Command to add a new visual and logical node to the network.
+ * * Encapsulates the addition logic allowing it to be undone via HistoryManager.
+ */
 class AddNodeCommand : public ICommand {
 public:
     AddNodeCommand(std::map<VisualNode*, std::shared_ptr<ServerNode>>& nodesMap,
