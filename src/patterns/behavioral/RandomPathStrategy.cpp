@@ -15,7 +15,9 @@ std::vector<std::shared_ptr<NetworkNode>> RandomPathStrategy::calculatePath(
     std::vector<std::shared_ptr<NetworkNode>> path;
     std::set<std::string> visited;
 
-    if (!source || !destination) return path;
+    if (!source || !destination || !source->isOperational() || !destination->isOperational()) {
+        return path;
+    }
 
     if (dfs(source, destination, visited, path)) {
         return path;
@@ -43,6 +45,10 @@ bool RandomPathStrategy::dfs(std::shared_ptr<NetworkNode> current,
     std::shuffle(neighbors.begin(), neighbors.end(), generator);
 
     for (const auto& neighbor : neighbors) {
+        if (!neighbor->isOperational()) {
+            continue;
+        }
+
         if (visited.find(neighbor->getName()) == visited.end()) {
             if (dfs(neighbor, target, visited, path)) {
                 return true;

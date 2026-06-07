@@ -14,7 +14,10 @@ std::vector<std::shared_ptr<NetworkNode>> ShortestPathStrategy::calculatePath(
     std::shared_ptr<NetworkNode> destination) {
 
     std::vector<std::shared_ptr<NetworkNode>> path;
-    if (!source || !destination) return path;
+
+    if (!source || !destination || !source->isOperational() || !destination->isOperational()) {
+        return path;
+    }
 
     std::queue<std::shared_ptr<NetworkNode>> q;
     std::unordered_map<std::string, std::shared_ptr<NetworkNode>> parentMap;
@@ -36,6 +39,10 @@ std::vector<std::shared_ptr<NetworkNode>> ShortestPathStrategy::calculatePath(
         }
 
         for (const auto& neighbor : current->getConnections()) {
+            if (!neighbor->isOperational()) {
+                continue;
+            }
+
             if (visited.find(neighbor->getName()) == visited.end()) {
                 visited.insert(neighbor->getName());
                 parentMap[neighbor->getName()] = current;
