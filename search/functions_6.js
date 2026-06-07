@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['generatenetworkreport_0',['generateNetworkReport',['../class_report_facade.html#acfe051c94b5067b2ea574d167469a4ee',1,'ReportFacade']]],
+  ['getcalculatedpaths_1',['getCalculatedPaths',['../class_report_facade.html#abd54d21c763cc13ac25718d46a8abeb2',1,'ReportFacade']]],
+  ['getconnections_2',['getConnections',['../class_network_node.html#acd67db0b3c05d46c5baa93bf1ac18d25',1,'NetworkNode::getConnections()'],['../class_server_node.html#a2dcbdae0ae9f7da59bc8df4b27ff7ace',1,'ServerNode::getConnections()']]],
+  ['getedges_3',['getEdges',['../class_visual_node.html#a1e6263abef382677f4e77d2c124b9c53',1,'VisualNode']]],
+  ['gethasfirewall_4',['getHasFirewall',['../class_visual_node.html#a3978ed8c80c5b2364ffa3b78d53e4f92',1,'VisualNode']]],
+  ['gethistory_5',['getHistory',['../class_simulation_manager.html#a0513ac233565f46889ad69c03a3c33b9',1,'SimulationManager']]],
+  ['getinstance_6',['getInstance',['../class_simulation_manager.html#a15cf92e763af82475c4e6e050caa7876',1,'SimulationManager']]],
+  ['getisoffline_7',['getIsOffline',['../class_visual_node.html#ae7ea1ef993b0aa224037d56680fcb49f',1,'VisualNode']]],
+  ['getisreachable_8',['getIsReachable',['../class_visual_node.html#ab946ec0309d461d63cbf3169ef4fdda4',1,'VisualNode']]],
+  ['getisrunning_9',['getIsRunning',['../class_simulation_manager.html#aa227d33255c70f89d7e060c13fc3072d',1,'SimulationManager']]],
+  ['getname_10',['getName',['../class_network_node.html#a080a5b93f6e887362aaa53d7f1e01eec',1,'NetworkNode::getName()'],['../class_random_path_strategy.html#a5a9aa16716cedf1c697674af2d4f4a3b',1,'RandomPathStrategy::getName()'],['../class_routing_strategy.html#ae22bb55ea1ed57f46e56169c935d60cc',1,'RoutingStrategy::getName()'],['../class_shortest_path_strategy.html#aaf745db3218a8669f13b76660c5623c4',1,'ShortestPathStrategy::getName()'],['../class_node_decorator.html#ab77f56be09c5cbe4808c3833ebfcbbc4',1,'NodeDecorator::getName()'],['../class_visual_node.html#a30faca94429d4bae9a624c1fb1cd8cf8',1,'VisualNode::getName()']]],
+  ['getnetwork_11',['getNetwork',['../class_star_topology.html#ae1e711a9d1b1ecf49277e90bb7951371',1,'StarTopology::getNetwork()'],['../class_topology_prototype.html#a42471460bdfd606627a6de8956bc5e8c',1,'TopologyPrototype::getNetwork()']]],
+  ['getnodes_12',['getNodes',['../class_subnet.html#abb6e61255942bfdb53fc817edfff48d6',1,'Subnet']]],
+  ['getresult_13',['getResult',['../class_network_builder.html#a1625cfa0af4e6fc91e01eb733f54ba7c',1,'NetworkBuilder']]],
+  ['getsourcenode_14',['getSourceNode',['../class_visual_edge.html#a231a581662c0c9fd4b783dd9de027178',1,'VisualEdge']]],
+  ['getstate_15',['getState',['../class_simulation_memento.html#a6f4782786e320f4586205da48eeff191',1,'SimulationMemento']]],
+  ['getstrategy_16',['getStrategy',['../class_server_node.html#ac282d2117c64d38afd9844148588172b',1,'ServerNode']]],
+  ['gettargetnode_17',['getTargetNode',['../class_visual_edge.html#aad1ead1145bf1a473cb2a15b0cac7817',1,'VisualEdge']]]
+];
