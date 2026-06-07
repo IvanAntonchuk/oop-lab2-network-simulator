@@ -42,3 +42,42 @@ add_executable(NetworkSimulator
 )
 
 target_link_libraries(NetworkSimulator PRIVATE Qt6::Widgets)
+
+# КОНФІГУРАЦІЯ ДЛЯ GOOGLETEST
+
+if(POLICY CMP0135)
+    cmake_policy(SET CMP0135 NEW)
+endif()
+
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+)
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
+file(GLOB_RECURSE TEST_CORE_SOURCES
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/gui/*.cpp"
+)
+
+list(FILTER TEST_CORE_SOURCES EXCLUDE REGEX "main\\.cpp$")
+
+file(GLOB_RECURSE TEST_FILES "${CMAKE_CURRENT_SOURCE_DIR}/tests/*.cpp")
+
+add_executable(NetworkSimulator_Tests
+    ${TEST_CORE_SOURCES}
+    ${HEADERS}
+    ${FORMS}
+    ${TEST_FILES}
+)
+
+target_link_libraries(NetworkSimulator_Tests PRIVATE
+    gtest
+    gtest_main
+    Qt6::Widgets
+)
+
+enable_testing()
+add_test(NAME NetworkTests COMMAND NetworkSimulator_Tests)
